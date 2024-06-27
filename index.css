@@ -141,7 +141,7 @@ h3 {
   color: #12f4fe;
 }
 .resume .base .contact div i {
-  color: #ffb300;
+  color: #ff2a6d;
   width: 20px;
   height: 20px;
   font-size: 20px;
@@ -175,8 +175,11 @@ h3 {
   border-radius: 5px;
   transform: rotate(45deg) scale(0.8);
 }
+
+
 .resume .base .follow .box a:hover i::before {
   transform: rotate(-45deg) scale(1.5);
+  color:#ff2a6d
 }
 .resume .base .follow .box i {
   display: inline-block;
@@ -186,7 +189,7 @@ h3 {
   height: 60px;
   border-radius: 50%;
   line-height: 60px;
-  color: #2c2e3b;
+  color: #12f4fe;
   margin: 0 10px 10px 10px;
   transition-duration: 0.3s;
 }
@@ -205,7 +208,7 @@ h3 {
 }
 .resume .func:hover > div:hover h3 i {
   transform: scale(1.25);
-}
+} 
 .resume .func:hover > div:not(:hover) {
   opacity: 0.5;
 }
@@ -215,7 +218,7 @@ h3 {
 }
 .resume .func h3 i {
   color: #2c2e3b;
-  background: #6f00ff;
+  background: ;
   width: 42px;
   height: 42px;
   font-size: 20px;
@@ -426,7 +429,7 @@ h3 {
   transform: scale(1.2);
 }
 .resume .func .interests-items div:hover span {
-  color: #fdd835;
+  color: #12f4fe;
   transition-duration: 0.3s;
 }
 .resume .func .interests-items div i {
@@ -434,7 +437,7 @@ h3 {
   width: 60px;
   height: 60px;
   line-height: 60px;
-  color: #ffb300;
+  color: #12f4fe;
   transition-duration: 0.3s;
 }
 .resume .func .interests-items div span {
