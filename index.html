@@ -3,145 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <title>Timur Cravtov - Software Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        <title>Timur Cravtov - Software engineer</title>
+    <style>
+        /* Previous styles remain the same until header-background */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: erdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: #000000;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header-background {
+            height: 200px;
+            position: relative;
+            background-image: url('assets/header.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .header-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+        }
+
+        /* Rest of the previous styles remain the same */
+        .profile-section {
+            background-color: #212129;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .profile-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-top: -80px;
+        }
+
+        .profile-icon {
+            background: #000000;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #5a53cc;
+            border: 5px solid #000000;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .title {
+            color: #5a53cc;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            background-color: #212129;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        h2 i {
+            color: #5a53cc;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 2px solid #5a53cc;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill {
+          background: #141414;
+          padding: 0.8rem 1.2rem;
+          border-radius: 50px; /* Makes the edges rounded */
+          font-size: 0.9rem;
+          text-align: center; /* Ensures text is centered */
+          display: inline-block; /* Prevents unnecessary stretching */
+      }
+
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-item a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #5a53cc;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #e0e0e0;
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #5a53cc;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .interest {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .interest i {
+            font-size: 1.5rem;
+            color: #5a53cc;
+        }
+
+        small {
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
+<!-- Rest of the HTML remains exactly the same -->
 <body>
+    <div class="header-background"></div>
+    <div class="container">
+        <section class="profile-section">
+            <div class="profile-content">
+              <div class="profile-icon">
+                <img src="assets/profile-photo.gif" alt="Profile Photo" style="width: 100%; height: 100%; border-radius: 50%;">
+            </div>
+            
+                <div class="profile-info">
+                    <h1 class="name">Timur Cravtov</h1>
+                    <div class="title">Software Engineer</div>
+                    <div>Chisinau, Moldova</div>
+                </div>
+            </div>
+        </section>
 
-    <div class="resume">
-        <div class="base">
-          <div class="profile">
-            <div class="photo">
-              <!--<img src="" /> -->
-              <i class="fas fa-database"></i>
-            </div>
-            <div class="info">
-              <h1 class="name">Timur Cravtov</h1>
-              <h2 class="job">Software engineer</h2>
-            </div>
-          </div>
-          <div class="about">
-            <h3>About Me</h3>I'm a software engineering student at the Technical University of Moldova.
-          </div>
-          <div class="contact">
-            <h3>Contact Me</h3>
-            <div class="call"><a href="tel:+37378472735"><i class="fas fa-phone"></i><span>+37378472735</span></a></div>
-            <div class="address"><a href="https://open.spotify.com/track/4PTG3Z6ehGkBFwjybzWkR8?si=2e59c86cffd24c33" target="_blank"><i class="fas fa-map-marker"></i><span>Chisinau, Moldova</span></a>
-            </div>
-            <div class="email"><a href="mailto:timurcravtov04@gmail.com"><i class="fas fa-envelope"></i><span>timurcravtov04 @gmail.com</span></a></div>
-            <div class="website"><a href="sorry" target="_blank"> <i class="fas fa-desktop"></i><span>i dont have a site yet</span></a></div>
-          </div>
-          <div class="follow">
-            <h3>Follow Me</h3>
-            <div class="box">
-              <a href="https://www.t.me/timur_cravtov/" target="_blank"><i class="fab fa-telegram"></i></a>
-              <!-- <a href="https://www.instagram.com/timur_cravtov/" target="_blank"><i class="fab fa-instagram "></i></a> -->
-              <a href="https://www.github.com/TimurCravtov/" target="_blank"><i class="fab fa-github"></i></a>
-              <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank"><i class="fab fa-linkedin"></i></a>
-              <a href="https://www.goodreads.com/timurcravtov" target="_blank"><i class="fab fa-goodreads"></i></a>
-              <!-- <a href="https://www.behance.net/astronaomical" target="_blank"><i class="fab fa-behance"></i></a> -->
-            </div>
-          </div>
-        </div>
-        <div class="func">
-          <div class="work">
-            <h3><i class="fa fa-briefcase"></i>Experience</h3>
-            <ul>
-              <li><span>Intern<br></span><small>Pentalog (Globant)</small><small>September 2024</small></li> -->
-              <!-- <li><span>Web Designer</span><small>Lynden</small><small>Jan 2018 - Apr 2018</small></li>
-              <li><span>Intern - Web Design</span><small>Lynden</small><small>Aug 2017 - Dec 2017</small></li>
-            </ul>
-          </div>
-          <div class="edu">
-            <h3><i class="fa fa-graduation-cap"></i>Education</h3>
-            <ul>
-              <li><span>Bachelor of Science<br>Software engineering</span><small>UTM, Chisinau</small><small>Sept. 2023 - --</small></li>
-              <!-- <li><span>Computer Science</span><small>Edmonds Community College</small><small>Sept. 2014 - Dec. 2015</small></li>
-              <li><span>High School</span><small>Henry M. Jackson High School</small><small>Jan. 2013 - Jun. 2015</small></li> -->
-            </ul>
-          </div>
-          <div class="skills-prog">
-            <h3><i class="fas fa-code"></i>Programming Skills</h3>
-            <ul>
-              <li data-percent="95"><span>Java</span>
-                <div class="skills-bar">
-                  <div class="bar"></div>
-                </div>
-              </li>
-              <li data-percent="90"><span>JavaScript</span>
-                <div class="skills-bar">
-                  <div class="bar"></div>
-                </div>
-              </li>
-              <li data-percent="60"><span>Python</span>
-                <div class="skills-bar">
-                  <div class="bar"></div>
-                </div>
-              </li>
-              <li data-percent="50"><span>PosgreSQL</span>
-                <div class="skills-bar">
-                  <div class="bar"></div>
-                </div>
-              </li>
-              <!-- <li data-percent="40"><span>JSON</span>
-                <div class="skills-bar">
-                  <div class="bar"></div>
-                </div>
-              </li>
-              <li data-percent="55"><span>PHP</span>
-                <div class="skills-bar">
-                  <div class="bar"></div>
-                </div>
-              </li>
-              <li data-percent="40"><span>MySQL</span>
-                <div class="skills-bar">
-                  <div class="bar"></div>
-                </div>
-              </li> -->
-            </ul>
-          </div>
-          <div class="skills-soft">
-            <h3><i class="fas fa-bezier-curve"></i>Software Skills</h3>
-            <ul>
-              <li data-percent="90">
-                <svg viewbox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45"></circle>
-                  <circle class="cbar" cx="50" cy="50" r="45"></circle>
-                </svg><span>Git</span><small></small>
-              </li>
-              <li data-percent="75">
-                <svg viewbox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45"></circle>
-                  <circle class="cbar" cx="50" cy="50" r="45"></circle>
-                </svg><span>Docker</span><small></small>
-              </li>
-              <li data-percent="85">
-                <svg viewbox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45"></circle>
-                  <circle class="cbar" cx="50" cy="50" r="45"></circle>
-                </svg><span>Enterprise Architect</span><small></small>
-              </li>
-              <!-- <li data-percent="65">
-                <svg viewbox="0 0 100 100">
-                  <circle cx="50" cy="50" r="45"></circle>
-                  <circle class="cbar" cx="50" cy="50" r="45"></circle>
-                </svg><span>Dreamweaver</span><small></small>
-              </li> -->
-            </ul>
-          </div>
-          <div class="interests">
-            <h3><i class="fas fa-star"></i>Interests</h3>
-            <div class="interests-items">
-              <div class="art"><i class="fas fa-palette"></i><span>Art</span></div>
-              <div class="art"><i class="fas fa-book"></i><span>Books</span></div>
-              <div class="movies"><i class="fas fa-film"></i><span>Movies</span></div>
-              <div class="music"><i class="fas fa-headphones"></i><span>Music</span></div>
-              <div class="games"><i class="fas fa-gamepad"></i><span>Games</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <section>
+            <h2><i class="fas fa-user"></i> About</h2>
+            <p>Software engineering student at the Technical University of Moldova.</p>
+        </section>
 
+        <section>
+            <h2><i class="fas fa-briefcase"></i> Experience</h2>
+
+            <div class="experience-item">
+              <h3>Intern</h3>
+              <p>Moldcell Acedemy</p>
+              <small>November 2024 - ongoing</small>
+            </div>
+
+
+            <div class="experience-item">
+                <h3>Intern</h3>
+                <p>Pentalog (Globant)</p>
+                <small>September 2024</small>
+            </div>
+
+        </section>
+
+        <section>
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Science in Software Engineering</h3>
+                <p>Technical University of Moldova, Chisinau</p>
+                <small>September 2023 - Present</small>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-code"></i> Programming Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">Java</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Python</div>
+                <div class="skill">PostgreSQL</div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-tools"></i> Software Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">Git</div>
+                <div class="skill">Docker</div>
+                <div class="skill">Enterprise Architect</div>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-link"></i> Social</h2>
+            <div class="social-links">
+                <a href="https://www.t.me/timur_cravtov/" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.github.com/TimurCravtov/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.goodreads.com/timurcravtov" target="_blank"><i class="fab fa-goodreads"></i></a>
+            </div>
+        </section>
+
+        <section>
+            <h2><i class="fas fa-heart"></i> Interests</h2>
+            <div class="interests-grid">
+                <div class="interest">
+                    <i class="fas fa-palette"></i>
+                    <span>Art</span>
+                </div>
+                <div class="interest">
+                    <i class="fas fa-book"></i>
+                    <span>Books</span>
+                </div>
+                <div class="interest">
+                    <i class="fas fa-film"></i>
+                    <span>Movies</span>
+                </div>
+                <div class="interest">
+                    <i class="fas fa-headphones"></i>
+                    <span>Music</span>
+                </div>
+                <div class="interest">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Games</span>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
