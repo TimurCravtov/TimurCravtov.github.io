@@ -5,312 +5,263 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/assets/web.png">
     <title>Timur Cravtov - Software Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#b99fd1',
+                        dark: '#121218',
+                        darker: '#0a0a10',
+                        card: 'rgba(18, 18, 24, 0.8)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Previous styles remain the same until header-background */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: erdana, Geneva, Tahoma, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        .glass {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
-
-        body {
-            background-color: #000000;
-            color: #e0e0e0;
-            line-height: 1.6;
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.25);
         }
-
-        .header-background {
-            height: 200px;
-            position: relative;
-            background-image: url('assets/header.jpg');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .header-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
-        }
-
-        /* Rest of the previous styles remain the same */
-        .profile-section {
-            background-color: #212129;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            position: relative;
-        }
-
-        .profile-content {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            margin-top: -80px;
-        }
-
-        .profile-icon {
-            background: #000000;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #5a53cc;
-            border: 5px solid #000000;
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-info {
-            flex-grow: 1;
-        }
-
-        .name {
-            font-size: 2.5rem;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .title {
-            color: #5a53cc;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        section {
-            background-color: #212129;
-            padding: 2rem;
-            border-radius: 8px;
+        
+        .section-heading {
+            color: white;
             margin-bottom: 1.5rem;
-        }
-
-        h2 {
-            color: #fff;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        h2 i {
-            color: #5a53cc;
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 2px solid #5a53cc;
-        }
-
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill {
-          background: #141414;
-          padding: 0.8rem 1.2rem;
-          border-radius: 50px; /* Makes the edges rounded */
-          font-size: 0.9rem;
-          text-align: center; /* Ensures text is centered */
-          display: inline-block; /* Prevents unnecessary stretching */
-      }
-
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .contact-item a {
-            color: #e0e0e0;
-            text-decoration: none;
-        }
-
-        .contact-item a:hover {
-            color: #5a53cc;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .social-links a {
-            color: #e0e0e0;
-            font-size: 1.5rem;
-            transition: color 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: #5a53cc;
-        }
-
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .interest {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .interest i {
-            font-size: 1.5rem;
-            color: #5a53cc;
-        }
-
-        small {
-            color: #666;
-        }
-
-        @media (max-width: 768px) {
-            .profile-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-icon {
-                margin: 0 auto;
-            }
+            font-size: 1.25rem;
         }
     </style>
 </head>
-<!-- Rest of the HTML remains exactly the same -->
-<body>
-    <div class="header-background"></div>
-    <div class="container">
-        <section class="profile-section">
-            <div class="profile-content">
-              <div class="profile-icon">
-                <img src="assets/profile-photo.gif" alt="Profile Photo" style="width: 100%; height: 100%; border-radius: 50%;">
+<body class="bg-gradient-to-br from-black via-darker to-black bg-fixed text-gray-300 leading-relaxed font-sans">
+
+    <!-- Hero Section (Background image removed, gradient preserved) -->
+    <div class="relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-black via-darker to-black">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-40"></div>
+        
+        <!-- Added Title and Contact Info -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Software Engineering Student</h2>
+            <div class="flex flex-col md:flex-row items-center gap-4 mt-4 text-gray-300">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-envelope text-secondary/80"></i>
+                    <span>timurcravtov04@gmail.com</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-phone text-secondary/80"></i>
+                    <span>+37378014381</span>
+                </div>
             </div>
-            
-                <div class="profile-info">
-                    <h1 class="name">Timur Cravtov</h1>
-                    <div class="title">Software Engineer</div>
-                    <div>Chisinau, Moldova</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto px-6 py-8">
+        <!-- Profile Card -->
+        <section class="bg-card glass rounded-2xl p-8 mb-8 relative shadow-xl border border-white/5">
+            <div class="flex flex-col md:flex-row gap-8 items-center mt-[-80px]">
+                <div class="bg-gradient-to-br from-primary/80 to-secondary/80 w-40 h-40 rounded-full flex items-center justify-center text-5xl text-white border-4 border-darker z-10 overflow-hidden shadow-lg">
+                    <img src="assets/profile-photo.gif" alt="Profile Photo" class="w-full h-full rounded-full">
+                </div>
+                
+                <div class="flex-grow text-center md:text-left">
+                    <h1 class="text-4xl font-bold mb-2 text-white">Timur Cravtov</h1>
+                    <div class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary text-xl font-semibold mb-4 animate-gradient bg-size-200">Software Engineer</div>
+                    <div class="flex items-center justify-center md:justify-start gap-2 text-gray-400">
+                        <i class="fas fa-map-marker-alt text-secondary/80"></i>
+                        Chisinau, Moldova
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2><i class="fas fa-user"></i> About</h2>
-            <p>Software engineering student at the Technical University of Moldova.</p>
-        </section>
+        <!-- About and Education Sections -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- About Section -->
+            <section class="bg-card glass rounded-2xl p-8 shadow-lg border border-white/5 hover-lift">
+                <h2 class="section-heading flex items-center gap-3">
+                    <span class="p-2 rounded-lg bg-darker text-primary">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    About
+                </h2>
+                <p class="leading-relaxed text-gray-400">Software engineering student at the Technical University of Moldova.</p>
+            </section>
 
-        <section>
-            <h2><i class="fas fa-briefcase"></i> Experience</h2>
-
-            <div class="experience-item">
-              <h3>Intern</h3>
-              <p>Moldcell Acedemy</p>
-              <small>November 2024 - ongoing</small>
-            </div>
-
-
-            <div class="experience-item">
-                <h3>Intern</h3>
-                <p>Pentalog (Globant)</p>
-                <small>September 2024</small>
-            </div>
-
-        </section>
-
-        <section>
-            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-            <div class="education-item">
-                <h3>Bachelor of Science in Software Engineering</h3>
-                <p>Technical University of Moldova, Chisinau</p>
-                <small>September 2023 - Present</small>
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-code"></i> Programming Skills</h2>
-            <div class="skills-grid">
-                <div class="skill">Java</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Python</div>
-                <div class="skill">PostgreSQL</div>
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-tools"></i> Software Skills</h2>
-            <div class="skills-grid">
-                <div class="skill">Git</div>
-                <div class="skill">Docker</div>
-                <div class="skill">Enterprise Architect</div>
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-link"></i> Social</h2>
-            <div class="social-links">
-                <a href="https://www.t.me/timur_cravtov/" target="_blank"><i class="fab fa-telegram"></i></a>
-                <a href="https://www.github.com/TimurCravtov/" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://www.goodreads.com/timurcravtov" target="_blank"><i class="fab fa-goodreads"></i></a>
-            </div>
-        </section>
-
-        <section>
-            <h2><i class="fas fa-heart"></i> Interests</h2>
-            <div class="interests-grid">
-                <div class="interest">
-                    <i class="fas fa-palette"></i>
-                    <span>Art</span>
+            <!-- Education Section -->
+            <section class="bg-card glass rounded-2xl p-8 shadow-lg border border-white/5 hover-lift">
+                <h2 class="section-heading flex items-center gap-3">
+                    <span class="p-2 rounded-lg bg-darker text-primary">
+                        <i class="fas fa-graduation-cap"></i>
+                    </span>
+                    Education
+                </h2>
+                <div class="pl-4 border-l-2 border-primary/70 relative">
+                    <span class="absolute w-3 h-3 bg-primary/70 rounded-full -left-[6.5px] top-1"></span>
+                    <h3 class="font-bold text-white">Bachelor of Science in Software Engineering</h3>
+                    <p class="text-gray-300">Technical University of Moldova, Chisinau</p>
+                    <small class="text-gray-500">September 2023 - Present</small>
                 </div>
-                <div class="interest">
-                    <i class="fas fa-book"></i>
-                    <span>Books</span>
+            </section>
+        </div>
+
+        <!-- Experience Section -->
+        <section class="bg-card glass rounded-2xl p-8 my-6 shadow-lg border border-white/5 hover-lift">
+            <h2 class="section-heading flex items-center gap-3">
+                <span class="p-2 rounded-lg bg-darker text-primary">
+                    <i class="fas fa-briefcase"></i>
+                </span>
+                Experience
+            </h2>
+
+            <div class="space-y-8">
+                <div class="flex">
+                    <div class="mr-4 flex flex-col items-center">
+                        <div class="w-3 h-3 bg-primary/70 rounded-full"></div>
+                        <div class="h-full w-0.5 bg-primary/30"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white">Intern</h3>
+                        <p class="text-secondary/80 font-medium">Moldcell Acedemy</p>
+                        <small class="text-gray-500 block mb-2">November 2024 - April 2025</small>
+                    </div>
                 </div>
-                <div class="interest">
-                    <i class="fas fa-film"></i>
-                    <span>Movies</span>
-                </div>
-                <div class="interest">
-                    <i class="fas fa-headphones"></i>
-                    <span>Music</span>
-                </div>
-                <div class="interest">
-                    <i class="fas fa-gamepad"></i>
-                    <span>Games</span>
+
+                <div class="flex">
+                    <div class="mr-4 flex flex-col items-center">
+                        <div class="w-3 h-3 bg-primary/70 rounded-full"></div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-white">Intern</h3>
+                        <p class="text-secondary/80 font-medium">Pentalog (Globant)</p>
+                        <small class="text-gray-500">September 2024</small>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- Skills Section -->
+        <div class="grid md:grid-cols-2 gap-6 my-6">
+            <!-- Programming Skills -->
+            <section class="bg-card glass rounded-2xl p-8 shadow-lg border border-white/5 hover-lift">
+                <h2 class="section-heading flex items-center gap-3">
+                    <span class="p-2 rounded-lg bg-darker text-primary">
+                        <i class="fas fa-code"></i>
+                    </span>
+                    Programming Skills
+                </h2>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black px-4 py-2 rounded-full text-sm inline-block border border-primary/10 shadow-sm shadow-primary/5">Java</div>
+                    <div class="bg-black px-4 py-2 rounded-full text-sm inline-block border border-primary/10 shadow-sm shadow-primary/5">JavaScript</div>
+                    <div class="bg-black px-4 py-2 rounded-full text-sm inline-block border border-primary/10 shadow-sm shadow-primary/5">Python</div>
+                    <div class="bg-black px-4 py-2 rounded-full text-sm inline-block border border-primary/10 shadow-sm shadow-primary/5">PostgreSQL</div>
+                </div>
+            </section>
+
+            <!-- Software Skills -->
+            <section class="bg-card glass rounded-2xl p-8 shadow-lg border border-white/5 hover-lift">
+                <h2 class="section-heading flex items-center gap-3">
+                    <span class="p-2 rounded-lg bg-darker text-primary">
+                        <i class="fas fa-tools"></i>
+                    </span>
+                    Software Skills
+                </h2>
+                <div class="flex flex-wrap gap-3">
+                    <div class="bg-black px-4 py-2 rounded-full text-sm inline-block border border-primary/10 shadow-sm shadow-primary/5">Git</div>
+                    <div class="bg-black px-4 py-2 rounded-full text-sm inline-block border border-primary/10 shadow-sm shadow-primary/5">Docker</div>
+                    <div class="bg-black px-4 py-2 rounded-full text-sm inline-block border border-primary/10 shadow-sm shadow-primary/5">Enterprise Architect</div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Social Section -->
+        <section class="bg-card glass rounded-2xl p-8 my-6 shadow-lg border border-white/5 hover-lift">
+            <h2 class="section-heading flex items-center gap-3">
+                <span class="p-2 rounded-lg bg-darker text-primary">
+                    <i class="fas fa-link"></i>
+                </span>
+                Social
+            </h2>
+            <div class="flex flex-wrap justify-center md:justify-start gap-6">
+                <a href="https://www.t.me/timur_cravtov/" target="_blank" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm shadow-primary/5">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://www.github.com/TimurCravtov/" target="_blank" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm shadow-primary/5">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm shadow-primary/5">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.facebook.com/timurcravtov/" target="_blank" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm shadow-primary/5">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.goodreads.com/timurcravtov" target="_blank" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm shadow-primary/5">
+                    <i class="fab fa-goodreads"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section class="bg-card glass rounded-2xl p-8 my-6 shadow-lg border border-white/5 hover-lift">
+            <h2 class="section-heading flex items-center gap-3">
+                <span class="p-2 rounded-lg bg-darker text-primary">
+                    <i class="fas fa-heart"></i>
+                </span>
+                Interests
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <div class="flex flex-col items-center p-4 bg-black rounded-xl hover:bg-darker transition-colors border border-primary/10">
+                    <i class="fas fa-palette text-secondary/80 text-2xl mb-2"></i>
+                    <span class="text-gray-300">Art</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-black rounded-xl hover:bg-darker transition-colors border border-primary/10">
+                    <i class="fas fa-book text-secondary/80 text-2xl mb-2"></i>
+                    <span class="text-gray-300">Books</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-black rounded-xl hover:bg-darker transition-colors border border-primary/10">
+                    <i class="fas fa-film text-secondary/80 text-2xl mb-2"></i>
+                    <span class="text-gray-300">Movies</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-black rounded-xl hover:bg-darker transition-colors border border-primary/10">
+                    <i class="fas fa-headphones text-secondary/80 text-2xl mb-2"></i>
+                    <span class="text-gray-300">Music</span>
+                </div>
+                <div class="flex flex-col items-center p-4 bg-black rounded-xl hover:bg-darker transition-colors border border-primary/10">
+                    <i class="fas fa-gamepad text-secondary/80 text-2xl mb-2"></i>
+                    <span class="text-gray-300">Games</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 mt-12 mb-6">
+            <p>&copy; 2025 Timur Cravtov. All rights reserved.</p>
+        </footer>
     </div>
 </body>
 </html>
