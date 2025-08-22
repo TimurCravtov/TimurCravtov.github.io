@@ -49,30 +49,38 @@
     @media (min-width: 768px) { .hero .profile-photo-large { width: 11rem; height: 11rem; } }
     .hero .profile-large { font-size: 1.6rem; }
     @media (min-width: 768px) { .hero .profile-large { font-size: 2.5rem; } }
+    /* Contact line hide behavior: collapse on scroll like hero */
+    .contact-line { transition: opacity 220ms ease, transform 220ms ease, max-height 220ms ease, padding 220ms ease; max-height: 200px; overflow: hidden; }
+    body.scrolled .contact-line { opacity: 0; transform: translateY(-8px); max-height: 0; padding-top: 0 !important; padding-bottom: 0 !important; pointer-events: none; }
 </style>
 </head>
 <body class="bg-gradient-to-br from-black via-darker to-black text-gray-300">
 
 <!-- Sticky header with compact name/role and contact info -->
 <header id="site-header" class="sticky top-0 z-50">
-    <div class="glass max-w-6xl mx-auto px-6 py-3 flex items-center justify-between transition-all duration-200">
+    <div class="glass max-w-6xl mx-auto px-6 py-3 flex flex-col sm:flex-row items-center sm:justify-between transition-all duration-200">
         <div class="flex items-center">
-            <img src="assets/profile-photo.gif" alt="avatar" class="header-avatar w-10 h-10 rounded-full mr-3 object-cover" />
-            <div class="hidden sm:flex flex-col leading-tight">
+            <div class="flex flex-col leading-tight">
                 <span class="text-sm font-semibold header-name">Timur Cravtov</span>
                 <span class="text-xs text-secondary header-role">Software Engineer</span>
             </div>
         </div>
 
         <div class="flex items-center gap-3 text-sm text-gray-300 whitespace-nowrap">
-            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Send email to Timur">
+            <span role="text" aria-label="Email Timur" class="inline-flex items-center gap-2 p-2 rounded-md hover-lift">
                 <i class="fas fa-envelope text-secondary text-lg"></i>
                 <span class="ml-1 hidden sm:inline">timurcravtov04@gmail.com</span>
-            </a>
-            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Call Timur">
+            </span>
+            <span role="text" aria-label="Phone Timur" class="inline-flex items-center gap-2 p-2 rounded-md hover-lift">
                 <i class="fas fa-phone text-secondary text-lg"></i>
                 <span class="ml-1 hidden sm:inline">+37378472735</span>
-            </a>
+            </span>
+            
+        </div>
+        <!-- Mobile-only stacked contact lines (two lines) -->
+        <div class="w-full sm:hidden mt-2 flex flex-col items-center text-xs text-gray-300 select-text">
+            <div class="flex items-center gap-2"><i class="fas fa-envelope text-secondary"></i><span>timurcravtov04@gmail.com</span></div>
+            <div class="flex items-center gap-2 mt-1"><i class="fas fa-phone text-secondary"></i><span>+37378472735</span></div>
         </div>
     </div>
 </header>
@@ -95,18 +103,18 @@
     </section>
 
 
-<section class="relative py-3 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-40"></div>
+<section class="relative py-3 overflow-hidden contact-line">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-40 pointer-events-none"></div>
     <div class="z-10 px-4">
         <div class="flex items-center justify-center gap-6 text-gray-300 text-sm md:text-sm whitespace-nowrap overflow-x-auto px-2">
-            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Send email to Timur">
+            <span role="text" aria-label="Email Timur" class="inline-flex items-center gap-2 p-2 rounded-md hover-lift">
                 <i class="fas fa-envelope text-secondary text-lg"></i>
                 <span class="ml-1 hidden sm:inline">timurcravtov04@gmail.com</span>
-            </a>
-            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Call Timur">
+            </span>
+            <span role="text" aria-label="Phone Timur" class="inline-flex items-center gap-2 p-2 rounded-md hover-lift">
                 <i class="fas fa-phone text-secondary text-lg"></i>
                 <span class="ml-1 hidden sm:inline">+37378472735</span>
-            </a>
+            </span>
             <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-secondary"></i> <span class="ml-1">Chisinau, Moldova</span></div>
         </div>
     </div>
