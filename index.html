@@ -32,9 +32,23 @@
     .profile-photo-large { transition: opacity 200ms ease, transform 200ms ease; }
     body.scrolled .profile-large { transform: scale(0.8) translateY(-8px); opacity: 0.95; }
     body.scrolled .profile-photo-large { opacity: 0; transform: scale(0.85); }
-    /* Hero hide behavior: animate opacity and max-height so it disappears when header shows */
-    .hero { transition: opacity 220ms ease, transform 220ms ease, max-height 260ms ease, padding 220ms ease, margin 220ms ease; max-height: 1000px; overflow: hidden; }
+    /* Hero visual style (distinct from cards) and hide behavior */
+    .hero {
+        transition: opacity 220ms ease, transform 220ms ease, max-height 260ms ease, padding 220ms ease, margin 220ms ease;
+        max-height: 1000px; overflow: hidden;
+        /* stronger background to make hero stand out */
+        background: linear-gradient(120deg, rgba(99,102,241,0.12), rgba(185,159,209,0.06));
+        border: 1px solid rgba(99,102,241,0.06);
+        box-shadow: 0 18px 40px -18px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+        padding-top: 2.5rem; padding-bottom: 2.5rem;
+    }
     body.scrolled .hero { opacity: 0; transform: translateY(-10px); max-height: 0; padding-top: 0 !important; padding-bottom: 0 !important; margin-top: 0 !important; margin-bottom: 0 !important; pointer-events: none; }
+
+    /* Larger profile photo & title inside hero to emphasize it */
+    .hero .profile-photo-large { width: 11rem; height: 11rem; }
+    @media (max-width: 767px) { .hero .profile-photo-large { width: 9rem; height: 9rem; } }
+    .hero .profile-large { font-size: 1.8rem; }
+    @media (min-width: 768px) { .hero .profile-large { font-size: 2.5rem; } }
 </style>
 </head>
 <body class="bg-gradient-to-br from-black via-darker to-black text-gray-300">
@@ -51,8 +65,8 @@
         </div>
 
         <div class="flex items-center gap-4 text-sm text-gray-300 whitespace-nowrap">
-            <div class="flex items-center gap-2"><i class="fas fa-envelope text-secondary"></i><span class="ml-1">timurcravtov04@gmail.com</span></div>
-            <div class="flex items-center gap-2"><i class="fas fa-phone text-secondary"></i><span class="ml-1">+37378014381</span></div>
+            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Send email to Timur"><i class="fas fa-envelope text-secondary"></i><span class="ml-1">timurcravtov04@gmail.com</span></a>
+            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Call Timur"><i class="fas fa-phone text-secondary"></i><span class="ml-1">+37378472735</span></a>
         </div>
     </div>
 </header>
@@ -63,7 +77,7 @@
     <!-- Profile Card -->
     <section class="glass hero rounded-3xl p-10 shadow-xl relative hover-lift border border-white/5 -mt-20 max-w-4xl mx-auto">
         <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            <div class="w-44 h-44 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-darker shadow-lg profile-photo-large">
+            <div class="w-44 h-44 md:w-48 md:h-48 rounded-full overflow-hidden border border-white/10 shadow-sm profile-photo-large">
                 <img src="assets/profile-photo.gif" alt="Profile Photo" class="w-full h-full object-cover">
             </div>
             <div class="text-center md:text-left">
@@ -79,8 +93,8 @@
     <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-40"></div>
     <div class="z-10 px-4">
         <div class="flex items-center justify-center gap-6 text-gray-300 text-sm md:text-sm whitespace-nowrap overflow-x-auto px-2">
-            <div class="flex items-center gap-2"><i class="fas fa-envelope text-secondary"></i> <span class="ml-1">timurcravtov04@gmail.com</span></div>
-            <div class="flex items-center gap-2"><i class="fas fa-phone text-secondary"></i> <span class="ml-1">+37378014381</span></div>
+            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Send email to Timur"><i class="fas fa-envelope text-secondary"></i> <span class="ml-1">timurcravtov04@gmail.com</span></a>
+            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Call Timur"><i class="fas fa-phone text-secondary"></i> <span class="ml-1">+37378472735</span></a>
             <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-secondary"></i> <span class="ml-1">Chisinau, Moldova</span></div>
         </div>
     </div>
@@ -133,6 +147,38 @@
     </section>
 
     <!-- Programming Skills -->
+    <!-- Projects (compact grid) -->
+    <section class="glass p-4 rounded-2xl hover-lift shadow-sm">
+        <h2 class="text-lg font-semibold text-white mb-4 flex items-center gap-3">
+            <span class="bg-darker p-2 rounded text-primary"><i class="fas fa-project-diagram"></i></span> Projects
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- Project card: MăiWai (whole card links to repo) -->
+            <a href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener noreferrer" class="block p-3 rounded-lg bg-black/20 hover:bg-black/25 transition-colors no-underline hover-lift">
+                <h3 class="font-semibold text-white text-sm">MăiWai — Find the Travel Buddy</h3>
+                <p class="text-gray-300 text-xs mt-1">Find travel buddies — React + Tailwind frontend, Spring Boot backend. Student project / internship.</p>
+                <div class="mt-2 flex flex-wrap gap-1 text-xs text-gray-300">
+                    <span class="px-2 py-0.5 bg-black rounded">React</span>
+                    <span class="px-2 py-0.5 bg-black rounded">Tailwind</span>
+                    <span class="px-2 py-0.5 bg-black rounded">Spring Boot</span>
+                </div>
+            </a>
+
+            <!-- Project card: Aion (aion-ics) - whole card links to repo -->
+            <a href="https://github.com/aionlang/aion" target="_blank" rel="noopener noreferrer" class="block p-3 rounded-lg bg-black/20 hover:bg-black/25 transition-colors no-underline hover-lift">
+                <h3 class="font-semibold text-white text-sm">Aion — DSL for .ics (aion-ics)</h3>
+                <p class="text-gray-300 text-xs mt-1">Aion is a DSL for managing iCalendar (.ics) files. Provides an npm package <span class="font-mono text-xs">aion-ics</span>, CLI tools, and documentation for building and running .aion files.</p>
+                <div class="mt-2 flex flex-wrap gap-1 text-xs text-gray-300">
+                    <span class="px-2 py-0.5 bg-black rounded">TypeScript</span>
+                    <span class="px-2 py-0.5 bg-black rounded">Java</span>
+                    <span class="px-2 py-0.5 bg-black rounded">DSL</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Programming Skills -->
     <section class="glass p-8 rounded-2xl hover-lift border border-white/5 shadow-lg">
             <h2 class="text-xl font-semibold text-white mb-6 flex items-center gap-3">
                 <span class="bg-darker p-2 rounded text-primary"><i class="fas fa-code"></i></span> Programming Skills
@@ -162,11 +208,11 @@
                 <span class="bg-darker p-2 rounded text-primary"><i class="fas fa-link"></i></span> Social
             </h2>
             <div class="flex flex-wrap gap-6">
-                <a href="#" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-telegram"></i></a>
-                <a href="#" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-github"></i></a>
-                <a href="#" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-goodreads"></i></a>
+                <a href="https://t.me/timur_cravtov" target="_blank" rel="noopener noreferrer" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-telegram"></i></a>
+                <a href="https://github.com/TimurCravtov" target="_blank" rel="noopener noreferrer" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank" rel="noopener noreferrer" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/timurcravtov/" target="_blank" rel="noopener noreferrer" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" rel="noopener noreferrer" class="p-4 bg-black rounded-full text-2xl text-gray-400 hover:text-primary hover:scale-110 transition-all border border-primary/10 shadow-sm"><i class="fab fa-goodreads"></i></a>
             </div>
     </section>
 
