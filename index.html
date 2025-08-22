@@ -17,8 +17,8 @@
     .gradient-text { background: linear-gradient(90deg, #6366f1, #b99fd1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient 6s ease infinite; background-size: 200% auto; }
     @keyframes gradient { 0% { background-position: 0% } 50% { background-position: 100% } 100% { background-position: 0% } }
     /* Masonry-style columns (Pinterest-like) */
-    .masonry { column-gap: 2rem; column-count: 1; }
-    @media (min-width: 768px) { .masonry { column-count: 2; } }
+    .masonry { column-gap: 1rem; column-count: 1; }
+    @media (min-width: 768px) { .masonry { column-count: 2; column-gap: 2rem; } }
     .masonry > section { break-inside: avoid; -webkit-column-break-inside: avoid; margin-bottom: 1.5rem; }
     /* Header scroll behavior: header hidden initially, reveals on scroll */
     #site-header { opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity 200ms ease, transform 200ms ease; }
@@ -44,10 +44,10 @@
     }
     body.scrolled .hero { opacity: 0; transform: translateY(-10px); max-height: 0; padding-top: 0 !important; padding-bottom: 0 !important; margin-top: 0 !important; margin-bottom: 0 !important; pointer-events: none; }
 
-    /* Larger profile photo & title inside hero to emphasize it */
-    .hero .profile-photo-large { width: 11rem; height: 11rem; }
-    @media (max-width: 767px) { .hero .profile-photo-large { width: 9rem; height: 9rem; } }
-    .hero .profile-large { font-size: 1.8rem; }
+    /* Larger profile photo & title inside hero to emphasize it (responsive) */
+    .hero .profile-photo-large { width: 9rem; height: 9rem; }
+    @media (min-width: 768px) { .hero .profile-photo-large { width: 11rem; height: 11rem; } }
+    .hero .profile-large { font-size: 1.6rem; }
     @media (min-width: 768px) { .hero .profile-large { font-size: 2.5rem; } }
 </style>
 </head>
@@ -64,9 +64,15 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-4 text-sm text-gray-300 whitespace-nowrap">
-            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Send email to Timur"><i class="fas fa-envelope text-secondary"></i><span class="ml-1">timurcravtov04@gmail.com</span></a>
-            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Call Timur"><i class="fas fa-phone text-secondary"></i><span class="ml-1">+37378472735</span></a>
+        <div class="flex items-center gap-3 text-sm text-gray-300 whitespace-nowrap">
+            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Send email to Timur">
+                <i class="fas fa-envelope text-secondary text-lg"></i>
+                <span class="ml-1 hidden sm:inline">timurcravtov04@gmail.com</span>
+            </a>
+            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Call Timur">
+                <i class="fas fa-phone text-secondary text-lg"></i>
+                <span class="ml-1 hidden sm:inline">+37378472735</span>
+            </a>
         </div>
     </div>
 </header>
@@ -93,8 +99,14 @@
     <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-40"></div>
     <div class="z-10 px-4">
         <div class="flex items-center justify-center gap-6 text-gray-300 text-sm md:text-sm whitespace-nowrap overflow-x-auto px-2">
-            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Send email to Timur"><i class="fas fa-envelope text-secondary"></i> <span class="ml-1">timurcravtov04@gmail.com</span></a>
-            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift" aria-label="Call Timur"><i class="fas fa-phone text-secondary"></i> <span class="ml-1">+37378472735</span></a>
+            <a href="mailto:timurcravtov04@gmail.com" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Send email to Timur">
+                <i class="fas fa-envelope text-secondary text-lg"></i>
+                <span class="ml-1 hidden sm:inline">timurcravtov04@gmail.com</span>
+            </a>
+            <a href="tel:+37378472735" class="flex items-center gap-2 hover:text-primary hover-lift p-2 rounded-md" aria-label="Call Timur">
+                <i class="fas fa-phone text-secondary text-lg"></i>
+                <span class="ml-1 hidden sm:inline">+37378472735</span>
+            </a>
             <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-secondary"></i> <span class="ml-1">Chisinau, Moldova</span></div>
         </div>
     </div>
