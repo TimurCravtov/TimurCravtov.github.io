@@ -29,6 +29,11 @@
     /* Slight stagger so avatar and text feel a bit delayed after header appears */
     body.scrolled #site-header .header-avatar { opacity: 1; transform: scale(1); }
     body.scrolled #site-header .header-name, body.scrolled #site-header .header-role { opacity: 1; transform: translateY(0); transition-delay: 90ms; }
+    /* Switch header name/role from vertical stack to a single inline row when header is shown */
+    #site-header .leading-tight { display: flex; flex-direction: column; gap: 0; }
+    body.scrolled #site-header .leading-tight { flex-direction: row; gap: 0.5rem; align-items: center; }
+    /* Add a subtle separator before the role when compacted */
+    body.scrolled #site-header .header-role::before { content: '·'; margin-right: 0.35rem; color: rgba(255,255,255,0.6); font-size: 0.9em; }
     /* Shrink/fade big profile elements when scrolled */
     .profile-large { transition: transform 600ms ease-in-out, opacity 600ms ease-in-out; }
     .profile-photo-large { transition: opacity 600ms ease-in-out, transform 600ms ease-in-out; }
@@ -55,9 +60,19 @@
     /* Contact line hide behavior: collapse on scroll like hero */
     .contact-line { transition: opacity 600ms ease-in-out, transform 600ms ease-in-out, max-height 600ms ease-in-out, padding 600ms ease-in-out; max-height: 200px; overflow: hidden; }
     body.scrolled .contact-line { opacity: 0; transform: translateY(-12px); max-height: 0; padding-top: 0 !important; padding-bottom: 0 !important; pointer-events: none; }
+
+    /* On small screens, hide header contact icons when the sticky header is shown (avoids duplicate/mobile clutter) */
+    @media (max-width: 639px) {
+        body.scrolled #site-header .header-contact-item { display: none !important; }
+    }
+    /* Disable animations during initial paint to avoid flicker.
+       Keep visual properties untouched so a stuck preload won't permanently hide content. */
+    body.preload #site-header, body.preload .hero, body.preload .contact-line, body.preload .profile-large, body.preload .profile-photo-large {
+        transition: none !important;
+    }
 </style>
 </head>
-<body class="bg-gradient-to-br from-black via-darker to-black text-gray-300">
+<body class="bg-gradient-to-br from-black via-darker to-black text-gray-300 preload">
 
 <!-- Sticky header with compact name/role and contact info -->
 <header id="site-header" class="sticky top-0 z-50">
@@ -70,11 +85,11 @@
         </div>
 
         <div class="flex items-center gap-3 text-sm text-gray-300 whitespace-nowrap">
-            <span role="text" aria-label="Email Timur" class="inline-flex items-center gap-2 p-2 rounded-md hover-lift">
+            <span role="text" aria-label="Email Timur" class="header-contact-item inline-flex items-center gap-2 p-2 rounded-md hover-lift">
                 <i class="fas fa-envelope text-secondary text-lg"></i>
                 <span class="ml-1 hidden sm:inline">timurcravtov04@gmail.com</span>
             </span>
-            <span role="text" aria-label="Phone Timur" class="inline-flex items-center gap-2 p-2 rounded-md hover-lift">
+            <span role="text" aria-label="Phone Timur" class="header-contact-item inline-flex items-center gap-2 p-2 rounded-md hover-lift">
                 <i class="fas fa-phone text-secondary text-lg"></i>
                 <span class="ml-1 hidden sm:inline">+37378472735</span>
             </span>
@@ -271,22 +286,54 @@
 </footer>
 
 <script>
-// Toggle 'scrolled' class on body to control header/profile transformations
-(() => {
-    let lastKnownScroll = 0;
-    const threshold = 80;
-    const onScroll = () => {
-        lastKnownScroll = window.scrollY || document.documentElement.scrollTop;
-        if (lastKnownScroll > threshold) document.body.classList.add('scrolled');
-        else document.body.classList.remove('scrolled');
-    };
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => { onScroll(); ticking = false; });
-            ticking = true;
-        }
-    }, { passive: true });
+// Toggle 'scrolled' class on body to control header/profile transformations.
+// Use IntersectionObserver on the hero for robust enter/leave detection (avoids threshold stuck states).
+(function () {
+    // Remove preload once DOM is ready to avoid initial flicker
+    const removePreload = () => { document.body.classList.remove('preload'); };
+    if (document.readyState === 'complete' || document.readyState === 'interactive') removePreload();
+    else document.addEventListener('DOMContentLoaded', removePreload);
+    // Fallbacks
+    window.addEventListener('load', removePreload);
+    setTimeout(removePreload, 1000);
+
+    const hero = document.querySelector('.hero');
+    if (!hero || !('IntersectionObserver' in window)) {
+        // Fallback to scroll threshold if IntersectionObserver is unavailable
+        let lastKnownScroll = 0;
+        const threshold = 80;
+        const onScroll = () => {
+            lastKnownScroll = window.scrollY || document.documentElement.scrollTop;
+            if (lastKnownScroll > threshold) document.body.classList.add('scrolled');
+            else document.body.classList.remove('scrolled');
+        };
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => { onScroll(); ticking = false; });
+                ticking = true;
+            }
+        }, { passive: true });
+        // run once to set initial state
+        onScroll();
+        return;
+    }
+
+    // Observe hero visibility. When hero is visible, remove 'scrolled'; when not visible, add 'scrolled'.
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) document.body.classList.remove('scrolled');
+            else document.body.classList.add('scrolled');
+        });
+    }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0 });
+
+    io.observe(hero);
+    // Ensure initial state aligns with hero visibility
+    // (IntersectionObserver callback will run after observe(), but ensure we have a sensible fallback)
+    setTimeout(() => {
+        // If hero is taller than viewport and likely intersecting, remove scrolled
+        if (hero.getBoundingClientRect().bottom > 10) document.body.classList.remove('scrolled');
+    }, 50);
 })();
 </script>
 </body>
