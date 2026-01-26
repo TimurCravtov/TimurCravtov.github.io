@@ -3,466 +3,428 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Timur Cravtov</title>
+<title>~*~ Timur's Homepage ~*~</title>
 <link rel="icon" type="image/x-icon" href="/assets/web.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    :root {
-        --black: #000000;
-        --dark: #0a0a0a;
-        --card: #111111;
-        --border: #1a1a1a;
-        --text: #ffffff;
-        --text-dim: #888888;
-        --text-muted: #555555;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
     body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        background: var(--black);
-        color: var(--text);
-        line-height: 1.6;
-        font-size: 15px;
-        -webkit-font-smoothing: antialiased;
-    }
-
-    ::selection {
-        background: var(--text);
-        color: var(--black);
+        font-family: 'Comic Sans MS', 'Chalkboard', cursive;
+        background-color: #000080;
+        background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v22H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23000066' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+        color: #00ff00;
+        margin: 0;
+        padding: 20px;
     }
 
     a {
-        color: inherit;
-        text-decoration: none;
+        color: #ffff00;
     }
 
-    /* Header */
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
+    a:visited {
+        color: #ff00ff;
     }
 
-    .header-inner {
-        max-width: 640px;
+    a:hover {
+        color: #00ffff;
+    }
+
+    .container {
+        max-width: 800px;
         margin: 0 auto;
-        padding: 1rem 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        background: #000000;
+        border: 4px ridge #c0c0c0;
+        padding: 0;
     }
 
-    .logo {
-        font-weight: 600;
-        font-size: 0.9rem;
-        letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 1.5rem;
-    }
-
-    .nav-links a {
-        font-size: 0.8rem;
-        color: var(--text-dim);
-        transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-        color: var(--text);
-    }
-
-    /* Main */
-    main {
-        max-width: 640px;
-        margin: 0 auto;
-        padding: 4rem 1.5rem 6rem;
-    }
-
-    /* Hero */
-    .hero {
+    .header-bar {
+        background: linear-gradient(to right, #000080, #0000ff, #000080);
+        padding: 10px;
         text-align: center;
-        margin-bottom: 4rem;
+        border-bottom: 3px ridge #c0c0c0;
+    }
+
+    .header-bar h1 {
+        color: #ffff00;
+        font-size: 28px;
+        margin: 0;
+        text-shadow: 2px 2px #ff0000;
+        animation: rainbow 3s infinite;
+    }
+
+    @keyframes rainbow {
+        0% { color: #ff0000; }
+        16% { color: #ffff00; }
+        33% { color: #00ff00; }
+        50% { color: #00ffff; }
+        66% { color: #0000ff; }
+        83% { color: #ff00ff; }
+        100% { color: #ff0000; }
+    }
+
+    @keyframes blink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+    }
+
+    .blink {
+        animation: blink 1s infinite;
+    }
+
+    .marquee-container {
+        background: #ff0000;
+        color: #ffffff;
+        padding: 5px;
+        font-weight: bold;
+        overflow: hidden;
+    }
+
+    .marquee {
+        display: inline-block;
+        animation: marquee 15s linear infinite;
+        white-space: nowrap;
+    }
+
+    @keyframes marquee {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .center {
+        text-align: center;
     }
 
     .avatar {
-        width: 88px;
-        height: 88px;
-        border-radius: 50%;
-        margin-bottom: 1.5rem;
-        border: 2px solid var(--border);
+        border: 4px ridge #c0c0c0;
+        padding: 5px;
+        background: #000000;
     }
 
-    .hero h1 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-        margin-bottom: 0.25rem;
+    .avatar img {
+        width: 150px;
+        height: 150px;
+        border: 2px solid #00ff00;
     }
 
-    .hero .title {
-        color: var(--text-dim);
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
+    hr {
+        border: none;
+        height: 4px;
+        background: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+        margin: 20px 0;
     }
 
-    .hero .bio {
-        color: var(--text-dim);
-        font-size: 0.9rem;
-        max-width: 400px;
-        margin: 0 auto 1.5rem;
-        line-height: 1.7;
+    .section {
+        background: #000033;
+        border: 3px ridge #808080;
+        margin: 15px 0;
+        padding: 15px;
     }
 
-    .contact-row {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        flex-wrap: wrap;
+    .section h2 {
+        color: #ff00ff;
+        font-size: 20px;
+        margin: 0 0 10px 0;
+        border-bottom: 2px dashed #00ff00;
+        padding-bottom: 5px;
     }
 
-    .contact-item {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        padding: 0.4rem 0.8rem;
-        border: 1px solid var(--border);
-        border-radius: 100px;
-        transition: all 0.2s;
+    .section h2::before {
+        content: '★ ';
+        color: #ffff00;
     }
 
-    .contact-item:hover {
-        border-color: var(--text-muted);
-        color: var(--text-dim);
+    .section h2::after {
+        content: ' ★';
+        color: #ffff00;
     }
 
-    /* Section */
-    section {
-        margin-bottom: 3rem;
+    table {
+        width: 100%;
+        border-collapse: collapse;
     }
 
-    .section-title {
-        font-size: 0.7rem;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text-muted);
-        margin-bottom: 1rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--border);
+    td {
+        padding: 8px;
+        vertical-align: top;
     }
 
-    /* Timeline */
-    .timeline-item {
-        padding: 1rem 0;
-        border-bottom: 1px solid var(--border);
+    .info-table td {
+        border: 1px dashed #00ff00;
     }
 
-    .timeline-item:last-child {
-        border-bottom: none;
+    .label {
+        color: #00ffff;
+        font-weight: bold;
+        width: 120px;
     }
 
-    .timeline-item h3 {
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-bottom: 0.15rem;
+    ul {
+        list-style: none;
+        padding-left: 0;
     }
 
-    .timeline-item .org {
-        font-size: 0.85rem;
-        color: var(--text-dim);
+    ul li::before {
+        content: '➤ ';
+        color: #ff0000;
     }
 
-    .timeline-item .date {
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        margin-top: 0.25rem;
-    }
-
-    /* Projects */
-    .project {
-        display: block;
-        padding: 1.25rem 0;
-        border-bottom: 1px solid var(--border);
-        transition: opacity 0.2s;
-    }
-
-    .project:last-child {
-        border-bottom: none;
-    }
-
-    .project:hover {
-        opacity: 0.7;
-    }
-
-    .project h3 {
-        font-size: 0.9rem;
-        font-weight: 500;
-        margin-bottom: 0.35rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .project h3::after {
-        content: '↗';
-        font-size: 0.75rem;
-        color: var(--text-muted);
-    }
-
-    .project p {
-        font-size: 0.85rem;
-        color: var(--text-dim);
-        margin-bottom: 0.75rem;
-        line-height: 1.6;
-    }
-
-    .tags {
-        display: flex;
-        gap: 0.4rem;
-        flex-wrap: wrap;
-    }
-
-    .tag {
-        font-size: 0.7rem;
-        color: var(--text-muted);
-        padding: 0.2rem 0.5rem;
-        background: var(--card);
-        border-radius: 4px;
-    }
-
-    /* Skills */
     .skills-list {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 10px;
     }
 
-    .skill {
-        font-size: 0.8rem;
-        color: var(--text-dim);
-        padding: 0.5rem 1rem;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        transition: all 0.2s;
+    .skill-badge {
+        background: #800080;
+        border: 2px outset #c0c0c0;
+        padding: 5px 12px;
+        color: #ffffff;
+        font-size: 14px;
     }
 
-    .skill:hover {
-        border-color: var(--text-muted);
-        color: var(--text);
+    .link-button {
+        display: inline-block;
+        background: #c0c0c0;
+        border: 3px outset #ffffff;
+        padding: 5px 15px;
+        color: #000000;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 5px;
     }
 
-    /* Interests */
-    .interests-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
+    .link-button:hover {
+        border-style: inset;
+        background: #a0a0a0;
     }
 
-    .interest {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.85rem;
-        color: var(--text-dim);
+    .link-button:active {
+        border-style: inset;
     }
 
-    .interest i {
-        font-size: 0.9rem;
-        color: var(--text-muted);
-        width: 1.25rem;
-    }
-
-    /* Social */
-    .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 0.75rem;
-    }
-
-    .social-link {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        color: var(--text-dim);
-        font-size: 1rem;
-        transition: all 0.2s;
-    }
-
-    .social-link:hover {
-        border-color: var(--text-muted);
-        color: var(--text);
-    }
-
-    /* Footer */
-    footer {
+    .guestbook {
+        background: #003300;
+        border: 2px solid #00ff00;
+        padding: 10px;
         text-align: center;
-        padding: 2rem 1.5rem;
-        font-size: 0.75rem;
-        color: var(--text-muted);
-        border-top: 1px solid var(--border);
+        margin-top: 20px;
     }
 
-    /* Responsive */
-    @media (max-width: 480px) {
-        main {
-            padding: 3rem 1.25rem 4rem;
-        }
+    .counter {
+        font-family: 'Courier New', monospace;
+        background: #000000;
+        border: 2px inset #808080;
+        display: inline-block;
+        padding: 3px 10px;
+        color: #00ff00;
+    }
 
-        .hero h1 {
-            font-size: 1.35rem;
-        }
+    .footer {
+        background: linear-gradient(to right, #000080, #0000ff, #000080);
+        padding: 15px;
+        text-align: center;
+        border-top: 3px ridge #c0c0c0;
+        font-size: 12px;
+        color: #ffffff;
+    }
 
-        .contact-row {
-            flex-direction: column;
-            align-items: center;
-        }
+    .badges {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 15px 0;
+    }
 
-        .interests-list {
-            gap: 1rem;
+    .badge {
+        background: #000000;
+        border: 2px ridge #808080;
+        padding: 5px 10px;
+        font-size: 11px;
+        color: #00ff00;
+    }
+
+    .webring {
+        background: #330033;
+        border: 2px double #ff00ff;
+        padding: 10px;
+        text-align: center;
+        margin: 15px 0;
+    }
+
+    .construction {
+        color: #ffff00;
+        font-size: 12px;
+        animation: blink 0.5s infinite;
+    }
+
+    .star {
+        color: #ffff00;
+    }
+
+    .email-link {
+        font-family: 'Courier New', monospace;
+        background: #003300;
+        padding: 2px 5px;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            padding: 10px;
+        }
+        .header-bar h1 {
+            font-size: 20px;
+        }
+        .skills-list {
+            justify-content: center;
         }
     }
 </style>
 </head>
 <body>
 
-<header>
-    <div class="header-inner">
-        <div class="logo">TC</div>
-        <nav class="nav-links">
-            <a href="mailto:timurcravtov04@gmail.com">Email</a>
-            <a href="https://github.com/TimurCravtov" target="_blank">GitHub</a>
-        </nav>
+<div class="container">
+    <!-- Header -->
+    <div class="header-bar">
+        <h1>~*~ Welcome to Timur's Homepage ~*~</h1>
+        <p style="color: #00ffff; margin: 5px 0 0 0;">You are visitor #<span class="counter">001337</span></p>
     </div>
-</header>
 
-<main>
-    <section class="hero">
-        <img src="assets/profile-photo.gif" alt="Timur Cravtov" class="avatar">
-        <h1>Timur Cravtov</h1>
-        <p class="title">Software Engineer</p>
-        <p class="bio">Building thoughtful web applications and solving real-world problems through elegant code. Currently studying Software Engineering in Moldova.</p>
-        <div class="contact-row">
-            <span class="contact-item">timurcravtov04@gmail.com</span>
-            <span class="contact-item">+373 78 472 735</span>
-            <span class="contact-item">Chisinau, Moldova</span>
-        </div>
-    </section>
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <span class="marquee">★★★ WELCOME TO MY PERSONAL WEB PAGE!!! ★★★ BEST VIEWED WITH NETSCAPE NAVIGATOR 4.0 ★★★ 800x600 RESOLUTION ★★★ THANKS FOR STOPPING BY!!! ★★★</span>
+    </div>
 
-    <section>
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline-item">
-            <h3>Intern</h3>
-            <p class="org">Moldcell Academy</p>
-            <p class="date">Nov 2024 — Apr 2025</p>
-        </div>
-        <div class="timeline-item">
-            <h3>Intern</h3>
-            <p class="org">Pentalog (Globant)</p>
-            <p class="date">Sep 2024</p>
-        </div>
-    </section>
-
-    <section>
-        <h2 class="section-title">Education</h2>
-        <div class="timeline-item">
-            <h3>B.Sc. in Software Engineering</h3>
-            <p class="org">Technical University of Moldova</p>
-            <p class="date">Sep 2023 — Present</p>
-        </div>
-    </section>
-
-    <section>
-        <h2 class="section-title">Projects</h2>
-        <a href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener noreferrer" class="project">
-            <h3>MăiWai — Travel Buddy Finder</h3>
-            <p>A platform for finding travel companions with a React + Tailwind frontend and Spring Boot backend.</p>
-            <div class="tags">
-                <span class="tag">React</span>
-                <span class="tag">Tailwind</span>
-                <span class="tag">Spring Boot</span>
+    <div class="content">
+        <!-- About Me -->
+        <div class="center">
+            <p><span class="construction">🚧 UNDER CONSTRUCTION 🚧</span></p>
+            <div class="avatar">
+                <img src="assets/profile-photo.gif" alt="That's me!!!">
             </div>
-        </a>
-        <a href="https://github.com/aionlang/aion" target="_blank" rel="noopener noreferrer" class="project">
-            <h3>Aion — DSL for iCalendar</h3>
-            <p>A domain-specific language for managing .ics files with npm package and CLI tools.</p>
-            <div class="tags">
-                <span class="tag">TypeScript</span>
-                <span class="tag">Java</span>
-                <span class="tag">DSL</span>
+            <h2 style="color: #00ffff;">Hi! I'm Timur Cravtov!</h2>
+            <p><span class="star">★</span> Software Engineer <span class="star">★</span></p>
+        </div>
+
+        <hr>
+
+        <!-- Info Section -->
+        <div class="section">
+            <h2>About Me</h2>
+            <p>Hello fellow netizen!!! Welcome to my corner of the World Wide Web! I am a software engineer from Moldova who loves building cool stuff with computers. Currently studying at university and doing internships!</p>
+            <br>
+            <table class="info-table">
+                <tr>
+                    <td class="label">📧 E-Mail:</td>
+                    <td><a href="mailto:timurcravtov04@gmail.com" class="email-link">timurcravtov04@gmail.com</a></td>
+                </tr>
+                <tr>
+                    <td class="label">📞 Phone:</td>
+                    <td>+373 78 472 735</td>
+                </tr>
+                <tr>
+                    <td class="label">📍 Location:</td>
+                    <td>Chisinau, Moldova</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <h2>Work Experience</h2>
+            <ul>
+                <li><b style="color:#00ffff">Intern @ Moldcell Academy</b><br>
+                    <span style="color:#808080">Nov 2024 - Apr 2025</span></li>
+                <li><b style="color:#00ffff">Intern @ Pentalog (Globant)</b><br>
+                    <span style="color:#808080">Sep 2024</span></li>
+            </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2>Education</h2>
+            <ul>
+                <li><b style="color:#00ffff">B.Sc. in Software Engineering</b><br>
+                    Technical University of Moldova<br>
+                    <span style="color:#808080">Sep 2023 - Present</span></li>
+            </ul>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <h2>My Cool Projects!!!</h2>
+            <p><span class="blink" style="color:#ff0000">NEW!</span> <a href="https://github.com/NeValetik/globant-maiway" target="_blank"><b>MăiWai - Travel Buddy Finder</b></a><br>
+            A platform for finding travel companions! Built with React + Tailwind + Spring Boot</p>
+            <br>
+            <p><a href="https://github.com/aionlang/aion" target="_blank"><b>Aion - DSL for iCalendar</b></a><br>
+            A domain-specific language for managing .ics files with npm package and CLI tools!</p>
+        </div>
+
+        <!-- Skills -->
+        <div class="section">
+            <h2>My L33T Skills</h2>
+            <div class="skills-list">
+                <span class="skill-badge">Java</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">PostgreSQL</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">Docker</span>
             </div>
-        </a>
-    </section>
-
-    <section>
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-list">
-            <span class="skill">Java</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">Python</span>
-            <span class="skill">PostgreSQL</span>
-            <span class="skill">Git</span>
-            <span class="skill">Docker</span>
         </div>
-    </section>
 
-    <section>
-        <h2 class="section-title">Interests</h2>
-        <div class="interests-list">
-            <span class="interest"><i class="fas fa-palette"></i> Art</span>
-            <span class="interest"><i class="fas fa-book"></i> Books</span>
-            <span class="interest"><i class="fas fa-film"></i> Movies</span>
-            <span class="interest"><i class="fas fa-headphones"></i> Music</span>
-            <span class="interest"><i class="fas fa-gamepad"></i> Games</span>
+        <!-- Interests -->
+        <div class="section">
+            <h2>Things I Like</h2>
+            <p>🎨 Art | 📚 Books | 🎬 Movies | 🎧 Music | 🎮 Video Games</p>
         </div>
-    </section>
 
-    <section>
-        <h2 class="section-title">Connect</h2>
-        <div class="social-links">
-            <a href="https://t.me/timur_cravtov" target="_blank" class="social-link" aria-label="Telegram">
-                <i class="fab fa-telegram"></i>
-            </a>
-            <a href="https://github.com/TimurCravtov" target="_blank" class="social-link" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank" class="social-link" aria-label="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://www.facebook.com/timurcravtov/" target="_blank" class="social-link" aria-label="Facebook">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" class="social-link" aria-label="Goodreads">
-                <i class="fab fa-goodreads"></i>
-            </a>
+        <hr>
+
+        <!-- Links -->
+        <div class="center">
+            <h2 style="color: #ffff00;">~*~ LINK ZONE ~*~</h2>
+            <a href="https://t.me/timur_cravtov" target="_blank" class="link-button">Telegram</a>
+            <a href="https://github.com/TimurCravtov" target="_blank" class="link-button">GitHub</a>
+            <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank" class="link-button">LinkedIn</a>
+            <a href="https://www.facebook.com/timurcravtov/" target="_blank" class="link-button">Facebook</a>
+            <a href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" class="link-button">Goodreads</a>
         </div>
-    </section>
-</main>
 
-<footer>
-    © 2026 Timur Cravtov
-</footer>
+        <!-- Badges -->
+        <div class="badges">
+            <span class="badge">Made with Notepad</span>
+            <span class="badge">Best viewed 800x600</span>
+            <span class="badge">JavaScript FREE!</span>
+            <span class="badge">Netscape NOW!</span>
+        </div>
+
+        <!-- Guestbook -->
+        <div class="guestbook">
+            <p style="color:#00ff00; margin: 0;">📖 Sign my <a href="mailto:timurcravtov04@gmail.com?subject=Guestbook Entry">GUESTBOOK</a>! 📖</p>
+        </div>
+
+        <!-- Webring -->
+        <div class="webring">
+            <p style="margin: 0; color: #ff00ff;">
+                [ <a href="#">&lt;&lt; Prev</a> |
+                <b>Cool Programmers Webring</b> |
+                <a href="#">Next &gt;&gt;</a> ]
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2026 Timur Cravtov - All Rights Reserved</p>
+        <p>Last updated: January 26, 2026</p>
+        <p style="font-size: 10px;">This page is Y2K compliant! 💾</p>
+        <p><a href="mailto:timurcravtov04@gmail.com" style="color: #00ffff;">📧 Contact the Webmaster 📧</a></p>
+    </div>
+</div>
 
 </body>
 </html>
