@@ -3,428 +3,492 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>~*~ Timur's Homepage ~*~</title>
+<meta name="description" content="Building thoughtful web applications. Software engineer studying at the Technical University of Moldova.">
+<meta name="author" content="Timur Cravtov">
+<meta name="keywords" content="Software Engineer, Web Developer, Java, JavaScript, TypeScript, Python, PostgreSQL, Docker, React">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0c0c0c">
+<title>Timur Cravtov</title>
+<!-- Open Graph -->
+<meta property="og:title" content="Timur Cravtov">
+<meta property="og:description" content="Building thoughtful web applications.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/profile-photo.gif">
+<meta property="og:image:alt" content="Timur Cravtov">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Timur Cravtov">
+<meta name="twitter:description" content="Building thoughtful web applications.">
+<meta name="twitter:image" content="/assets/profile-photo.gif">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Timur Cravtov",
+  "jobTitle": "Software Engineer",
+  "email": "mailto:timurcravtov04@gmail.com",
+  "sameAs": [
+    "https://github.com/TimurCravtov",
+    "https://www.linkedin.com/in/timurcravtov/"
+  ]
+}
+</script>
 <link rel="icon" type="image/x-icon" href="/assets/web.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-    body {
-        font-family: 'Comic Sans MS', 'Chalkboard', cursive;
-        background-color: #000080;
-        background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v22H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23000066' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-        color: #00ff00;
-        margin: 0;
-        padding: 20px;
-    }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    a {
-        color: #ffff00;
-    }
+:root {
+  --ink:     #f0f0ee;
+  --ink-2:   #d4d4d4;
+  --ink-3:   #aaaaaa;
+  --mid:     #777777;
+  --pale:    #444444;
+  --rule:    #242424;
+  --paper:   #0c0c0c;
+  --white:   #141414;
+}
 
-    a:visited {
-        color: #ff00ff;
-    }
+html { scroll-behavior: smooth; }
 
-    a:hover {
-        color: #00ffff;
-    }
+body {
+  font-family: 'Instrument Sans', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+}
 
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: #000000;
-        border: 4px ridge #c0c0c0;
-        padding: 0;
-    }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--ink); color: var(--white); }
 
-    .header-bar {
-        background: linear-gradient(to right, #000080, #0000ff, #000080);
-        padding: 10px;
-        text-align: center;
-        border-bottom: 3px ridge #c0c0c0;
-    }
+/* ── NOISE GRAIN overlay ─────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px;
+}
 
-    .header-bar h1 {
-        color: #ffff00;
-        font-size: 28px;
-        margin: 0;
-        text-shadow: 2px 2px #ff0000;
-        animation: rainbow 3s infinite;
-    }
+/* ── HEADER ─────────────────────────────────────────────────── */
+header {
+  position: sticky; top: 0; z-index: 90;
+  background: rgba(12,12,12,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+}
+.header-inner {
+  max-width: 860px; margin: 0 auto;
+  padding: 0 2.5rem;
+  height: 52px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+nav { display: flex; gap: 2rem; }
+nav a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid);
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--ink); }
 
-    @keyframes rainbow {
-        0% { color: #ff0000; }
-        16% { color: #ffff00; }
-        33% { color: #00ff00; }
-        50% { color: #00ffff; }
-        66% { color: #0000ff; }
-        83% { color: #ff00ff; }
-        100% { color: #ff0000; }
-    }
+/* ── MAIN ───────────────────────────────────────────────────── */
+main { max-width: 860px; margin: 0 auto; padding: 0 2.5rem 8rem; }
 
-    @keyframes blink {
-        0%, 49% { opacity: 1; }
-        50%, 100% { opacity: 0; }
-    }
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero {
+  padding: 5rem 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: end;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-text {}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pale);
+  margin-bottom: 1.25rem;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--ink-3);
+}
+.hero .bio {
+  font-size: 0.95rem;
+  color: var(--mid);
+  max-width: 420px;
+  line-height: 1.8;
+}
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+  padding-bottom: 0.15rem;
+}
+.hero-meta span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--pale);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  display: block;
+  margin-bottom: 1rem;
+  border: 1.5px solid var(--rule);
+  margin-left: auto;
+  filter: grayscale(100%) brightness(0.85);
+}
 
-    .blink {
-        animation: blink 1s infinite;
-    }
+/* ── SECTION ───────────────────────────────────────────────── */
+section { padding-top: 3.5rem; }
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pale);
+  margin-bottom: 1.5rem;
+}
 
-    .marquee-container {
-        background: #ff0000;
-        color: #ffffff;
-        padding: 5px;
-        font-weight: bold;
-        overflow: hidden;
-    }
+/* ── TIMELINE ──────────────────────────────────────────────── */
+.timeline { display: flex; flex-direction: column; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--rule);
+  gap: 2rem;
+  transition: opacity 0.2s;
+}
+.tl-item:hover { opacity: 0.6; }
+.tl-item:last-child { border-bottom: 1px solid var(--rule); }
+.tl-role { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+.tl-org {
+  font-size: 0.85rem;
+  color: var(--mid);
+  margin-top: 0.15rem;
+}
+.tl-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--pale);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
 
-    .marquee {
-        display: inline-block;
-        animation: marquee 15s linear infinite;
-        white-space: nowrap;
-    }
+/* ── PROJECTS ──────────────────────────────────────────────── */
+.projects { display: flex; flex-direction: column; }
+.project {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--rule);
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.project:hover { opacity: 0.55; }
+.project:last-child { border-bottom: 1px solid var(--rule); }
+.project h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+}
+.project p {
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 500px;
+  margin-bottom: 0.9rem;
+}
+.tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: var(--pale);
+  border: 1px solid var(--rule);
+  padding: 0.2rem 0.55rem;
+  border-radius: 2px;
+}
+.project-arrow {
+  font-size: 1rem;
+  color: var(--pale);
+  padding-top: 0.2rem;
+  transition: transform 0.2s, color 0.2s;
+}
+.project:hover .project-arrow { transform: translate(2px,-2px); color: var(--ink); }
 
-    @keyframes marquee {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-    }
+/* ── SKILLS ────────────────────────────────────────────────── */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  border-radius: 4px;
+}
+.skill {
+  padding: 1rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--mid);
+  background: var(--white);
+  border: none;
+  transition: background 0.18s, color 0.18s;
+}
+.skill:hover { background: var(--ink); color: var(--paper); }
 
-    .content {
-        padding: 20px;
-    }
+/* ── INTERESTS ─────────────────────────────────────────────── */
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+.interest {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--mid);
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--white);
+  transition: border-color 0.2s, color 0.2s;
+}
+.interest:hover { border-color: var(--ink); color: var(--ink); }
+.interest i { font-size: 0.75rem; }
 
-    .center {
-        text-align: center;
-    }
+/* ── CONNECT ───────────────────────────────────────────────── */
+.social-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.social-link {
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--pale);
+  font-size: 0.95rem;
+  background: var(--white);
+  transition: all 0.18s;
+}
+.social-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-    .avatar {
-        border: 4px ridge #c0c0c0;
-        padding: 5px;
-        background: #000000;
-    }
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer {
+  max-width: 860px; margin: 0 auto;
+  padding: 2rem 2.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--pale);
+  letter-spacing: 0.06em;
+}
 
-    .avatar img {
-        width: 150px;
-        height: 150px;
-        border: 2px solid #00ff00;
-    }
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-text   { animation: fadeUp 0.7s cubic-bezier(.22,.68,0,1.0) both; }
+.hero-meta   { animation: fadeUp 0.7s 0.1s cubic-bezier(.22,.68,0,1.0) both; }
+section      { animation: fadeUp 0.6s 0.2s cubic-bezier(.22,.68,0,1.0) both; }
 
-    hr {
-        border: none;
-        height: 4px;
-        background: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
-        margin: 20px 0;
-    }
-
-    .section {
-        background: #000033;
-        border: 3px ridge #808080;
-        margin: 15px 0;
-        padding: 15px;
-    }
-
-    .section h2 {
-        color: #ff00ff;
-        font-size: 20px;
-        margin: 0 0 10px 0;
-        border-bottom: 2px dashed #00ff00;
-        padding-bottom: 5px;
-    }
-
-    .section h2::before {
-        content: '★ ';
-        color: #ffff00;
-    }
-
-    .section h2::after {
-        content: ' ★';
-        color: #ffff00;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    td {
-        padding: 8px;
-        vertical-align: top;
-    }
-
-    .info-table td {
-        border: 1px dashed #00ff00;
-    }
-
-    .label {
-        color: #00ffff;
-        font-weight: bold;
-        width: 120px;
-    }
-
-    ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    ul li::before {
-        content: '➤ ';
-        color: #ff0000;
-    }
-
-    .skills-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .skill-badge {
-        background: #800080;
-        border: 2px outset #c0c0c0;
-        padding: 5px 12px;
-        color: #ffffff;
-        font-size: 14px;
-    }
-
-    .link-button {
-        display: inline-block;
-        background: #c0c0c0;
-        border: 3px outset #ffffff;
-        padding: 5px 15px;
-        color: #000000;
-        text-decoration: none;
-        font-weight: bold;
-        margin: 5px;
-    }
-
-    .link-button:hover {
-        border-style: inset;
-        background: #a0a0a0;
-    }
-
-    .link-button:active {
-        border-style: inset;
-    }
-
-    .guestbook {
-        background: #003300;
-        border: 2px solid #00ff00;
-        padding: 10px;
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .counter {
-        font-family: 'Courier New', monospace;
-        background: #000000;
-        border: 2px inset #808080;
-        display: inline-block;
-        padding: 3px 10px;
-        color: #00ff00;
-    }
-
-    .footer {
-        background: linear-gradient(to right, #000080, #0000ff, #000080);
-        padding: 15px;
-        text-align: center;
-        border-top: 3px ridge #c0c0c0;
-        font-size: 12px;
-        color: #ffffff;
-    }
-
-    .badges {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        margin: 15px 0;
-    }
-
-    .badge {
-        background: #000000;
-        border: 2px ridge #808080;
-        padding: 5px 10px;
-        font-size: 11px;
-        color: #00ff00;
-    }
-
-    .webring {
-        background: #330033;
-        border: 2px double #ff00ff;
-        padding: 10px;
-        text-align: center;
-        margin: 15px 0;
-    }
-
-    .construction {
-        color: #ffff00;
-        font-size: 12px;
-        animation: blink 0.5s infinite;
-    }
-
-    .star {
-        color: #ffff00;
-    }
-
-    .email-link {
-        font-family: 'Courier New', monospace;
-        background: #003300;
-        padding: 2px 5px;
-    }
-
-    @media (max-width: 600px) {
-        body {
-            padding: 10px;
-        }
-        .header-bar h1 {
-            font-size: 20px;
-        }
-        .skills-list {
-            justify-content: center;
-        }
-    }
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .header-inner { padding: 0 1.25rem; }
+  main { padding: 0 1.25rem 6rem; }
+  .hero { grid-template-columns: 1fr; padding: 3rem 0 2.5rem; }
+  .hero-meta { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+  .avatar { margin: 0; width: 60px; height: 60px; }
+  .hero h1 { font-size: 2.4rem; }
+  footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+}
 </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Header -->
-    <div class="header-bar">
-        <h1>~*~ Welcome to Timur's Homepage ~*~</h1>
-        <p style="color: #00ffff; margin: 5px 0 0 0;">You are visitor #<span class="counter">001337</span></p>
+<header>
+  <div class="header-inner">
+    <div class="logo">Timur Cravtov</div>
+    <nav>
+      <a href="mailto:timurcravtov04@gmail.com">Email</a>
+      <a href="https://github.com/TimurCravtov" target="_blank">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Software Engineer · Chisinau, Moldova</p>
+      <h1>Building<br><em>thoughtful</em><br>software.</h1>
+      <p class="bio">Crafting web applications and solving real-world problems through elegant code. Currently studying Software Engineering at the Technical University of Moldova.</p>
     </div>
-
-    <!-- Marquee -->
-    <div class="marquee-container">
-        <span class="marquee">★★★ WELCOME TO MY PERSONAL WEB PAGE!!! ★★★ BEST VIEWED WITH NETSCAPE NAVIGATOR 4.0 ★★★ 800x600 RESOLUTION ★★★ THANKS FOR STOPPING BY!!! ★★★</span>
+    <div class="hero-meta">
+      <img src="assets/profile-photo.gif" alt="Timur Cravtov" class="avatar">
+      <span>timurcravtov04@gmail.com</span>
+      <span>+373 78 472 735</span>
+      <span>Est. 2004</span>
     </div>
+  </div>
 
-    <div class="content">
-        <!-- About Me -->
-        <div class="center">
-            <p><span class="construction">🚧 UNDER CONSTRUCTION 🚧</span></p>
-            <div class="avatar">
-                <img src="assets/profile-photo.gif" alt="That's me!!!">
-            </div>
-            <h2 style="color: #00ffff;">Hi! I'm Timur Cravtov!</h2>
-            <p><span class="star">★</span> Software Engineer <span class="star">★</span></p>
+  <!-- EXPERIENCE -->
+  <section>
+    <p class="section-label">Experience</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div>
+          <div class="tl-role">Intern</div>
+          <div class="tl-org">Moldcell Academy</div>
         </div>
-
-        <hr>
-
-        <!-- Info Section -->
-        <div class="section">
-            <h2>About Me</h2>
-            <p>Hello fellow netizen!!! Welcome to my corner of the World Wide Web! I am a software engineer from Moldova who loves building cool stuff with computers. Currently studying at university and doing internships!</p>
-            <br>
-            <table class="info-table">
-                <tr>
-                    <td class="label">📧 E-Mail:</td>
-                    <td><a href="mailto:timurcravtov04@gmail.com" class="email-link">timurcravtov04@gmail.com</a></td>
-                </tr>
-                <tr>
-                    <td class="label">📞 Phone:</td>
-                    <td>+373 78 472 735</td>
-                </tr>
-                <tr>
-                    <td class="label">📍 Location:</td>
-                    <td>Chisinau, Moldova</td>
-                </tr>
-            </table>
+        <div class="tl-date">Nov 2024 — Apr 2025</div>
+      </div>
+      <div class="tl-item">
+        <div>
+          <div class="tl-role">Intern</div>
+          <div class="tl-org">Pentalog (Globant)</div>
         </div>
-
-        <!-- Experience -->
-        <div class="section">
-            <h2>Work Experience</h2>
-            <ul>
-                <li><b style="color:#00ffff">Intern @ Moldcell Academy</b><br>
-                    <span style="color:#808080">Nov 2024 - Apr 2025</span></li>
-                <li><b style="color:#00ffff">Intern @ Pentalog (Globant)</b><br>
-                    <span style="color:#808080">Sep 2024</span></li>
-            </ul>
-        </div>
-
-        <!-- Education -->
-        <div class="section">
-            <h2>Education</h2>
-            <ul>
-                <li><b style="color:#00ffff">B.Sc. in Software Engineering</b><br>
-                    Technical University of Moldova<br>
-                    <span style="color:#808080">Sep 2023 - Present</span></li>
-            </ul>
-        </div>
-
-        <!-- Projects -->
-        <div class="section">
-            <h2>My Cool Projects!!!</h2>
-            <p><span class="blink" style="color:#ff0000">NEW!</span> <a href="https://github.com/NeValetik/globant-maiway" target="_blank"><b>MăiWai - Travel Buddy Finder</b></a><br>
-            A platform for finding travel companions! Built with React + Tailwind + Spring Boot</p>
-            <br>
-            <p><a href="https://github.com/aionlang/aion" target="_blank"><b>Aion - DSL for iCalendar</b></a><br>
-            A domain-specific language for managing .ics files with npm package and CLI tools!</p>
-        </div>
-
-        <!-- Skills -->
-        <div class="section">
-            <h2>My L33T Skills</h2>
-            <div class="skills-list">
-                <span class="skill-badge">Java</span>
-                <span class="skill-badge">JavaScript</span>
-                <span class="skill-badge">Python</span>
-                <span class="skill-badge">PostgreSQL</span>
-                <span class="skill-badge">Git</span>
-                <span class="skill-badge">Docker</span>
-            </div>
-        </div>
-
-        <!-- Interests -->
-        <div class="section">
-            <h2>Things I Like</h2>
-            <p>🎨 Art | 📚 Books | 🎬 Movies | 🎧 Music | 🎮 Video Games</p>
-        </div>
-
-        <hr>
-
-        <!-- Links -->
-        <div class="center">
-            <h2 style="color: #ffff00;">~*~ LINK ZONE ~*~</h2>
-            <a href="https://t.me/timur_cravtov" target="_blank" class="link-button">Telegram</a>
-            <a href="https://github.com/TimurCravtov" target="_blank" class="link-button">GitHub</a>
-            <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank" class="link-button">LinkedIn</a>
-            <a href="https://www.facebook.com/timurcravtov/" target="_blank" class="link-button">Facebook</a>
-            <a href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" class="link-button">Goodreads</a>
-        </div>
-
-        <!-- Badges -->
-        <div class="badges">
-            <span class="badge">Made with Notepad</span>
-            <span class="badge">Best viewed 800x600</span>
-            <span class="badge">JavaScript FREE!</span>
-            <span class="badge">Netscape NOW!</span>
-        </div>
-
-        <!-- Guestbook -->
-        <div class="guestbook">
-            <p style="color:#00ff00; margin: 0;">📖 Sign my <a href="mailto:timurcravtov04@gmail.com?subject=Guestbook Entry">GUESTBOOK</a>! 📖</p>
-        </div>
-
-        <!-- Webring -->
-        <div class="webring">
-            <p style="margin: 0; color: #ff00ff;">
-                [ <a href="#">&lt;&lt; Prev</a> |
-                <b>Cool Programmers Webring</b> |
-                <a href="#">Next &gt;&gt;</a> ]
-            </p>
-        </div>
-
+        <div class="tl-date">Sep 2024</div>
+      </div>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>© 2026 Timur Cravtov - All Rights Reserved</p>
-        <p>Last updated: January 26, 2026</p>
-        <p style="font-size: 10px;">This page is Y2K compliant! 💾</p>
-        <p><a href="mailto:timurcravtov04@gmail.com" style="color: #00ffff;">📧 Contact the Webmaster 📧</a></p>
+  <!-- EDUCATION -->
+  <section>
+    <p class="section-label">Education</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div>
+          <div class="tl-role">B.Sc. Software Engineering</div>
+          <div class="tl-org">Technical University of Moldova</div>
+        </div>
+        <div class="tl-date">2023 — Present</div>
+      </div>
     </div>
-</div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section>
+    <p class="section-label">Projects</p>
+    <div class="projects">
+      <a href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener" class="project">
+        <div>
+          <h3>MăiWai — Travel Buddy Finder</h3>
+          <p>A platform for finding travel companions with a React + Tailwind frontend and Spring Boot backend.</p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Tailwind</span>
+            <span class="tag">Spring Boot</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+      <a href="https://github.com/aionlang/aion" target="_blank" rel="noopener" class="project">
+        <div>
+          <h3>Aion — DSL for iCalendar</h3>
+          <p>A domain-specific language for managing .ics files with npm package and CLI tools.</p>
+          <div class="tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Java</span>
+            <span class="tag">DSL</span>
+          </div>
+        </div>
+        <div class="project-arrow">↗</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <p class="section-label">Skills</p>
+    <div class="skills">
+      <div class="skill">Java</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">TypeScript</div>
+      <div class="skill">Python</div>
+      <div class="skill">PostgreSQL</div>
+      <div class="skill">Git</div>
+      <div class="skill">Docker</div>
+      <div class="skill">React</div>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section>
+    <p class="section-label">Interests</p>
+    <div class="interests">
+      <span class="interest"><i class="fas fa-palette"></i> Art</span>
+      <span class="interest"><i class="fas fa-book"></i> Books</span>
+      <span class="interest"><i class="fas fa-film"></i> Movies</span>
+      <span class="interest"><i class="fas fa-headphones"></i> Music</span>
+      <span class="interest"><i class="fas fa-gamepad"></i> Games</span>
+    </div>
+  </section>
+
+  <!-- CONNECT -->
+  <section>
+    <p class="section-label">Connect</p>
+    <div class="social-row">
+      <a href="https://t.me/timur_cravtov" target="_blank" class="social-link" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://github.com/TimurCravtov" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/timurcravtov/" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" class="social-link" aria-label="Goodreads"><i class="fab fa-goodreads"></i></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2026 Timur Cravtov</span>
+  <span>Chisinau, Moldova</span>
+</footer>
 
 </body>
 </html>
