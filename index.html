@@ -7,7 +7,7 @@
 <meta name="author" content="Timur Cravtov">
 <meta name="keywords" content="Software Engineer, Web Developer, Oracle, Java, JavaScript, TypeScript, Python, PostgreSQL, Docker, React">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="theme-color" content="#aee6ff">
 <title>Timur Cravtov</title>
 <!-- Open Graph -->
 <meta property="og:title" content="Timur Cravtov">
@@ -35,503 +35,399 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Pacifico&family=Bubblegum+Sans&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --ink:   #0b0b0b;
-  --paper: #ffffff;
-  --gray:  #e4e4e4;
-  --edge:  5px solid var(--ink);
+  --ink:    #2b2a4c;
+  --sky:    #aee6ff;
+  --red:    #ff6b6b;
+  --orange: #ff9f45;
+  --yellow: #ffd23f;
+  --green:  #3fc98a;
+  --blue:   #37b6f6;
+  --purple: #8b6cf6;
+  --pink:   #ff5fb0;
+  --shadow: 0 7px 0 var(--ink);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 
 body {
-  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.4;
+  font-family: 'Fredoka', 'Comic Sans MS', sans-serif;
+  font-weight: 500;
+  font-size: 1.08rem;
+  line-height: 1.5;
   color: var(--ink);
-  background-color: #f2f2f2;
-  background-image: radial-gradient(rgba(0,0,0,0.16) 1.2px, transparent 1.5px);
-  background-size: 10px 10px;
+  background:
+    radial-gradient(rgba(255,255,255,0.55) 3px, transparent 3.5px) 0 0 / 38px 38px,
+    linear-gradient(180deg, #8fdcff 0%, #c9f0ff 55%, #fff6d6 100%);
+  background-attachment: fixed;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; text-decoration: none; }
-::selection { background: var(--ink); color: var(--paper); }
+::selection { background: var(--yellow); }
 
-/* ── MASTHEAD ───────────────────────────────────────────────── */
-.masthead { background: var(--ink); color: var(--paper); border-bottom: 5px double var(--paper); }
-.masthead-inner {
-  max-width: 1000px; margin: 0 auto; padding: 0.55rem 1.25rem;
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: 'Bangers', cursive; letter-spacing: 0.1em;
+/* ── SKY DECOR ──────────────────────────────────────────────── */
+.sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.sun {
+  position: absolute; right: 5vw; top: 5vh; width: 110px; height: 110px; border-radius: 50%;
+  background: var(--yellow); border: 5px solid var(--ink);
+  box-shadow: 0 0 0 14px rgba(255,210,63,0.35), 0 0 0 30px rgba(255,210,63,0.18);
+  animation: sunpulse 5s ease-in-out infinite;
 }
-.masthead .logo { font-size: 1.6rem; }
-.masthead nav { display: flex; gap: 1.2rem; font-size: 1.1rem; }
-.masthead nav a { border-bottom: 2px solid transparent; }
-.masthead nav a:hover { border-bottom-color: var(--paper); }
+.sun::before, .sun::after { content: ''; position: absolute; border-radius: 50%; background: var(--ink); width: 9px; height: 13px; top: 38px; }
+.sun::before { left: 28px; } .sun::after { right: 28px; }
+.sun i { position: absolute; left: 50%; bottom: 22px; width: 36px; height: 18px; margin-left: -18px; border-bottom: 5px solid var(--ink); border-radius: 0 0 40px 40px; }
+@keyframes sunpulse { 50% { transform: scale(1.06); } }
+.cloud {
+  position: absolute; width: 150px; height: 52px; background: #fff; border: 4px solid var(--ink); border-radius: 60px;
+  animation: float 60s linear infinite;
+}
+.cloud::before, .cloud::after { content: ''; position: absolute; background: #fff; border: 4px solid var(--ink); border-bottom: 0; border-radius: 50% 50% 0 0; }
+.cloud::before { width: 62px; height: 40px; left: 22px; top: -30px; }
+.cloud::after { width: 82px; height: 52px; left: 60px; top: -40px; }
+.cloud.c1 { top: 14vh; left: -200px; }
+.cloud.c2 { top: 42vh; left: -200px; animation-duration: 90s; animation-delay: -35s; transform: scale(0.7); }
+.cloud.c3 { top: 70vh; left: -200px; animation-duration: 75s; animation-delay: -60s; transform: scale(0.85); }
+@keyframes float { to { transform: translateX(calc(100vw + 400px)); } }
 
-/* ── PAGE ───────────────────────────────────────────────────── */
-.sheet {
-  max-width: 1000px;
-  margin: 1.75rem auto 3rem;
-  padding: 14px;
-  background: var(--paper);
-  border: 6px solid var(--ink);
-  box-shadow: 10px 10px 0 var(--ink);
-}
-.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
-.s4 { grid-column: span 4; } .s6 { grid-column: span 6; }
-.s8 { grid-column: span 8; } .s12 { grid-column: span 12; }
+/* ── LAYOUT ─────────────────────────────────────────────────── */
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.4rem; }
+main { padding: 6.5rem 0 3rem; display: grid; gap: 2.2rem; }
 
-.panel {
-  position: relative;
-  border: var(--edge);
-  background: var(--paper);
-  padding: 1.25rem;
-  overflow: hidden;
+/* ── NAV ────────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0.9rem; left: 50%; transform: translateX(-50%); z-index: 50;
+  width: min(900px, calc(100% - 1.6rem));
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.45rem 0.6rem 0.45rem 1.2rem;
+  background: #fff; border: 4px solid var(--ink); border-radius: 999px; box-shadow: 0 5px 0 var(--ink);
 }
-.panel > * { position: relative; z-index: 1; }
-.panel.tex::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background-image: radial-gradient(var(--ink) 1.3px, transparent 1.6px);
-  background-size: 9px 9px;
-  opacity: 0.13;
+.nav .logo { font-family: 'Chewy', cursive; font-size: 1.9rem; letter-spacing: 0.04em; line-height: 1; }
+.logo span, h1 span { display: inline-block; transform: rotate(var(--r, 0deg)); }
+.nav ul { list-style: none; display: flex; gap: 0.4rem; }
+.nav .link {
+  font-family: 'Bubblegum Sans', cursive; font-size: 1.15rem; padding: 0.15rem 0.85rem; border-radius: 999px;
+  border: 3px solid transparent; transition: transform 0.15s, background 0.15s;
 }
-.panel.rays::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background: repeating-conic-gradient(from 0deg at 85% 50%, rgba(0,0,0,0.09) 0deg 4deg, transparent 4deg 11deg);
-}
-.panel.hatch::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(0,0,0,0.16) 7px 8px);
-}
-
-/* ── LETTERING ──────────────────────────────────────────────── */
-.caption {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-size: 1.05rem;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  background: var(--paper);
-  color: var(--ink);
-  border: 3px solid var(--ink);
-  padding: 0.1rem 0.75rem;
-  box-shadow: 3px 3px 0 var(--ink);
-}
-.sfx {
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  line-height: 0.95;
+.nav li:nth-child(1) .link:hover { background: #ffd1d1; }
+.nav li:nth-child(2) .link:hover { background: #ffe3bf; }
+.nav li:nth-child(3) .link:hover { background: #fff0a8; }
+.nav li:nth-child(4) .link:hover { background: #c6f1dc; }
+.nav .link:hover { border-color: var(--ink); transform: translateY(-2px) rotate(-2deg); }
+.age {
+  flex: none; width: 52px; height: 52px; display: grid; place-items: center;
+  font-family: 'Chewy', cursive; font-size: 1.5rem; color: #fff; background: var(--red);
+  border: 4px solid var(--ink); border-radius: 50%; transform: rotate(-8deg);
 }
 
-/* ── TITLE PANEL ────────────────────────────────────────────── */
-.title-panel {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 2rem 2rem 1.6rem;
-  min-height: 330px;
-  display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
+/* ── CARDS ──────────────────────────────────────────────────── */
+.card {
+  position: relative; border: 4px solid var(--ink); border-radius: 34px; box-shadow: var(--shadow);
+  background: #fff; transition: transform 0.18s, box-shadow 0.18s;
 }
-.title-panel::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background: repeating-conic-gradient(from 0deg at 72% 55%, rgba(255,255,255,0.22) 0deg 1.2deg, transparent 1.2deg 7deg);
-}
-.title-panel h1 {
-  font-size: clamp(3.2rem, 10vw, 7.2rem);
-  transform: rotate(-2deg);
-  transform-origin: left bottom;
-  text-shadow: 5px 5px 0 #444;
-}
-.title-panel h1 .out {
-  color: transparent;
-  -webkit-text-stroke: 2.5px var(--paper);
-  text-shadow: none;
-}
-.title-panel .caption { align-self: flex-start; box-shadow: 3px 3px 0 #666; }
-.title-panel .byline { align-self: flex-end; box-shadow: 3px 3px 0 #666; }
-.burst {
-  position: absolute !important; z-index: 2 !important;
-  right: 22px; top: 18px;
-  width: 128px; height: 128px;
-  display: grid; place-items: center;
-  background: var(--paper); color: var(--ink);
-  font-family: 'Bangers', cursive; font-size: 1.7rem; letter-spacing: 0.04em; text-align: center; line-height: 0.95;
-  clip-path: polygon(50% 0, 61% 18%, 82% 8%, 80% 32%, 100% 38%, 84% 54%, 96% 75%, 72% 72%, 66% 96%, 50% 80%, 34% 96%, 28% 72%, 4% 75%, 16% 54%, 0 38%, 20% 32%, 18% 8%, 39% 18%);
-  transform: rotate(10deg);
-}
+.card:hover { transform: translateY(-5px) rotate(-0.6deg); box-shadow: 0 12px 0 var(--ink); }
+.bg-yellow { background: #fff2a8; } .bg-pink { background: #ffd0e8; } .bg-blue { background: #c4ecff; }
+.bg-green { background: #c9f3de; } .bg-purple { background: #e0d7ff; } .bg-orange { background: #ffdcb8; }
+.bg-red { background: #ffd1d1; }
 
-/* ── CHARACTERS + SPEECH ────────────────────────────────────── */
-.line { display: flex; align-items: center; gap: 1.5rem; margin: 0.4rem 0 1.1rem; }
-.line.right { flex-direction: row-reverse; }
-.line:last-child { margin-bottom: 0; }
-.char { flex: none; width: 104px; height: 122px; display: block; }
+.title { font-family: 'Pacifico', cursive; font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.2; text-shadow: 3px 3px 0 var(--ink); -webkit-text-stroke: 1.5px var(--ink); paint-order: stroke fill; }
+.t-red { color: var(--red); } .t-blue { color: var(--blue); } .t-green { color: var(--green); }
+.t-purple { color: var(--purple); } .t-pink { color: var(--pink); } .t-orange { color: var(--orange); }
+.section-title { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; padding-left: 0.4rem; }
+.section-title svg { width: 34px; height: 34px; flex: none; }
 
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1.6rem; align-items: stretch; }
+.hero-main { padding: 2.2rem 2.2rem 2rem; background: #fff; }
+.hello { display: inline-block; font-family: 'Bubblegum Sans', cursive; font-size: 1.3rem; background: var(--yellow); border: 3px solid var(--ink); border-radius: 999px; padding: 0.1rem 1rem; transform: rotate(-3deg); margin-bottom: 0.9rem; }
+.hero h1 { font-family: 'Chewy', cursive; font-weight: 400; font-size: clamp(3rem, 8.5vw, 5.8rem); line-height: 1; letter-spacing: 0.02em; margin-bottom: 1rem; -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; text-shadow: 4px 5px 0 var(--ink); }
+.bio { font-size: 1.12rem; max-width: 480px; margin-bottom: 1.4rem; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.btn {
+  font-family: 'Bubblegum Sans', cursive; font-size: 1.35rem; padding: 0.35rem 1.4rem; border-radius: 999px;
+  border: 4px solid var(--ink); box-shadow: 0 5px 0 var(--ink); transition: transform 0.12s, box-shadow 0.12s;
+}
+.btn:hover { transform: translateY(-3px) rotate(-2deg); box-shadow: 0 8px 0 var(--ink); }
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink); }
+
+.friends { padding: 1.4rem 1.2rem 1rem; display: flex; flex-direction: column; justify-content: space-between; gap: 0.6rem; overflow: hidden; }
+.say { display: flex; align-items: center; gap: 0.7rem; }
+.say.rev { flex-direction: row-reverse; }
+.say svg { flex: none; width: 112px; height: 106px; animation: bob 3.2s ease-in-out infinite; }
+.say.rev svg { animation-delay: -1.4s; }
+@keyframes bob { 50% { transform: translateY(-7px) rotate(2deg); } }
 .bubble {
-  position: relative;
-  background: var(--paper);
-  border: 3px solid var(--ink);
-  border-radius: 30px;
-  padding: 0.75rem 1.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  font-size: 1rem;
-  max-width: 560px;
+  position: relative; background: #fff; border: 4px solid var(--ink); border-radius: 26px; padding: 0.55rem 0.95rem;
+  font-family: 'Bubblegum Sans', cursive; font-size: 1.25rem; line-height: 1.2;
 }
-.bubble b { font-family: 'Bangers', cursive; font-weight: 400; font-size: 1.25em; letter-spacing: 0.05em; }
-.bubble::before, .bubble::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; border-style: solid; }
-.line.left .bubble::before  { left: -25px; margin-top: -13px; border-width: 13px 25px 13px 0; border-color: transparent var(--ink) transparent transparent; }
-.line.left .bubble::after   { left: -16px; margin-top: -10px; border-width: 10px 19px 10px 0; border-color: transparent var(--paper) transparent transparent; }
-.line.right .bubble::before { right: -25px; margin-top: -13px; border-width: 13px 0 13px 25px; border-color: transparent transparent transparent var(--ink); }
-.line.right .bubble::after  { right: -16px; margin-top: -10px; border-width: 10px 0 10px 19px; border-color: transparent transparent transparent var(--paper); }
+.bubble::before { content: ''; position: absolute; top: 50%; width: 16px; height: 16px; background: #fff; border: 4px solid var(--ink); transform: translateY(-50%) rotate(45deg); }
+.say:not(.rev) .bubble::before { left: -10px; border-top-color: transparent; border-right-color: transparent; }
+.say.rev .bubble::before { right: -10px; border-bottom-color: transparent; border-left-color: transparent; }
 
-/* ── DOSSIER ────────────────────────────────────────────────── */
-.dossier { display: flex; flex-direction: column; gap: 0.8rem; justify-content: center; }
-.dossier .sfx { font-size: 2rem; }
-.dossier dl { display: grid; gap: 0.55rem; }
-.dossier dt { font-family: 'Bangers', cursive; font-weight: 400; letter-spacing: 0.1em; font-size: 0.9rem; }
-.dossier dd {
-  background: var(--paper); border: 3px solid var(--ink); padding: 0.1rem 0.6rem;
-  font-size: 0.9rem; word-break: break-word;
-}
+.profile { padding: 1.4rem 1.7rem; display: flex; flex-wrap: wrap; gap: 0.7rem 2.2rem; align-items: center; }
+.profile div { min-width: 180px; }
+.profile dt { font-family: 'Bubblegum Sans', cursive; font-size: 1.05rem; opacity: 0.7; }
+.profile dd { font-weight: 600; word-break: break-word; }
 
-/* ── EXPERIENCE / EDUCATION ─────────────────────────────────── */
-.job { display: flex; flex-direction: column; gap: 0.9rem; min-height: 270px; }
-.job .caption, .project .caption { align-self: flex-start; }
-.job .role { font-size: 3.4rem; }
-.job-now { min-height: 0; }
-.job .org {
-  align-self: flex-start;
-  background: var(--ink); color: var(--paper);
-  font-family: 'Bangers', cursive; letter-spacing: 0.08em; font-size: 1.25rem;
-  padding: 0.1rem 0.8rem; transform: rotate(-1.5deg);
+/* ── EXPERIENCE ─────────────────────────────────────────────── */
+.exp { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+.job { padding: 1.5rem 1.6rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; min-height: 170px; }
+.job .role { font-family: 'Chewy', cursive; font-size: 1.9rem; line-height: 1.1; letter-spacing: 0.02em; }
+.job .org { font-size: 1.1rem; font-weight: 600; }
+.date { margin-top: auto; align-self: flex-start; font-family: 'Bubblegum Sans', cursive; font-size: 1.1rem; background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 0 0.9rem; }
+.now {
+  position: absolute; right: -10px; top: -22px; width: 82px; height: 82px; display: grid; place-items: center;
+  font-family: 'Chewy', cursive; font-size: 1.35rem; color: #fff; background: var(--red); text-align: center; line-height: 0.95;
+  clip-path: polygon(50% 0, 61% 14%, 79% 6%, 80% 25%, 98% 29%, 87% 45%, 100% 60%, 82% 66%, 82% 85%, 63% 82%, 50% 100%, 37% 82%, 18% 85%, 18% 66%, 0 60%, 13% 45%, 2% 29%, 20% 25%, 21% 6%, 39% 14%);
+  transform: rotate(12deg); animation: wiggle 1.6s ease-in-out infinite;
 }
-.job .line { margin-top: auto; }
-.job .char { width: 84px; height: 98px; }
+@keyframes wiggle { 50% { transform: rotate(-6deg) scale(1.08); } }
 
 /* ── PROJECTS ───────────────────────────────────────────────── */
-.project { display: flex; flex-direction: column; gap: 0.9rem; min-height: 320px; transition: background 0.15s; }
-.project-wide { min-height: 0; }
-.project h3 { font-size: 2.3rem; }
-.project h3 small { display: block; font-size: 1.1rem; letter-spacing: 0.1em; margin-top: 0.35rem; }
-.project .line { margin: 0.2rem 0; }
-.project .char { width: 78px; height: 92px; }
-.project .bubble { font-size: 0.88rem; }
-.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: auto; }
-.tag {
-  font-family: 'Bangers', cursive; letter-spacing: 0.08em; font-size: 0.95rem;
-  background: var(--ink); color: var(--paper); padding: 0 0.65rem;
-}
-.go {
-  position: absolute !important; right: 12px; top: 10px;
-  font-family: 'Bangers', cursive; font-size: 1.3rem; letter-spacing: 0.06em;
-  border: 3px solid var(--ink); background: var(--paper); padding: 0 0.6rem;
-  transform: rotate(4deg); transition: transform 0.15s;
-}
-.project:hover .go { transform: rotate(-3deg) scale(1.12); }
-.project:hover { box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 7px var(--ink); }
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.project { padding: 1.5rem 1.5rem 1.3rem; display: flex; flex-direction: column; gap: 0.6rem; min-height: 330px; overflow: hidden; }
+.project .pet { width: 74px; height: 70px; margin-bottom: -0.2rem; }
+.project h3 { font-family: 'Chewy', cursive; font-weight: 400; font-size: 1.85rem; line-height: 1.08; letter-spacing: 0.02em; }
+.project p { font-size: 1rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 0.5rem; }
+.tag { font-family: 'Bubblegum Sans', cursive; font-size: 1.02rem; background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 0 0.7rem; }
+.tag:nth-child(3n+1) { background: #ffe3bf; } .tag:nth-child(3n+2) { background: #c6f1dc; } .tag:nth-child(3n) { background: #e0d7ff; }
+.go { position: absolute; right: 14px; top: 14px; width: 40px; height: 40px; display: grid; place-items: center; font-family: 'Chewy', cursive; font-size: 1.4rem; background: #fff; border: 3px solid var(--ink); border-radius: 50%; transition: transform 0.2s; }
+.project:hover .go { transform: rotate(45deg) scale(1.12); }
 
-/* ── SKILLS ─────────────────────────────────────────────────── */
-.stickers { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 0.4rem 0 1.2rem; }
-.sticker {
-  font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 0.07em;
-  border: 3px solid var(--ink); padding: 0.1rem 1rem;
-  background: var(--paper); box-shadow: 4px 4px 0 var(--ink);
-  transition: transform 0.12s;
+/* ── SKILLS / HOBBIES ───────────────────────────────────────── */
+.two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.4rem; }
+.panel { padding: 1.7rem; }
+.bubbles { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.ball {
+  min-width: 78px; padding: 0.4rem 1.1rem; text-align: center; font-family: 'Chewy', cursive; font-size: 1.35rem; letter-spacing: 0.03em;
+  border: 4px solid var(--ink); border-radius: 999px; box-shadow: 0 4px 0 var(--ink);
+  transition: transform 0.14s;
 }
-.sticker:nth-child(even) { background: var(--ink); color: var(--paper); box-shadow: 4px 4px 0 #888; }
-.sticker:nth-child(3n) { transform: rotate(-2deg); }
-.sticker:nth-child(3n+1) { transform: rotate(1.5deg); }
-.sticker:hover { transform: rotate(0) scale(1.1); }
+.ball:hover { transform: translateY(-4px) rotate(-5deg) scale(1.08); }
+.ball:nth-child(7n+1) { background: #ff9a9a; } .ball:nth-child(7n+2) { background: #ffbd7a; } .ball:nth-child(7n+3) { background: #ffe56b; }
+.ball:nth-child(7n+4) { background: #7fe0b2; } .ball:nth-child(7n+5) { background: #7ccdf8; } .ball:nth-child(7n+6) { background: #b7a2ff; } .ball:nth-child(7n) { background: #ff9fd0; }
+.ball:nth-child(even) { transform: rotate(2deg); } .ball:nth-child(odd) { transform: rotate(-2deg); }
+.ball:hover { transform: translateY(-4px) rotate(-5deg) scale(1.08) !important; }
 
-/* ── INTERESTS (thought clouds) ─────────────────────────────── */
-.dream { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
-.dots { display: flex; align-items: flex-end; gap: 6px; }
-.dots i { display: block; border: 3px solid var(--ink); border-radius: 50%; background: var(--paper); }
-.dots i:nth-child(1) { width: 10px; height: 10px; } .dots i:nth-child(2) { width: 18px; height: 18px; }
-.cloud {
-  border: 3px solid var(--ink); border-radius: 999px; background: var(--paper);
-  padding: 0.55rem 1.4rem;
-  font-family: 'Bangers', cursive; font-size: 1.35rem; letter-spacing: 0.07em;
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  transition: transform 0.12s, background 0.12s, color 0.12s;
+/* ── CONTACT ────────────────────────────────────────────────── */
+.contact { padding: 1.8rem; display: grid; grid-template-columns: auto 1fr; gap: 1.6rem; align-items: center; }
+.contact svg.pal { width: 140px; height: 130px; animation: bob 3s ease-in-out infinite; }
+.links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.social { font-family: 'Bubblegum Sans', cursive; font-size: 1.3rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.3rem 1.2rem; border: 4px solid var(--ink); border-radius: 999px; box-shadow: 0 5px 0 var(--ink); transition: transform 0.12s, box-shadow 0.12s; }
+.social:hover { transform: translateY(-3px) rotate(-2deg); box-shadow: 0 8px 0 var(--ink); }
+.social:nth-child(5n+1) { background: #7ccdf8; } .social:nth-child(5n+2) { background: #b7a2ff; } .social:nth-child(5n+3) { background: #7fe0b2; }
+.social:nth-child(5n+4) { background: #ffbd7a; } .social:nth-child(5n) { background: #ff9fd0; }
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+footer { margin-top: 2rem; position: relative; text-align: center; padding: 3.5rem 1rem 2.4rem; font-family: 'Bubblegum Sans', cursive; font-size: 1.25rem; }
+footer::before { content: ''; position: absolute; left: -5%; right: -5%; bottom: 0; top: 18px; background: #8fe3a8; border-top: 5px solid var(--ink); border-radius: 50% 50% 0 0 / 40px 40px 0 0; z-index: -1; }
+footer .hog { position: absolute; left: 50%; top: -34px; width: 96px; height: 70px; margin-left: -48px; }
+footer .stars { color: var(--ink); }
+
+/* ── MOTION / RESPONSIVE ────────────────────────────────────── */
+@keyframes pop { from { opacity: 0; transform: translateY(18px) scale(0.96); } to { opacity: 1; transform: none; } }
+.hero-main, .friends { animation: pop 0.6s cubic-bezier(.2,.9,.3,1.2) both; }
+.friends { animation-delay: 0.1s; }
+@media (prefers-reduced-motion: reduce) { .sun, .cloud, .say svg, .now, .contact svg.pal, .hero-main, .friends { animation: none; } html { scroll-behavior: auto; } }
+@media (max-width: 900px) {
+  .hero, .two { grid-template-columns: 1fr; }
+  .projects { grid-template-columns: 1fr 1fr; }
 }
-.cloud:nth-of-type(odd)  { transform: rotate(-2deg); }
-.cloud:nth-of-type(even) { transform: rotate(2deg); }
-.cloud:hover { background: var(--ink); color: var(--paper); transform: rotate(0) scale(1.08); }
-
-/* ── CONNECT ────────────────────────────────────────────────── */
-.signals { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
-.signal {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  font-family: 'Bangers', cursive; font-size: 1.25rem; letter-spacing: 0.08em;
-  border: 3px solid var(--ink); background: var(--paper); padding: 0.2rem 1rem;
-  box-shadow: 4px 4px 0 var(--ink);
-  transition: transform 0.12s, box-shadow 0.12s, background 0.12s, color 0.12s;
-}
-.signal:hover { background: var(--ink); color: var(--paper); transform: translate(3px,3px); box-shadow: 1px 1px 0 var(--ink); }
-
-/* ── FINALE ─────────────────────────────────────────────────── */
-.finale {
-  background: var(--ink); color: var(--paper); text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1.6rem 1rem;
-}
-.finale .sfx { font-size: clamp(2.2rem, 7vw, 4rem); text-shadow: 4px 4px 0 #555; }
-.finale small { font-family: 'Bangers', cursive; letter-spacing: 0.12em; font-size: 1rem; color: #bbb; }
-
-/* ── MOTION ─────────────────────────────────────────────────── */
-@keyframes pop { 0% { opacity: 0; transform: scale(0.92); } 100% { opacity: 1; transform: scale(1); } }
-.panel { animation: pop 0.4s ease-out both; }
-.grid > .panel:nth-child(2) { animation-delay: 0.08s; } .grid > .panel:nth-child(3) { animation-delay: 0.14s; }
-@media (prefers-reduced-motion: reduce) { .panel { animation: none; } }
-
-/* ── RESPONSIVE ─────────────────────────────────────────────── */
-@media (max-width: 760px) {
-  .s4, .s6, .s8 { grid-column: span 12; }
-  .sheet { margin: 1rem 0.6rem 2rem; padding: 10px; box-shadow: 6px 6px 0 var(--ink); }
-  .grid { gap: 10px; }
-  .panel { padding: 1rem; }
-  .title-panel { padding: 1.4rem 1.1rem 1.2rem; min-height: 280px; }
-  .burst { width: 84px; height: 84px; font-size: 1.05rem; right: 8px; top: 8px; }
-  .title-panel .caption:not(.byline) { max-width: calc(100% - 96px); }
-  .char { width: 74px; height: 87px; }
-  .line { gap: 1.1rem; }
-  .bubble { font-size: 0.9rem; padding: 0.65rem 0.9rem; }
-  .masthead .logo { font-size: 1.25rem; }
-  .masthead nav { font-size: 1rem; gap: 0.8rem; }
-  .job .role { font-size: 2.8rem; }
+@media (max-width: 640px) {
+  .wrap { padding: 0 0.9rem; }
+  main { padding-top: 5.8rem; }
+  .nav ul { display: none; }
+  .nav .logo { font-size: 1.6rem; }
+  .sun { width: 70px; height: 70px; right: 4vw; top: 12vh; opacity: 0.8; }
+  .hero-main { padding: 1.6rem 1.3rem; }
+  .exp, .projects { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .links { justify-content: center; }
+  .say svg { width: 88px; height: 84px; }
 }
 </style>
 </head>
 <body>
-
-<!-- Characters (ink drawings reused below) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <symbol id="timur" viewBox="0 0 120 140">
-      <path d="M8 140 C8 108 34 98 60 98 C86 98 112 108 112 140 Z" fill="#0b0b0b"/>
-      <rect x="50" y="82" width="20" height="20" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M43 99 L60 124 L77 99 Z" fill="#fff" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/>
-      <ellipse cx="32" cy="62" rx="5" ry="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <ellipse cx="88" cy="62" rx="5" ry="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <ellipse cx="60" cy="56" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M31 56 C24 26 46 12 66 12 C90 13 98 38 89 58 C87 46 80 40 72 39 C64 46 50 40 44 47 C38 49 33 52 31 56 Z" fill="#0b0b0b"/>
-      <path d="M70 14 C76 8 86 10 90 18" fill="none" stroke="#0b0b0b" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="48" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="72" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <path d="M57 58 L63 58" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="49" cy="59" r="2.6" fill="#0b0b0b"/><circle cx="73" cy="59" r="2.6" fill="#0b0b0b"/>
-      <path d="M50 77 Q60 85 70 77" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
+    <symbol id="kitten" viewBox="0 0 120 110">
+      <path d="M16 50 L20 8 L53 30 Z" fill="var(--c1,#ffb86b)" stroke="#5a3b2a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M104 50 L100 8 L67 30 Z" fill="var(--c1,#ffb86b)" stroke="#5a3b2a" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M24 38 L26 20 L40 30 Z" fill="#ff9ec0"/><path d="M96 38 L94 20 L80 30 Z" fill="#ff9ec0"/>
+      <ellipse cx="60" cy="63" rx="46" ry="40" fill="var(--c1,#ffb86b)" stroke="#5a3b2a" stroke-width="4"/>
+      <path d="M60 25 V37 M48 28 L50 38 M72 28 L70 38" stroke="var(--c2,#e07b39)" stroke-width="4.500" stroke-linecap="round" fill="none"/>
+      <ellipse cx="60" cy="77" rx="17" ry="12" fill="#fff6e8"/>
+      <ellipse cx="42" cy="60" rx="7.500" ry="9.500" fill="#2b2a4c"/><ellipse cx="78" cy="60" rx="7.500" ry="9.500" fill="#2b2a4c"/>
+      <circle cx="44.500" cy="56" r="3" fill="#fff"/><circle cx="80.500" cy="56" r="3" fill="#fff"/>
+      <circle cx="40" cy="64" r="1.400" fill="#fff"/><circle cx="76" cy="64" r="1.400" fill="#fff"/>
+      <path d="M55 70 Q60 66 65 70 Q60 77 55 70Z" fill="#ff5f9a"/>
+      <path d="M60 76 Q54 85 48 79 M60 76 Q66 85 72 79" stroke="#5a3b2a" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <circle cx="28" cy="77" r="6.500" fill="#ff9ec0" opacity=".85"/><circle cx="92" cy="77" r="6.500" fill="#ff9ec0" opacity=".85"/>
+      <path d="M8 70 L26 74 M8 83 L26 80 M112 70 L94 74 M112 83 L94 80" stroke="#5a3b2a" stroke-width="2.500" stroke-linecap="round"/>
     </symbol>
-    <symbol id="visitor" viewBox="0 0 120 140">
-      <path d="M6 140 C6 106 34 98 60 98 C86 98 114 106 114 140 Z" fill="#0b0b0b"/>
-      <path d="M44 98 L54 128 M76 98 L66 128" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <rect x="50" y="84" width="20" height="18" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <ellipse cx="60" cy="62" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M28 74 C16 14 104 14 92 74 L84 74 C84 52 78 42 60 40 C42 42 36 52 36 74 Z" fill="#0b0b0b"/>
-      <path d="M36 50 C48 44 70 44 84 50 C76 38 44 38 36 50 Z" fill="#0b0b0b"/>
-      <path d="M40 57 L55 60 M65 60 L80 57" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="48" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="72" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="50" cy="69" r="3.2" fill="#0b0b0b"/><circle cx="74" cy="69" r="3.2" fill="#0b0b0b"/>
-      <ellipse cx="60" cy="86" rx="5" ry="6" fill="#0b0b0b"/>
+    <symbol id="hedgehog" viewBox="0 0 150 110">
+      <path d="M12.9 81.7 L-3.0 80.7 L8.7 71.1 L-6.0 66.0 L8.3 59.9 L-4.2 51.1 L11.5 48.9 L2.1 37.1 L18.1 39.1 L12.5 25.1 L27.7 31.1 L26.3 15.8 L39.7 25.3 L42.5 10.0 L53.1 22.4 L60.0 8.0 L66.9 22.4 L77.5 10.0 L80.3 25.3 L93.7 15.8 L92.3 31.1 L107.5 25.1 L101.9 39.1 L117.9 37.1 L108.5 48.9 L124.2 51.1 L111.7 59.9 L126.0 66.0 L111.3 71.1 L123.0 80.7 L107.1 81.7 Z" fill="#6b4630" stroke="#3b2618" stroke-width="3.500" stroke-linejoin="round"/>
+      <ellipse cx="60" cy="66" rx="52" ry="38" fill="#8a5d3d" stroke="#3b2618" stroke-width="4"/>
+      <ellipse cx="46" cy="98" rx="12" ry="7" fill="#ffd9b0" stroke="#3b2618" stroke-width="3.500"/>
+      <ellipse cx="86" cy="98" rx="12" ry="7" fill="#ffd9b0" stroke="#3b2618" stroke-width="3.500"/>
+      <path d="M72 40 Q88 24 112 40 L132 70 Q132 96 100 96 Q72 96 70 66 Z" fill="#ffe3bf" stroke="#3b2618" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="96" cy="40" r="8" fill="#ffd9b0" stroke="#3b2618" stroke-width="3.500"/>
+      <circle cx="104" cy="62" r="5.500" fill="#2b2a4c"/><circle cx="106" cy="60" r="2" fill="#fff"/>
+      <circle cx="134" cy="76" r="6.500" fill="#2b2a4c"/><circle cx="136" cy="74" r="1.800" fill="#fff"/>
+      <circle cx="100" cy="80" r="6" fill="#ff9ec0" opacity=".85"/>
+      <path d="M112 84 Q120 90 128 84" stroke="#3b2618" stroke-width="3" stroke-linecap="round" fill="none"/>
     </symbol>
+    <symbol id="star" viewBox="0 0 24 24"><path d="M12 2l2.900 6.200 6.800.8-5 4.700 1.300 6.700L12 17l-6 3.400 1.300-6.700-5-4.700 6.800-.8z" fill="#ffd23f" stroke="#2b2a4c" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-8-5.300-8-11a4.500 4.500 0 0 1 8-2.800A4.500 4.500 0 0 1 20 10c0 5.700-8 11-8 11z" fill="#ff5fb0" stroke="#2b2a4c" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="paw" viewBox="0 0 24 24"><g fill="#8b6cf6" stroke="#2b2a4c" stroke-width="1.600"><ellipse cx="12" cy="16" rx="5" ry="4"/><circle cx="5.500" cy="11" r="2.200"/><circle cx="9.500" cy="6.500" r="2.200"/><circle cx="14.500" cy="6.500" r="2.200"/><circle cx="18.500" cy="11" r="2.200"/></g></symbol>
   </defs>
 </svg>
 
-<header class="masthead">
-  <div class="masthead-inner">
-    <div class="logo">Timur Cravtov</div>
-    <nav>
-      <a href="mailto:timurcravtov04@gmail.com">Email</a>
-      <a href="https://github.com/TimurCravtov" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-  </div>
-</header>
+<div class="sky" aria-hidden="true">
+  <div class="sun"><i></i></div>
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+</div>
 
-<main class="sheet">
-  <div class="grid">
+<nav class="nav" aria-label="Primary">
+  <a class="logo" href="#top" aria-label="Timur"><span aria-hidden="true" style="color:#ff6b6b;--r:-4deg">T</span><span aria-hidden="true" style="color:#ff9f45;--r:3deg">i</span><span aria-hidden="true" style="color:#ffd23f;--r:-2deg">m</span><span aria-hidden="true" style="color:#3fc98a;--r:5deg">u</span><span aria-hidden="true" style="color:#37b6f6;--r:-3deg">r</span></a>
+  <ul>
+    <li><a class="link" href="#experience">Experience</a></li>
+    <li><a class="link" href="#projects">Projects</a></li>
+    <li><a class="link" href="#skills">Skills</a></li>
+    <li><a class="link" href="#contact">Say hi!</a></li>
+  </ul>
+  <span class="age" title="Suitable for all ages">0+</span>
+</nav>
 
-    <!-- TITLE -->
-    <div class="panel title-panel s12">
-      <span class="burst" aria-hidden="true">Issue<br>#2026</span>
-      <span class="caption">Software Engineer · Chisinau, Moldova</span>
-      <h1 class="sfx">Building<br><span class="out">thoughtful</span><br>software.</h1>
-      <span class="caption byline">Written &amp; drawn by Timur Cravtov</span>
-    </div>
+<div class="wrap" id="top">
+<main>
 
-    <!-- INTRO -->
-    <div class="panel s8 rays">
-      <span class="caption" style="margin-bottom:1rem">Chapter 1 — Who goes there?</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble"><b>Who are you?!</b> And what do you do?</div>
-      </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">I'm <b>Timur</b>. I craft web applications and solve real-world problems through elegant code. Currently studying Software Engineering at the Technical University of Moldova.</div>
+  <section class="hero">
+    <div class="hero-main card">
+      <span class="hello">Hello, friend!</span>
+      <h1 aria-label="Building thoughtful software."><span aria-hidden="true" style="color:#ff6b6b;--r:-4deg">B</span><span aria-hidden="true" style="color:#ff9f45;--r:3deg">u</span><span aria-hidden="true" style="color:#ffd23f;--r:-2deg">i</span><span aria-hidden="true" style="color:#3fc98a;--r:5deg">l</span><span aria-hidden="true" style="color:#37b6f6;--r:-3deg">d</span><span aria-hidden="true" style="color:#8b6cf6;--r:2deg">i</span><span aria-hidden="true" style="color:#ff5fb0;--r:-4deg">n</span><span aria-hidden="true" style="color:#ff6b6b;--r:3deg">g</span><br><span aria-hidden="true" style="color:#ff6b6b;--r:-4deg">t</span><span aria-hidden="true" style="color:#ff9f45;--r:3deg">h</span><span aria-hidden="true" style="color:#ffd23f;--r:-2deg">o</span><span aria-hidden="true" style="color:#3fc98a;--r:5deg">u</span><span aria-hidden="true" style="color:#37b6f6;--r:-3deg">g</span><span aria-hidden="true" style="color:#8b6cf6;--r:2deg">h</span><span aria-hidden="true" style="color:#ff5fb0;--r:-4deg">t</span><span aria-hidden="true" style="color:#ff6b6b;--r:3deg">f</span><span aria-hidden="true" style="color:#ff9f45;--r:-2deg">u</span><span aria-hidden="true" style="color:#ffd23f;--r:5deg">l</span><br><span aria-hidden="true" style="color:#ff6b6b;--r:-4deg">s</span><span aria-hidden="true" style="color:#ff9f45;--r:3deg">o</span><span aria-hidden="true" style="color:#ffd23f;--r:-2deg">f</span><span aria-hidden="true" style="color:#3fc98a;--r:5deg">t</span><span aria-hidden="true" style="color:#37b6f6;--r:-3deg">w</span><span aria-hidden="true" style="color:#8b6cf6;--r:2deg">a</span><span aria-hidden="true" style="color:#ff5fb0;--r:-4deg">r</span><span aria-hidden="true" style="color:#ff6b6b;--r:3deg">e</span><span aria-hidden="true" style="color:#ff9f45;--r:-2deg">.</span></h1>
+      <p class="bio">Crafting web applications and solving real-world problems through elegant code. Oracle Developer at IBSOTECH, studying Software Engineering at the Technical University of Moldova.</p>
+      <div class="btn-row">
+        <a class="btn" style="background:var(--yellow)" href="#projects">See my projects</a>
+        <a class="btn" style="background:#ff9fd0" href="https://github.com/TimurCravtov" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
-
-    <div class="panel s4 tex dossier">
-      <span class="sfx">Case file</span>
-      <dl>
-        <div><dt>Signal</dt><dd>timurcravtov04@gmail.com</dd></div>
-        <div><dt>Hotline</dt><dd>+373 78 472 735</dd></div>
-        <div><dt>Origin</dt><dd>Est. 2004 · Chisinau</dd></div>
-      </dl>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="panel s12 rays job job-now">
-      <span class="caption">Apr 2026 — Present</span>
-      <div class="sfx role">Oracle Developer</div>
-      <div class="org">IBSOTECH</div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Now it's <b>Oracle</b> — and it pays the bills!</div>
+    <aside class="friends card bg-blue">
+      <div class="say">
+        <svg aria-hidden="true"><use href="#kitten"/></svg>
+        <div class="bubble">Meow! This is Timur!</div>
       </div>
-    </div>
-
-    <div class="panel s6 tex job">
-      <span class="caption">Nov 2024 — Apr 2025</span>
-      <div class="sfx role">Intern</div>
-      <div class="org">Moldcell Academy</div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Hello, <b>real</b> code!</div>
+      <div class="say rev">
+        <svg aria-hidden="true" viewBox="0 0 150 110"><use href="#hedgehog"/></svg>
+        <div class="bubble">He builds cool web apps!</div>
       </div>
-    </div>
-
-    <div class="panel s6 hatch job">
-      <span class="caption">Sep 2024</span>
-      <div class="sfx role">Intern</div>
-      <div class="org">Pentalog (Globant)</div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">My first day in the <b>big leagues</b>.</div>
+      <div class="say">
+        <svg aria-hidden="true" style="--c1:#d6d6e4;--c2:#9a9ab8"><use href="#kitten"/></svg>
+        <div class="bubble">And he loves Oracle!</div>
       </div>
-    </div>
+    </aside>
+  </section>
 
-    <!-- EDUCATION -->
-    <div class="panel s12">
-      <span class="caption" style="margin-bottom:1rem">Chapter 2 — The training arc</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble">And where did you <b>learn</b> all this?</div>
+  <section class="profile card bg-yellow">
+    <div><dt>Mail me</dt><dd>timurcravtov04@gmail.com</dd></div>
+    <div><dt>Call me</dt><dd>+373 78 472 735</dd></div>
+    <div><dt>Born</dt><dd>2004 · Chisinau, Moldova</dd></div>
+  </section>
+
+  <section id="experience">
+    <div class="section-title"><svg aria-hidden="true"><use href="#star"/></svg><h2 class="title t-red">Experience</h2></div>
+    <div class="exp">
+      <div class="job card bg-red">
+        <span class="now" aria-hidden="true">NOW!</span>
+        <div class="role">Oracle Developer</div><div class="org">IBSOTECH</div>
+        <span class="date">Apr 2026 — Present</span>
       </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble"><b>B.Sc. Software Engineering</b> — Technical University of Moldova. 2023 to present, still going!</div>
+      <div class="job card bg-orange">
+        <div class="role">Intern</div><div class="org">Moldcell Academy</div>
+        <span class="date">Nov 2024 — Apr 2025</span>
+      </div>
+      <div class="job card bg-green">
+        <div class="role">Intern</div><div class="org">Pentalog (Globant)</div>
+        <span class="date">Sep 2024</span>
+      </div>
+      <div class="job card bg-purple">
+        <div class="role">B.Sc. Software Engineering</div><div class="org">Technical University of Moldova</div>
+        <span class="date">2023 — Present</span>
       </div>
     </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <a class="panel s6 tex project" href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener">
-      <span class="go">GitHub ↗</span>
-      <h3 class="sfx">MăiWai<small>Travel Buddy Finder</small></h3>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">A platform for finding travel companions — React + Tailwind frontend, Spring Boot backend.</div>
-      </div>
-      <div class="tags"><span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">Spring Boot</span></div>
-    </a>
-
-    <a class="panel s6 hatch project" href="https://github.com/aionlang/aion" target="_blank" rel="noopener">
-      <span class="go">GitHub ↗</span>
-      <h3 class="sfx">Aion<small>A DSL for iCalendar</small></h3>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">A domain-specific language for managing .ics files, with an npm package and CLI tools.</div>
-      </div>
-      <div class="tags"><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">DSL</span></div>
-    </a>
-
-    <a class="panel s12 rays project project-wide" href="https://github.com/WalrusYours/WalrusCore" target="_blank" rel="noopener">
-      <span class="go">GitHub ↗</span>
-      <h3 class="sfx">WALRUS<small>Weight And Liberty-based Recommendation Utility System</small></h3>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">A recommendation engine you adapt to your platform with a <b>YAML schema</b>. Users get a few knobs to re-weight the ranking, and every result comes with the reasons it was shown.</div>
-      </div>
-      <div class="tags"><span class="tag">Go</span><span class="tag">Neo4j</span><span class="tag">Docker</span><span class="tag">YAML</span></div>
-    </a>
-
-    <!-- SKILLS -->
-    <div class="panel s12 rays">
-      <span class="caption" style="margin-bottom:1rem">Chapter 3 — The arsenal</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble">What's in your <b>toolbox</b>?</div>
-      </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Take a look!</div>
-      </div>
-      <div class="stickers">
-        <span class="sticker">Java</span>
-        <span class="sticker">JavaScript</span>
-        <span class="sticker">TypeScript</span>
-        <span class="sticker">Python</span>
-        <span class="sticker">PostgreSQL</span>
-        <span class="sticker">Oracle</span>
-        <span class="sticker">Git</span>
-        <span class="sticker">Docker</span>
-        <span class="sticker">React</span>
-      </div>
+  <section id="projects">
+    <div class="section-title"><svg aria-hidden="true"><use href="#heart"/></svg><h2 class="title t-blue">Projects</h2></div>
+    <div class="projects">
+      <a class="project card bg-blue" href="https://github.com/WalrusYours/WalrusCore" target="_blank" rel="noopener">
+        <span class="go">↗</span>
+        <svg class="pet" aria-hidden="true" viewBox="0 0 150 110"><use href="#hedgehog"/></svg>
+        <h3>WALRUS</h3>
+        <p>Weight And Liberty-based Recommendation Utility System. A recommendation engine you adapt with a YAML schema: users re-weight the ranking and every result explains why it was shown.</p>
+        <div class="tags"><span class="tag">Go</span><span class="tag">Neo4j</span><span class="tag">Docker</span><span class="tag">YAML</span></div>
+      </a>
+      <a class="project card bg-pink" href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener">
+        <span class="go">↗</span>
+        <svg class="pet" aria-hidden="true"><use href="#kitten"/></svg>
+        <h3>MăiWai — Travel Buddy Finder</h3>
+        <p>A platform for finding travel companions with a React + Tailwind frontend and Spring Boot backend.</p>
+        <div class="tags"><span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">Spring Boot</span></div>
+      </a>
+      <a class="project card bg-green" href="https://github.com/aionlang/aion" target="_blank" rel="noopener">
+        <span class="go">↗</span>
+        <svg class="pet" aria-hidden="true" style="--c1:#d6d6e4;--c2:#9a9ab8"><use href="#kitten"/></svg>
+        <h3>Aion — DSL for iCalendar</h3>
+        <p>A domain-specific language for managing .ics files with npm package and CLI tools.</p>
+        <div class="tags"><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">DSL</span></div>
+      </a>
     </div>
+  </section>
 
-    <!-- INTERESTS -->
-    <div class="panel s12 tex">
-      <span class="caption" style="margin-bottom:1rem">Meanwhile, off duty…</span>
-      <div class="line right" style="flex-direction:row; align-items:flex-end">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="dream">
-          <span class="dots" aria-hidden="true"><i></i><i></i></span>
-          <span class="cloud"><i class="fas fa-palette"></i> Art</span>
-          <span class="cloud"><i class="fas fa-book"></i> Books</span>
-          <span class="cloud"><i class="fas fa-film"></i> Movies</span>
-          <span class="cloud"><i class="fas fa-headphones"></i> Music</span>
-          <span class="cloud"><i class="fas fa-gamepad"></i> Games</span>
+  <section id="skills">
+    <div class="section-title"><svg aria-hidden="true"><use href="#paw"/></svg><h2 class="title t-purple">Skills &amp; hobbies</h2></div>
+    <div class="two">
+      <div class="panel card bg-yellow">
+        <div class="bubbles">
+          <span class="ball">Java</span><span class="ball">JavaScript</span><span class="ball">TypeScript</span>
+          <span class="ball">Python</span><span class="ball">PostgreSQL</span><span class="ball">Oracle</span>
+          <span class="ball">Git</span><span class="ball">Docker</span><span class="ball">React</span>
+        </div>
+      </div>
+      <div class="panel card bg-pink">
+        <div class="bubbles">
+          <span class="ball">Art</span><span class="ball">Books</span><span class="ball">Movies</span>
+          <span class="ball">Music</span><span class="ball">Games</span>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- CONNECT -->
-    <div class="panel s12">
-      <span class="caption" style="margin-bottom:1rem">Chapter 4 — Send a signal</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble">How do I <b>reach</b> you?</div>
-      </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Pick a <b>channel</b> — I'll answer!</div>
-      </div>
-      <div class="signals">
-        <a class="signal" href="https://t.me/timur_cravtov" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i> Telegram</a>
-        <a class="signal" href="https://github.com/TimurCravtov" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
-        <a class="signal" href="https://www.linkedin.com/in/timurcravtov/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a class="signal" href="https://www.facebook.com/timurcravtov/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i> Facebook</a>
-        <a class="signal" href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" rel="noopener" aria-label="Goodreads"><i class="fab fa-goodreads"></i> Goodreads</a>
+  <section id="contact">
+    <div class="section-title"><svg aria-hidden="true"><use href="#heart"/></svg><h2 class="title t-pink">Say hi!</h2></div>
+    <div class="contact card bg-green">
+      <svg class="pal" aria-hidden="true" viewBox="0 0 150 110"><use href="#hedgehog"/></svg>
+      <div class="links">
+        <a class="social" href="https://t.me/timur_cravtov" target="_blank" rel="noopener"><i class="fab fa-telegram"></i> Telegram</a>
+        <a class="social" href="https://github.com/TimurCravtov" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+        <a class="social" href="https://www.linkedin.com/in/timurcravtov/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a class="social" href="https://www.facebook.com/timurcravtov/" target="_blank" rel="noopener"><i class="fab fa-facebook"></i> Facebook</a>
+        <a class="social" href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" rel="noopener"><i class="fab fa-goodreads"></i> Goodreads</a>
       </div>
     </div>
+  </section>
 
-    <!-- FINALE -->
-    <div class="panel s12 finale">
-      <div class="sfx">To be continued…</div>
-      <small>© 2026 Timur Cravtov · Chisinau, Moldova</small>
-    </div>
-
-  </div>
 </main>
-
+<footer>
+  <svg class="hog" aria-hidden="true" viewBox="0 0 150 110"><use href="#hedgehog"/></svg>
+  <div>© 2026 Timur Cravtov · Chisinau, Moldova · made with love · 0+</div>
+</footer>
+</div>
 </body>
 </html>
