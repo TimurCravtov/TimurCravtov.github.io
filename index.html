@@ -5,21 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Building thoughtful web applications. Software engineer studying at the Technical University of Moldova.">
 <meta name="author" content="Timur Cravtov">
-<meta name="keywords" content="Software Engineer, Web Developer, Java, JavaScript, TypeScript, Python, PostgreSQL, Docker, React">
+<meta name="keywords" content="Software Engineer, Web Developer, Oracle, Java, JavaScript, TypeScript, Python, PostgreSQL, Docker, React">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#0c0c0c">
+<meta name="theme-color" content="#0b0b0b">
 <title>Timur Cravtov</title>
 <!-- Open Graph -->
 <meta property="og:title" content="Timur Cravtov">
 <meta property="og:description" content="Building thoughtful web applications.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="/assets/profile-photo.gif">
-<meta property="og:image:alt" content="Timur Cravtov">
 <!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Timur Cravtov">
 <meta name="twitter:description" content="Building thoughtful web applications.">
-<meta name="twitter:image" content="/assets/profile-photo.gif">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -36,459 +33,490 @@
 <link rel="icon" type="image/x-icon" href="/assets/web.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --ink:     #f0f0ee;
-  --ink-2:   #d4d4d4;
-  --ink-3:   #aaaaaa;
-  --mid:     #777777;
-  --pale:    #444444;
-  --rule:    #242424;
-  --paper:   #0c0c0c;
-  --white:   #141414;
+  --ink:   #0b0b0b;
+  --paper: #ffffff;
+  --gray:  #e4e4e4;
+  --edge:  5px solid var(--ink);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Instrument Sans', sans-serif;
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--ink);
+  background-color: #f2f2f2;
+  background-image: radial-gradient(rgba(0,0,0,0.16) 1.2px, transparent 1.5px);
+  background-size: 10px 10px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--ink); color: var(--paper); }
+
+/* ── MASTHEAD ───────────────────────────────────────────────── */
+.masthead { background: var(--ink); color: var(--paper); border-bottom: 5px double var(--paper); }
+.masthead-inner {
+  max-width: 1000px; margin: 0 auto; padding: 0.55rem 1.25rem;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'Bangers', cursive; letter-spacing: 0.1em;
+}
+.masthead .logo { font-size: 1.6rem; }
+.masthead nav { display: flex; gap: 1.2rem; font-size: 1.1rem; }
+.masthead nav a { border-bottom: 2px solid transparent; }
+.masthead nav a:hover { border-bottom-color: var(--paper); }
+
+/* ── PAGE ───────────────────────────────────────────────────── */
+.sheet {
+  max-width: 1000px;
+  margin: 1.75rem auto 3rem;
+  padding: 14px;
+  background: var(--paper);
+  border: 6px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+}
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+.s4 { grid-column: span 4; } .s6 { grid-column: span 6; }
+.s8 { grid-column: span 8; } .s12 { grid-column: span 12; }
+
+.panel {
+  position: relative;
+  border: var(--edge);
+  background: var(--paper);
+  padding: 1.25rem;
+  overflow: hidden;
+}
+.panel > * { position: relative; z-index: 1; }
+.panel.tex::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background-image: radial-gradient(var(--ink) 1.3px, transparent 1.6px);
+  background-size: 9px 9px;
+  opacity: 0.13;
+}
+.panel.rays::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background: repeating-conic-gradient(from 0deg at 85% 50%, rgba(0,0,0,0.09) 0deg 4deg, transparent 4deg 11deg);
+}
+.panel.hatch::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(0,0,0,0.16) 7px 8px);
+}
+
+/* ── LETTERING ──────────────────────────────────────────────── */
+.caption {
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-size: 1.05rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
   background: var(--paper);
   color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  cursor: default;
+  border: 3px solid var(--ink);
+  padding: 0.1rem 0.75rem;
+  box-shadow: 3px 3px 0 var(--ink);
 }
-
-a { color: inherit; text-decoration: none; }
-::selection { background: var(--ink); color: var(--white); }
-
-/* ── NOISE GRAIN overlay ─────────────────────────────────────── */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 128px;
-}
-
-/* ── HEADER ─────────────────────────────────────────────────── */
-header {
-  position: sticky; top: 0; z-index: 90;
-  background: rgba(12,12,12,0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--rule);
-}
-.header-inner {
-  max-width: 860px; margin: 0 auto;
-  padding: 0 2.5rem;
-  height: 52px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-nav { display: flex; gap: 2rem; }
-nav a {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
+.sfx {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
   text-transform: uppercase;
-  color: var(--mid);
-  transition: color 0.2s;
-}
-nav a:hover { color: var(--ink); }
-
-/* ── MAIN ───────────────────────────────────────────────────── */
-main { max-width: 860px; margin: 0 auto; padding: 0 2.5rem 8rem; }
-
-/* ── HERO ───────────────────────────────────────────────────── */
-.hero {
-  padding: 5rem 0 4rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
-  align-items: end;
-  border-bottom: 1px solid var(--rule);
-}
-.hero-text {}
-.hero-eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--pale);
-  margin-bottom: 1.25rem;
-}
-.hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.8rem, 5vw, 4.2rem);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: var(--ink);
-  margin-bottom: 1.5rem;
-}
-.hero h1 em {
-  font-style: italic;
-  color: var(--ink-3);
-}
-.hero .bio {
-  font-size: 0.95rem;
-  color: var(--mid);
-  max-width: 420px;
-  line-height: 1.8;
-}
-.hero-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.6rem;
-  padding-bottom: 0.15rem;
-}
-.hero-meta span {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--pale);
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-.avatar {
-  width: 72px; height: 72px;
-  border-radius: 50%;
-  display: block;
-  margin-bottom: 1rem;
-  border: 1.5px solid var(--rule);
-  margin-left: auto;
-  filter: grayscale(100%) brightness(0.85);
-}
-
-/* ── SECTION ───────────────────────────────────────────────── */
-section { padding-top: 3.5rem; }
-.section-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--pale);
-  margin-bottom: 1.5rem;
-}
-
-/* ── TIMELINE ──────────────────────────────────────────────── */
-.timeline { display: flex; flex-direction: column; }
-.tl-item {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: baseline;
-  padding: 1.1rem 0;
-  border-top: 1px solid var(--rule);
-  gap: 2rem;
-  transition: opacity 0.2s;
-}
-.tl-item:hover { opacity: 0.6; }
-.tl-item:last-child { border-bottom: 1px solid var(--rule); }
-.tl-role { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
-.tl-org {
-  font-size: 0.85rem;
-  color: var(--mid);
-  margin-top: 0.15rem;
-}
-.tl-date {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: var(--pale);
-  white-space: nowrap;
   letter-spacing: 0.03em;
+  line-height: 0.95;
 }
 
-/* ── PROJECTS ──────────────────────────────────────────────── */
-.projects { display: flex; flex-direction: column; }
-.project {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
-  gap: 2rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--rule);
-  transition: opacity 0.2s;
-  cursor: pointer;
+/* ── TITLE PANEL ────────────────────────────────────────────── */
+.title-panel {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 2rem 2rem 1.6rem;
+  min-height: 330px;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
 }
-.project:hover { opacity: 0.55; }
-.project:last-child { border-bottom: 1px solid var(--rule); }
-.project h3 {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.15rem;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 0.45rem;
+.title-panel::before {
+  content: ''; position: absolute; inset: 0; z-index: 0;
+  background: repeating-conic-gradient(from 0deg at 72% 55%, rgba(255,255,255,0.22) 0deg 1.2deg, transparent 1.2deg 7deg);
 }
-.project p {
-  font-size: 0.85rem;
-  color: var(--mid);
-  line-height: 1.7;
-  max-width: 500px;
-  margin-bottom: 0.9rem;
+.title-panel h1 {
+  font-size: clamp(3.2rem, 10vw, 7.2rem);
+  transform: rotate(-2deg);
+  transform-origin: left bottom;
+  text-shadow: 5px 5px 0 #444;
 }
-.tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-.tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.05em;
-  color: var(--pale);
-  border: 1px solid var(--rule);
-  padding: 0.2rem 0.55rem;
-  border-radius: 2px;
+.title-panel h1 .out {
+  color: transparent;
+  -webkit-text-stroke: 2.5px var(--paper);
+  text-shadow: none;
 }
-.project-arrow {
+.title-panel .caption { align-self: flex-start; box-shadow: 3px 3px 0 #666; }
+.title-panel .byline { align-self: flex-end; box-shadow: 3px 3px 0 #666; }
+.burst {
+  position: absolute !important; z-index: 2 !important;
+  right: 22px; top: 18px;
+  width: 128px; height: 128px;
+  display: grid; place-items: center;
+  background: var(--paper); color: var(--ink);
+  font-family: 'Bangers', cursive; font-size: 1.7rem; letter-spacing: 0.04em; text-align: center; line-height: 0.95;
+  clip-path: polygon(50% 0, 61% 18%, 82% 8%, 80% 32%, 100% 38%, 84% 54%, 96% 75%, 72% 72%, 66% 96%, 50% 80%, 34% 96%, 28% 72%, 4% 75%, 16% 54%, 0 38%, 20% 32%, 18% 8%, 39% 18%);
+  transform: rotate(10deg);
+}
+
+/* ── CHARACTERS + SPEECH ────────────────────────────────────── */
+.line { display: flex; align-items: center; gap: 1.5rem; margin: 0.4rem 0 1.1rem; }
+.line.right { flex-direction: row-reverse; }
+.line:last-child { margin-bottom: 0; }
+.char { flex: none; width: 104px; height: 122px; display: block; }
+
+.bubble {
+  position: relative;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: 30px;
+  padding: 0.75rem 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   font-size: 1rem;
-  color: var(--pale);
-  padding-top: 0.2rem;
-  transition: transform 0.2s, color 0.2s;
+  max-width: 560px;
 }
-.project:hover .project-arrow { transform: translate(2px,-2px); color: var(--ink); }
+.bubble b { font-family: 'Bangers', cursive; font-weight: 400; font-size: 1.25em; letter-spacing: 0.05em; }
+.bubble::before, .bubble::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; border-style: solid; }
+.line.left .bubble::before  { left: -25px; margin-top: -13px; border-width: 13px 25px 13px 0; border-color: transparent var(--ink) transparent transparent; }
+.line.left .bubble::after   { left: -16px; margin-top: -10px; border-width: 10px 19px 10px 0; border-color: transparent var(--paper) transparent transparent; }
+.line.right .bubble::before { right: -25px; margin-top: -13px; border-width: 13px 0 13px 25px; border-color: transparent transparent transparent var(--ink); }
+.line.right .bubble::after  { right: -16px; margin-top: -10px; border-width: 10px 0 10px 19px; border-color: transparent transparent transparent var(--paper); }
 
-/* ── SKILLS ────────────────────────────────────────────────── */
-.skills {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-  gap: 1px;
-  border: 1px solid var(--rule);
-  overflow: hidden;
-  border-radius: 4px;
-}
-.skill {
-  padding: 1rem 1.25rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  color: var(--mid);
-  background: var(--white);
-  border: none;
-  transition: background 0.18s, color 0.18s;
-}
-.skill:hover { background: var(--ink); color: var(--paper); }
-
-/* ── INTERESTS ─────────────────────────────────────────────── */
-.interests {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-.interest {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  color: var(--mid);
-  padding: 0.55rem 1rem;
-  border: 1px solid var(--rule);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  background: var(--white);
-  transition: border-color 0.2s, color 0.2s;
-}
-.interest:hover { border-color: var(--ink); color: var(--ink); }
-.interest i { font-size: 0.75rem; }
-
-/* ── CONNECT ───────────────────────────────────────────────── */
-.social-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-.social-link {
-  width: 42px; height: 42px;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  color: var(--pale);
-  font-size: 0.95rem;
-  background: var(--white);
-  transition: all 0.18s;
-}
-.social-link:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-
-/* ── FOOTER ─────────────────────────────────────────────────── */
-footer {
-  max-width: 860px; margin: 0 auto;
-  padding: 2rem 2.5rem;
-  border-top: 1px solid var(--rule);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-footer span {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--pale);
-  letter-spacing: 0.06em;
+/* ── DOSSIER ────────────────────────────────────────────────── */
+.dossier { display: flex; flex-direction: column; gap: 0.8rem; justify-content: center; }
+.dossier .sfx { font-size: 2rem; }
+.dossier dl { display: grid; gap: 0.55rem; }
+.dossier dt { font-family: 'Bangers', cursive; font-weight: 400; letter-spacing: 0.1em; font-size: 0.9rem; }
+.dossier dd {
+  background: var(--paper); border: 3px solid var(--ink); padding: 0.1rem 0.6rem;
+  font-size: 0.9rem; word-break: break-word;
 }
 
-/* ── ANIMATIONS ─────────────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ── EXPERIENCE / EDUCATION ─────────────────────────────────── */
+.job { display: flex; flex-direction: column; gap: 0.9rem; min-height: 270px; }
+.job .caption, .project .caption { align-self: flex-start; }
+.job .role { font-size: 3.4rem; }
+.job-now { min-height: 0; }
+.job .org {
+  align-self: flex-start;
+  background: var(--ink); color: var(--paper);
+  font-family: 'Bangers', cursive; letter-spacing: 0.08em; font-size: 1.25rem;
+  padding: 0.1rem 0.8rem; transform: rotate(-1.5deg);
 }
-.hero-text   { animation: fadeUp 0.7s cubic-bezier(.22,.68,0,1.0) both; }
-.hero-meta   { animation: fadeUp 0.7s 0.1s cubic-bezier(.22,.68,0,1.0) both; }
-section      { animation: fadeUp 0.6s 0.2s cubic-bezier(.22,.68,0,1.0) both; }
+.job .line { margin-top: auto; }
+.job .char { width: 84px; height: 98px; }
+
+/* ── PROJECTS ───────────────────────────────────────────────── */
+.project { display: flex; flex-direction: column; gap: 0.9rem; min-height: 320px; transition: background 0.15s; }
+.project h3 { font-size: 2.3rem; }
+.project h3 small { display: block; font-size: 1.1rem; letter-spacing: 0.1em; margin-top: 0.35rem; }
+.project .line { margin: 0.2rem 0; }
+.project .char { width: 78px; height: 92px; }
+.project .bubble { font-size: 0.88rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: auto; }
+.tag {
+  font-family: 'Bangers', cursive; letter-spacing: 0.08em; font-size: 0.95rem;
+  background: var(--ink); color: var(--paper); padding: 0 0.65rem;
+}
+.go {
+  position: absolute !important; right: 12px; top: 10px;
+  font-family: 'Bangers', cursive; font-size: 1.3rem; letter-spacing: 0.06em;
+  border: 3px solid var(--ink); background: var(--paper); padding: 0 0.6rem;
+  transform: rotate(4deg); transition: transform 0.15s;
+}
+.project:hover .go { transform: rotate(-3deg) scale(1.12); }
+.project:hover { box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 7px var(--ink); }
+
+/* ── SKILLS ─────────────────────────────────────────────────── */
+.stickers { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 0.4rem 0 1.2rem; }
+.sticker {
+  font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 0.07em;
+  border: 3px solid var(--ink); padding: 0.1rem 1rem;
+  background: var(--paper); box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.12s;
+}
+.sticker:nth-child(even) { background: var(--ink); color: var(--paper); box-shadow: 4px 4px 0 #888; }
+.sticker:nth-child(3n) { transform: rotate(-2deg); }
+.sticker:nth-child(3n+1) { transform: rotate(1.5deg); }
+.sticker:hover { transform: rotate(0) scale(1.1); }
+
+/* ── INTERESTS (thought clouds) ─────────────────────────────── */
+.dream { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+.dots { display: flex; align-items: flex-end; gap: 6px; }
+.dots i { display: block; border: 3px solid var(--ink); border-radius: 50%; background: var(--paper); }
+.dots i:nth-child(1) { width: 10px; height: 10px; } .dots i:nth-child(2) { width: 18px; height: 18px; }
+.cloud {
+  border: 3px solid var(--ink); border-radius: 999px; background: var(--paper);
+  padding: 0.55rem 1.4rem;
+  font-family: 'Bangers', cursive; font-size: 1.35rem; letter-spacing: 0.07em;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  transition: transform 0.12s, background 0.12s, color 0.12s;
+}
+.cloud:nth-of-type(odd)  { transform: rotate(-2deg); }
+.cloud:nth-of-type(even) { transform: rotate(2deg); }
+.cloud:hover { background: var(--ink); color: var(--paper); transform: rotate(0) scale(1.08); }
+
+/* ── CONNECT ────────────────────────────────────────────────── */
+.signals { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
+.signal {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: 'Bangers', cursive; font-size: 1.25rem; letter-spacing: 0.08em;
+  border: 3px solid var(--ink); background: var(--paper); padding: 0.2rem 1rem;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.12s, box-shadow 0.12s, background 0.12s, color 0.12s;
+}
+.signal:hover { background: var(--ink); color: var(--paper); transform: translate(3px,3px); box-shadow: 1px 1px 0 var(--ink); }
+
+/* ── FINALE ─────────────────────────────────────────────────── */
+.finale {
+  background: var(--ink); color: var(--paper); text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1.6rem 1rem;
+}
+.finale .sfx { font-size: clamp(2.2rem, 7vw, 4rem); text-shadow: 4px 4px 0 #555; }
+.finale small { font-family: 'Bangers', cursive; letter-spacing: 0.12em; font-size: 1rem; color: #bbb; }
+
+/* ── MOTION ─────────────────────────────────────────────────── */
+@keyframes pop { 0% { opacity: 0; transform: scale(0.92); } 100% { opacity: 1; transform: scale(1); } }
+.panel { animation: pop 0.4s ease-out both; }
+.grid > .panel:nth-child(2) { animation-delay: 0.08s; } .grid > .panel:nth-child(3) { animation-delay: 0.14s; }
+@media (prefers-reduced-motion: reduce) { .panel { animation: none; } }
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .header-inner { padding: 0 1.25rem; }
-  main { padding: 0 1.25rem 6rem; }
-  .hero { grid-template-columns: 1fr; padding: 3rem 0 2.5rem; }
-  .hero-meta { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
-  .avatar { margin: 0; width: 60px; height: 60px; }
-  .hero h1 { font-size: 2.4rem; }
-  footer { padding: 1.5rem 1.25rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+@media (max-width: 760px) {
+  .s4, .s6, .s8 { grid-column: span 12; }
+  .sheet { margin: 1rem 0.6rem 2rem; padding: 10px; box-shadow: 6px 6px 0 var(--ink); }
+  .grid { gap: 10px; }
+  .panel { padding: 1rem; }
+  .title-panel { padding: 1.4rem 1.1rem 1.2rem; min-height: 280px; }
+  .burst { width: 84px; height: 84px; font-size: 1.05rem; right: 8px; top: 8px; }
+  .title-panel .caption:not(.byline) { max-width: calc(100% - 96px); }
+  .char { width: 74px; height: 87px; }
+  .line { gap: 1.1rem; }
+  .bubble { font-size: 0.9rem; padding: 0.65rem 0.9rem; }
+  .masthead .logo { font-size: 1.25rem; }
+  .masthead nav { font-size: 1rem; gap: 0.8rem; }
+  .job .role { font-size: 2.8rem; }
 }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
+<!-- Characters (ink drawings reused below) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="timur" viewBox="0 0 120 140">
+      <path d="M8 140 C8 108 34 98 60 98 C86 98 112 108 112 140 Z" fill="#0b0b0b"/>
+      <rect x="50" y="82" width="20" height="20" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
+      <path d="M43 99 L60 124 L77 99 Z" fill="#fff" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="60" cy="56" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
+      <path d="M31 54 C26 22 52 10 72 15 C94 20 96 42 90 56 C86 42 74 34 58 36 C46 38 36 44 31 54 Z" fill="#0b0b0b"/>
+      <path d="M50 15 L60 2 L70 16 Z" fill="#0b0b0b"/>
+      <circle cx="48" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
+      <circle cx="72" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
+      <path d="M57 58 L63 58" stroke="#0b0b0b" stroke-width="3"/>
+      <circle cx="49" cy="59" r="2.6" fill="#0b0b0b"/><circle cx="73" cy="59" r="2.6" fill="#0b0b0b"/>
+      <path d="M50 77 Q60 85 70 77" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="visitor" viewBox="0 0 120 140">
+      <path d="M6 140 C6 106 34 98 60 98 C86 98 114 106 114 140 Z" fill="#0b0b0b"/>
+      <path d="M44 98 L54 128 M76 98 L66 128" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <rect x="50" y="84" width="20" height="18" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
+      <ellipse cx="60" cy="62" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
+      <path d="M30 44 C28 14 92 14 90 44 Z" fill="#0b0b0b"/>
+      <path d="M24 44 L100 44 L110 50 L24 50 Z" fill="#0b0b0b"/>
+      <path d="M40 57 L55 60 M65 60 L80 57" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="48" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
+      <circle cx="72" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
+      <circle cx="50" cy="69" r="3.2" fill="#0b0b0b"/><circle cx="74" cy="69" r="3.2" fill="#0b0b0b"/>
+      <ellipse cx="60" cy="86" rx="5" ry="6" fill="#0b0b0b"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="masthead">
+  <div class="masthead-inner">
     <div class="logo">Timur Cravtov</div>
     <nav>
       <a href="mailto:timurcravtov04@gmail.com">Email</a>
-      <a href="https://github.com/TimurCravtov" target="_blank">GitHub</a>
+      <a href="https://github.com/TimurCravtov" target="_blank" rel="noopener">GitHub</a>
     </nav>
   </div>
 </header>
 
-<main>
+<main class="sheet">
+  <div class="grid">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-text">
-      <p class="hero-eyebrow">Software Engineer · Chisinau, Moldova</p>
-      <h1>Building<br><em>thoughtful</em><br>software.</h1>
-      <p class="bio">Crafting web applications and solving real-world problems through elegant code. Currently studying Software Engineering at the Technical University of Moldova.</p>
+    <!-- TITLE -->
+    <div class="panel title-panel s12">
+      <span class="burst" aria-hidden="true">Issue<br>#2026</span>
+      <span class="caption">Software Engineer · Chisinau, Moldova</span>
+      <h1 class="sfx">Building<br><span class="out">thoughtful</span><br>software.</h1>
+      <span class="caption byline">Written &amp; drawn by Timur Cravtov</span>
     </div>
-    <div class="hero-meta">
-      <img src="assets/profile-photo.gif" alt="Timur Cravtov" class="avatar">
-      <span>timurcravtov04@gmail.com</span>
-      <span>+373 78 472 735</span>
-      <span>Est. 2004</span>
+
+    <!-- INTRO -->
+    <div class="panel s8 rays">
+      <span class="caption" style="margin-bottom:1rem">Chapter 1 — Who goes there?</span>
+      <div class="line left">
+        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
+        <div class="bubble"><b>Who are you?!</b> And what do you do?</div>
+      </div>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">I'm <b>Timur</b>. I craft web applications and solve real-world problems through elegant code. Currently studying Software Engineering at the Technical University of Moldova.</div>
+      </div>
     </div>
+
+    <div class="panel s4 tex dossier">
+      <span class="sfx">Case file</span>
+      <dl>
+        <div><dt>Signal</dt><dd>timurcravtov04@gmail.com</dd></div>
+        <div><dt>Hotline</dt><dd>+373 78 472 735</dd></div>
+        <div><dt>Origin</dt><dd>Est. 2004 · Chisinau</dd></div>
+      </dl>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="panel s12 rays job job-now">
+      <span class="caption">Apr 2026 — Present</span>
+      <div class="sfx role">Oracle Developer</div>
+      <div class="org">IBSOTECH</div>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">Now it's <b>Oracle</b> — and it pays the bills!</div>
+      </div>
+    </div>
+
+    <div class="panel s6 tex job">
+      <span class="caption">Nov 2024 — Apr 2025</span>
+      <div class="sfx role">Intern</div>
+      <div class="org">Moldcell Academy</div>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">Hello, <b>real</b> code!</div>
+      </div>
+    </div>
+
+    <div class="panel s6 hatch job">
+      <span class="caption">Sep 2024</span>
+      <div class="sfx role">Intern</div>
+      <div class="org">Pentalog (Globant)</div>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">My first day in the <b>big leagues</b>.</div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="panel s12">
+      <span class="caption" style="margin-bottom:1rem">Chapter 2 — The training arc</span>
+      <div class="line left">
+        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
+        <div class="bubble">And where did you <b>learn</b> all this?</div>
+      </div>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble"><b>B.Sc. Software Engineering</b> — Technical University of Moldova. 2023 to present, still going!</div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <a class="panel s6 tex project" href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener">
+      <span class="go">GitHub ↗</span>
+      <h3 class="sfx">MăiWai<small>Travel Buddy Finder</small></h3>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">A platform for finding travel companions — React + Tailwind frontend, Spring Boot backend.</div>
+      </div>
+      <div class="tags"><span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">Spring Boot</span></div>
+    </a>
+
+    <a class="panel s6 hatch project" href="https://github.com/aionlang/aion" target="_blank" rel="noopener">
+      <span class="go">GitHub ↗</span>
+      <h3 class="sfx">Aion<small>A DSL for iCalendar</small></h3>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">A domain-specific language for managing .ics files, with an npm package and CLI tools.</div>
+      </div>
+      <div class="tags"><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">DSL</span></div>
+    </a>
+
+    <!-- SKILLS -->
+    <div class="panel s12 rays">
+      <span class="caption" style="margin-bottom:1rem">Chapter 3 — The arsenal</span>
+      <div class="line left">
+        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
+        <div class="bubble">What's in your <b>toolbox</b>?</div>
+      </div>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">Take a look!</div>
+      </div>
+      <div class="stickers">
+        <span class="sticker">Java</span>
+        <span class="sticker">JavaScript</span>
+        <span class="sticker">TypeScript</span>
+        <span class="sticker">Python</span>
+        <span class="sticker">PostgreSQL</span>
+        <span class="sticker">Oracle</span>
+        <span class="sticker">Git</span>
+        <span class="sticker">Docker</span>
+        <span class="sticker">React</span>
+      </div>
+    </div>
+
+    <!-- INTERESTS -->
+    <div class="panel s12 tex">
+      <span class="caption" style="margin-bottom:1rem">Meanwhile, off duty…</span>
+      <div class="line right" style="flex-direction:row; align-items:flex-end">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="dream">
+          <span class="dots" aria-hidden="true"><i></i><i></i></span>
+          <span class="cloud"><i class="fas fa-palette"></i> Art</span>
+          <span class="cloud"><i class="fas fa-book"></i> Books</span>
+          <span class="cloud"><i class="fas fa-film"></i> Movies</span>
+          <span class="cloud"><i class="fas fa-headphones"></i> Music</span>
+          <span class="cloud"><i class="fas fa-gamepad"></i> Games</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECT -->
+    <div class="panel s12">
+      <span class="caption" style="margin-bottom:1rem">Chapter 4 — Send a signal</span>
+      <div class="line left">
+        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
+        <div class="bubble">How do I <b>reach</b> you?</div>
+      </div>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">Pick a <b>channel</b> — I'll answer!</div>
+      </div>
+      <div class="signals">
+        <a class="signal" href="https://t.me/timur_cravtov" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i> Telegram</a>
+        <a class="signal" href="https://github.com/TimurCravtov" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
+        <a class="signal" href="https://www.linkedin.com/in/timurcravtov/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a class="signal" href="https://www.facebook.com/timurcravtov/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i> Facebook</a>
+        <a class="signal" href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" rel="noopener" aria-label="Goodreads"><i class="fab fa-goodreads"></i> Goodreads</a>
+      </div>
+    </div>
+
+    <!-- FINALE -->
+    <div class="panel s12 finale">
+      <div class="sfx">To be continued…</div>
+      <small>© 2026 Timur Cravtov · Chisinau, Moldova</small>
+    </div>
+
   </div>
-
-  <!-- EXPERIENCE -->
-  <section>
-    <p class="section-label">Experience</p>
-    <div class="timeline">
-      <div class="tl-item">
-        <div>
-          <div class="tl-role">Intern</div>
-          <div class="tl-org">Moldcell Academy</div>
-        </div>
-        <div class="tl-date">Nov 2024 — Apr 2025</div>
-      </div>
-      <div class="tl-item">
-        <div>
-          <div class="tl-role">Intern</div>
-          <div class="tl-org">Pentalog (Globant)</div>
-        </div>
-        <div class="tl-date">Sep 2024</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section>
-    <p class="section-label">Education</p>
-    <div class="timeline">
-      <div class="tl-item">
-        <div>
-          <div class="tl-role">B.Sc. Software Engineering</div>
-          <div class="tl-org">Technical University of Moldova</div>
-        </div>
-        <div class="tl-date">2023 — Present</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section>
-    <p class="section-label">Projects</p>
-    <div class="projects">
-      <a href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener" class="project">
-        <div>
-          <h3>MăiWai — Travel Buddy Finder</h3>
-          <p>A platform for finding travel companions with a React + Tailwind frontend and Spring Boot backend.</p>
-          <div class="tags">
-            <span class="tag">React</span>
-            <span class="tag">Tailwind</span>
-            <span class="tag">Spring Boot</span>
-          </div>
-        </div>
-        <div class="project-arrow">↗</div>
-      </a>
-      <a href="https://github.com/aionlang/aion" target="_blank" rel="noopener" class="project">
-        <div>
-          <h3>Aion — DSL for iCalendar</h3>
-          <p>A domain-specific language for managing .ics files with npm package and CLI tools.</p>
-          <div class="tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">Java</span>
-            <span class="tag">DSL</span>
-          </div>
-        </div>
-        <div class="project-arrow">↗</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <p class="section-label">Skills</p>
-    <div class="skills">
-      <div class="skill">Java</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">TypeScript</div>
-      <div class="skill">Python</div>
-      <div class="skill">PostgreSQL</div>
-      <div class="skill">Git</div>
-      <div class="skill">Docker</div>
-      <div class="skill">React</div>
-    </div>
-  </section>
-
-  <!-- INTERESTS -->
-  <section>
-    <p class="section-label">Interests</p>
-    <div class="interests">
-      <span class="interest"><i class="fas fa-palette"></i> Art</span>
-      <span class="interest"><i class="fas fa-book"></i> Books</span>
-      <span class="interest"><i class="fas fa-film"></i> Movies</span>
-      <span class="interest"><i class="fas fa-headphones"></i> Music</span>
-      <span class="interest"><i class="fas fa-gamepad"></i> Games</span>
-    </div>
-  </section>
-
-  <!-- CONNECT -->
-  <section>
-    <p class="section-label">Connect</p>
-    <div class="social-row">
-      <a href="https://t.me/timur_cravtov" target="_blank" class="social-link" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
-      <a href="https://github.com/TimurCravtov" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/timurcravtov/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.facebook.com/timurcravtov/" target="_blank" class="social-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" class="social-link" aria-label="Goodreads"><i class="fab fa-goodreads"></i></a>
-    </div>
-  </section>
-
 </main>
-
-<footer>
-  <span>© 2026 Timur Cravtov</span>
-  <span>Chisinau, Moldova</span>
-</footer>
 
 </body>
 </html>
