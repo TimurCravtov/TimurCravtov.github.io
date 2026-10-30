@@ -216,6 +216,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── PROJECTS ───────────────────────────────────────────────── */
 .project { display: flex; flex-direction: column; gap: 0.9rem; min-height: 320px; transition: background 0.15s; }
+.project-wide { min-height: 0; }
 .project h3 { font-size: 2.3rem; }
 .project h3 small { display: block; font-size: 1.1rem; letter-spacing: 0.1em; margin-top: 0.35rem; }
 .project .line { margin: 0.2rem 0; }
@@ -316,9 +317,11 @@ a { color: inherit; text-decoration: none; }
       <path d="M8 140 C8 108 34 98 60 98 C86 98 112 108 112 140 Z" fill="#0b0b0b"/>
       <rect x="50" y="82" width="20" height="20" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
       <path d="M43 99 L60 124 L77 99 Z" fill="#fff" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="32" cy="62" rx="5" ry="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
+      <ellipse cx="88" cy="62" rx="5" ry="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
       <ellipse cx="60" cy="56" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M31 54 C26 22 52 10 72 15 C94 20 96 42 90 56 C86 42 74 34 58 36 C46 38 36 44 31 54 Z" fill="#0b0b0b"/>
-      <path d="M50 15 L60 2 L70 16 Z" fill="#0b0b0b"/>
+      <path d="M31 56 C24 26 46 12 66 12 C90 13 98 38 89 58 C87 46 80 40 72 39 C64 46 50 40 44 47 C38 49 33 52 31 56 Z" fill="#0b0b0b"/>
+      <path d="M70 14 C76 8 86 10 90 18" fill="none" stroke="#0b0b0b" stroke-width="4" stroke-linecap="round"/>
       <circle cx="48" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
       <circle cx="72" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
       <path d="M57 58 L63 58" stroke="#0b0b0b" stroke-width="3"/>
@@ -330,8 +333,8 @@ a { color: inherit; text-decoration: none; }
       <path d="M44 98 L54 128 M76 98 L66 128" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
       <rect x="50" y="84" width="20" height="18" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
       <ellipse cx="60" cy="62" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M30 44 C28 14 92 14 90 44 Z" fill="#0b0b0b"/>
-      <path d="M24 44 L100 44 L110 50 L24 50 Z" fill="#0b0b0b"/>
+      <path d="M28 74 C16 14 104 14 92 74 L84 74 C84 52 78 42 60 40 C42 42 36 52 36 74 Z" fill="#0b0b0b"/>
+      <path d="M36 50 C48 44 70 44 84 50 C76 38 44 38 36 50 Z" fill="#0b0b0b"/>
       <path d="M40 57 L55 60 M65 60 L80 57" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
       <circle cx="48" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
       <circle cx="72" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
@@ -447,6 +450,16 @@ a { color: inherit; text-decoration: none; }
         <div class="bubble">A domain-specific language for managing .ics files, with an npm package and CLI tools.</div>
       </div>
       <div class="tags"><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">DSL</span></div>
+    </a>
+
+    <a class="panel s12 rays project project-wide" href="https://github.com/WalrusYours/WalrusCore" target="_blank" rel="noopener">
+      <span class="go">GitHub ↗</span>
+      <h3 class="sfx">WALRUS<small>Weight And Liberty-based Recommendation Utility System</small></h3>
+      <div class="line right">
+        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
+        <div class="bubble">A recommendation engine you adapt to your platform with a <b>YAML schema</b>. Users get a few knobs to re-weight the ranking, and every result comes with the reasons it was shown.</div>
+      </div>
+      <div class="tags"><span class="tag">Go</span><span class="tag">Neo4j</span><span class="tag">Docker</span><span class="tag">YAML</span></div>
     </a>
 
     <!-- SKILLS -->
