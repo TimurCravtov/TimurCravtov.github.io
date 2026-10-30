@@ -7,7 +7,7 @@
 <meta name="author" content="Timur Cravtov">
 <meta name="keywords" content="Software Engineer, Web Developer, Oracle, Java, JavaScript, TypeScript, Python, PostgreSQL, Docker, React">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="theme-color" content="#05070f">
 <title>Timur Cravtov</title>
 <!-- Open Graph -->
 <meta property="og:title" content="Timur Cravtov">
@@ -35,503 +35,370 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --ink:   #0b0b0b;
-  --paper: #ffffff;
-  --gray:  #e4e4e4;
-  --edge:  5px solid var(--ink);
+  --bg:     #05070f;
+  --text:   rgba(255,255,255,0.92);
+  --muted:  rgba(255,255,255,0.62);
+  --faint:  rgba(255,255,255,0.38);
+  --line:   rgba(255,255,255,0.14);
+  --cyan:   #22d3ee;
+  --violet: #8b5cf6;
+  --blue:   #3b82f6;
+  --radius: 26px;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: var(--ink);
-  background-color: #f2f2f2;
-  background-image: radial-gradient(rgba(0,0,0,0.16) 1.2px, transparent 1.5px);
-  background-size: 10px 10px;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 a { color: inherit; text-decoration: none; }
-::selection { background: var(--ink); color: var(--paper); }
+::selection { background: rgba(34,211,238,0.35); color: #fff; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 
-/* ── MASTHEAD ───────────────────────────────────────────────── */
-.masthead { background: var(--ink); color: var(--paper); border-bottom: 5px double var(--paper); }
-.masthead-inner {
-  max-width: 1000px; margin: 0 auto; padding: 0.55rem 1.25rem;
-  display: flex; justify-content: space-between; align-items: center;
-  font-family: 'Bangers', cursive; letter-spacing: 0.1em;
+/* ── BACKDROP (what the glass refracts) ─────────────────────── */
+.backdrop { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: radial-gradient(120% 90% at 50% 0%, #0b1224 0%, var(--bg) 60%); }
+.orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.85; will-change: transform; }
+.orb.a { width: 46vmax; height: 46vmax; left: -10vmax; top: -12vmax; background: radial-gradient(circle, var(--cyan), transparent 65%); animation: drift1 26s ease-in-out infinite alternate; }
+.orb.b { width: 52vmax; height: 52vmax; right: -16vmax; top: 18vh; background: radial-gradient(circle, var(--violet), transparent 65%); animation: drift2 32s ease-in-out infinite alternate; }
+.orb.c { width: 40vmax; height: 40vmax; left: 20vw; bottom: -18vmax; background: radial-gradient(circle, var(--blue), transparent 65%); animation: drift3 28s ease-in-out infinite alternate; }
+.orb.d { width: 22vmax; height: 22vmax; right: 24vw; top: -6vmax; background: radial-gradient(circle, #e879f9, transparent 65%); opacity: 0.45; animation: drift2 22s ease-in-out infinite alternate-reverse; }
+@keyframes drift1 { to { transform: translate(14vw, 18vh) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(-16vw, -10vh) scale(0.9); } }
+@keyframes drift3 { to { transform: translate(10vw, -16vh) scale(1.2); } }
+.grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 85%);
+          mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 85%);
 }
-.masthead .logo { font-size: 1.6rem; }
-.masthead nav { display: flex; gap: 1.2rem; font-size: 1.1rem; }
-.masthead nav a { border-bottom: 2px solid transparent; }
-.masthead nav a:hover { border-bottom-color: var(--paper); }
-
-/* ── PAGE ───────────────────────────────────────────────────── */
-.sheet {
-  max-width: 1000px;
-  margin: 1.75rem auto 3rem;
-  padding: 14px;
-  background: var(--paper);
-  border: 6px solid var(--ink);
-  box-shadow: 10px 10px 0 var(--ink);
+.noise {
+  position: absolute; inset: 0; opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
-.s4 { grid-column: span 4; } .s6 { grid-column: span 6; }
-.s8 { grid-column: span 8; } .s12 { grid-column: span 12; }
 
-.panel {
+/* ── GLASS ──────────────────────────────────────────────────── */
+.glass {
   position: relative;
-  border: var(--edge);
-  background: var(--paper);
-  padding: 1.25rem;
+  background: linear-gradient(140deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 55%, rgba(255,255,255,0.07) 100%);
+  -webkit-backdrop-filter: blur(26px) saturate(165%);
+          backdrop-filter: blur(26px) saturate(165%);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,0.38),
+    inset 0 1px 0 rgba(255,255,255,0.32),
+    inset 0 -1px 0 rgba(255,255,255,0.05),
+    inset 0 0 40px rgba(255,255,255,0.025);
   overflow: hidden;
+  isolation: isolate;
 }
-.panel > * { position: relative; z-index: 1; }
-.panel.tex::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background-image: radial-gradient(var(--ink) 1.3px, transparent 1.6px);
-  background-size: 9px 9px;
-  opacity: 0.13;
+.glass::before {  /* specular sheen along the top edge */
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.16), transparent 38%);
+  opacity: 0.55;
 }
-.panel.rays::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background: repeating-conic-gradient(from 0deg at 85% 50%, rgba(0,0,0,0.09) 0deg 4deg, transparent 4deg 11deg);
+.glass::after {   /* light that follows the cursor */
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255,255,255,0.14), transparent 55%);
+  opacity: 0; transition: opacity 0.3s;
 }
-.panel.hatch::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background: repeating-linear-gradient(135deg, transparent 0 7px, rgba(0,0,0,0.16) 7px 8px);
+.glass:hover::after { opacity: 1; }
+
+/* ── LAYOUT ─────────────────────────────────────────────────── */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
+main { padding: 7.5rem 0 4rem; display: grid; gap: 1.5rem; }
+
+/* ── NAV ────────────────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+  z-index: 50; width: min(760px, calc(100% - 2rem));
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.55rem 0.7rem 0.55rem 1.2rem;
+  border-radius: 999px;
+}
+.nav .logo { font-weight: 700; letter-spacing: 0.02em; }
+.nav .logo span { color: var(--cyan); }
+.nav ul { list-style: none; display: flex; gap: 0.2rem; }
+.nav a.link {
+  display: block; padding: 0.4rem 0.85rem; border-radius: 999px;
+  font-size: 0.85rem; color: var(--muted); transition: background 0.2s, color 0.2s;
+}
+.nav a.link:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.nav a.cta {
+  padding: 0.45rem 1rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600;
+  background: linear-gradient(135deg, rgba(34,211,238,0.35), rgba(139,92,246,0.35));
+  border: 1px solid rgba(255,255,255,0.25); box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
 }
 
-/* ── LETTERING ──────────────────────────────────────────────── */
-.caption {
-  display: inline-block;
-  font-family: 'Bangers', cursive;
-  font-size: 1.05rem;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  background: var(--paper);
-  color: var(--ink);
-  border: 3px solid var(--ink);
-  padding: 0.1rem 0.75rem;
-  box-shadow: 3px 3px 0 var(--ink);
-}
-.sfx {
-  font-family: 'Bangers', cursive;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  line-height: 0.95;
-}
-
-/* ── TITLE PANEL ────────────────────────────────────────────── */
-.title-panel {
-  background: var(--ink);
-  color: var(--paper);
-  padding: 2rem 2rem 1.6rem;
-  min-height: 330px;
-  display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem;
-}
-.title-panel::before {
-  content: ''; position: absolute; inset: 0; z-index: 0;
-  background: repeating-conic-gradient(from 0deg at 72% 55%, rgba(255,255,255,0.22) 0deg 1.2deg, transparent 1.2deg 7deg);
-}
-.title-panel h1 {
-  font-size: clamp(3.2rem, 10vw, 7.2rem);
-  transform: rotate(-2deg);
-  transform-origin: left bottom;
-  text-shadow: 5px 5px 0 #444;
-}
-.title-panel h1 .out {
-  color: transparent;
-  -webkit-text-stroke: 2.5px var(--paper);
-  text-shadow: none;
-}
-.title-panel .caption { align-self: flex-start; box-shadow: 3px 3px 0 #666; }
-.title-panel .byline { align-self: flex-end; box-shadow: 3px 3px 0 #666; }
-.burst {
-  position: absolute !important; z-index: 2 !important;
-  right: 22px; top: 18px;
-  width: 128px; height: 128px;
-  display: grid; place-items: center;
-  background: var(--paper); color: var(--ink);
-  font-family: 'Bangers', cursive; font-size: 1.7rem; letter-spacing: 0.04em; text-align: center; line-height: 0.95;
-  clip-path: polygon(50% 0, 61% 18%, 82% 8%, 80% 32%, 100% 38%, 84% 54%, 96% 75%, 72% 72%, 66% 96%, 50% 80%, 34% 96%, 28% 72%, 4% 75%, 16% 54%, 0 38%, 20% 32%, 18% 8%, 39% 18%);
-  transform: rotate(10deg);
-}
-
-/* ── CHARACTERS + SPEECH ────────────────────────────────────── */
-.line { display: flex; align-items: center; gap: 1.5rem; margin: 0.4rem 0 1.1rem; }
-.line.right { flex-direction: row-reverse; }
-.line:last-child { margin-bottom: 0; }
-.char { flex: none; width: 104px; height: 122px; display: block; }
-
-.bubble {
-  position: relative;
-  background: var(--paper);
-  border: 3px solid var(--ink);
-  border-radius: 30px;
-  padding: 0.75rem 1.15rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  font-size: 1rem;
-  max-width: 560px;
-}
-.bubble b { font-family: 'Bangers', cursive; font-weight: 400; font-size: 1.25em; letter-spacing: 0.05em; }
-.bubble::before, .bubble::after { content: ''; position: absolute; top: 50%; width: 0; height: 0; border-style: solid; }
-.line.left .bubble::before  { left: -25px; margin-top: -13px; border-width: 13px 25px 13px 0; border-color: transparent var(--ink) transparent transparent; }
-.line.left .bubble::after   { left: -16px; margin-top: -10px; border-width: 10px 19px 10px 0; border-color: transparent var(--paper) transparent transparent; }
-.line.right .bubble::before { right: -25px; margin-top: -13px; border-width: 13px 0 13px 25px; border-color: transparent transparent transparent var(--ink); }
-.line.right .bubble::after  { right: -16px; margin-top: -10px; border-width: 10px 0 10px 19px; border-color: transparent transparent transparent var(--paper); }
-
-/* ── DOSSIER ────────────────────────────────────────────────── */
-.dossier { display: flex; flex-direction: column; gap: 0.8rem; justify-content: center; }
-.dossier .sfx { font-size: 2rem; }
-.dossier dl { display: grid; gap: 0.55rem; }
-.dossier dt { font-family: 'Bangers', cursive; font-weight: 400; letter-spacing: 0.1em; font-size: 0.9rem; }
-.dossier dd {
-  background: var(--paper); border: 3px solid var(--ink); padding: 0.1rem 0.6rem;
-  font-size: 0.9rem; word-break: break-word;
-}
-
-/* ── EXPERIENCE / EDUCATION ─────────────────────────────────── */
-.job { display: flex; flex-direction: column; gap: 0.9rem; min-height: 270px; }
-.job .caption, .project .caption { align-self: flex-start; }
-.job .role { font-size: 3.4rem; }
-.job-now { min-height: 0; }
-.job .org {
-  align-self: flex-start;
-  background: var(--ink); color: var(--paper);
-  font-family: 'Bangers', cursive; letter-spacing: 0.08em; font-size: 1.25rem;
-  padding: 0.1rem 0.8rem; transform: rotate(-1.5deg);
-}
-.job .line { margin-top: auto; }
-.job .char { width: 84px; height: 98px; }
-
-/* ── PROJECTS ───────────────────────────────────────────────── */
-.project { display: flex; flex-direction: column; gap: 0.9rem; min-height: 320px; transition: background 0.15s; }
-.project-wide { min-height: 0; }
-.project h3 { font-size: 2.3rem; }
-.project h3 small { display: block; font-size: 1.1rem; letter-spacing: 0.1em; margin-top: 0.35rem; }
-.project .line { margin: 0.2rem 0; }
-.project .char { width: 78px; height: 92px; }
-.project .bubble { font-size: 0.88rem; }
-.tags { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: auto; }
-.tag {
-  font-family: 'Bangers', cursive; letter-spacing: 0.08em; font-size: 0.95rem;
-  background: var(--ink); color: var(--paper); padding: 0 0.65rem;
-}
-.go {
-  position: absolute !important; right: 12px; top: 10px;
-  font-family: 'Bangers', cursive; font-size: 1.3rem; letter-spacing: 0.06em;
-  border: 3px solid var(--ink); background: var(--paper); padding: 0 0.6rem;
-  transform: rotate(4deg); transition: transform 0.15s;
-}
-.project:hover .go { transform: rotate(-3deg) scale(1.12); }
-.project:hover { box-shadow: inset 0 0 0 4px var(--paper), inset 0 0 0 7px var(--ink); }
-
-/* ── SKILLS ─────────────────────────────────────────────────── */
-.stickers { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 0.4rem 0 1.2rem; }
-.sticker {
-  font-family: 'Bangers', cursive; font-size: 1.4rem; letter-spacing: 0.07em;
-  border: 3px solid var(--ink); padding: 0.1rem 1rem;
-  background: var(--paper); box-shadow: 4px 4px 0 var(--ink);
-  transition: transform 0.12s;
-}
-.sticker:nth-child(even) { background: var(--ink); color: var(--paper); box-shadow: 4px 4px 0 #888; }
-.sticker:nth-child(3n) { transform: rotate(-2deg); }
-.sticker:nth-child(3n+1) { transform: rotate(1.5deg); }
-.sticker:hover { transform: rotate(0) scale(1.1); }
-
-/* ── INTERESTS (thought clouds) ─────────────────────────────── */
-.dream { display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
-.dots { display: flex; align-items: flex-end; gap: 6px; }
-.dots i { display: block; border: 3px solid var(--ink); border-radius: 50%; background: var(--paper); }
-.dots i:nth-child(1) { width: 10px; height: 10px; } .dots i:nth-child(2) { width: 18px; height: 18px; }
-.cloud {
-  border: 3px solid var(--ink); border-radius: 999px; background: var(--paper);
-  padding: 0.55rem 1.4rem;
-  font-family: 'Bangers', cursive; font-size: 1.35rem; letter-spacing: 0.07em;
+/* ── HERO ───────────────────────────────────────────────────── */
+.hero { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.5rem; }
+.hero-main { padding: 3rem 2.5rem; }
+.status {
   display: inline-flex; align-items: center; gap: 0.6rem;
-  transition: transform 0.12s, background 0.12s, color 0.12s;
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  padding: 0.35rem 0.85rem; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.05);
+  margin-bottom: 1.6rem;
 }
-.cloud:nth-of-type(odd)  { transform: rotate(-2deg); }
-.cloud:nth-of-type(even) { transform: rotate(2deg); }
-.cloud:hover { background: var(--ink); color: var(--paper); transform: rotate(0) scale(1.08); }
+.status i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan), 0 0 22px var(--cyan); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 50% { opacity: 0.35; } }
+.hero h1 {
+  font-size: clamp(2.7rem, 6.2vw, 4.9rem);
+  line-height: 1.02; letter-spacing: -0.035em; font-weight: 600; margin-bottom: 1.4rem;
+}
+.hero h1 .grad {
+  background: linear-gradient(100deg, #fff 0%, var(--cyan) 45%, var(--violet) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero .bio { color: var(--muted); max-width: 520px; font-size: 1.05rem; margin-bottom: 2rem; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.4rem; border-radius: 999px; font-weight: 500; font-size: 0.95rem;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.15); box-shadow: inset 0 1px 0 rgba(255,255,255,0.35), 0 8px 24px rgba(34,211,238,0.18); }
+.btn.primary { background: linear-gradient(135deg, rgba(34,211,238,0.4), rgba(139,92,246,0.4)); }
 
-/* ── CONNECT ────────────────────────────────────────────────── */
-.signals { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.2rem; }
-.signal {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  font-family: 'Bangers', cursive; font-size: 1.25rem; letter-spacing: 0.08em;
-  border: 3px solid var(--ink); background: var(--paper); padding: 0.2rem 1rem;
-  box-shadow: 4px 4px 0 var(--ink);
-  transition: transform 0.12s, box-shadow 0.12s, background 0.12s, color 0.12s;
-}
-.signal:hover { background: var(--ink); color: var(--paper); transform: translate(3px,3px); box-shadow: 1px 1px 0 var(--ink); }
+.spec { padding: 2rem 1.8rem; display: flex; flex-direction: column; gap: 1.1rem; justify-content: center; }
+.spec-title { font-size: 0.68rem; letter-spacing: 0.18em; color: var(--faint); text-transform: uppercase; }
+.spec dl { display: grid; gap: 0.95rem; }
+.spec dt { font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
+.spec dd { font-size: 0.98rem; word-break: break-word; }
+.spec dd small { color: var(--muted); display: block; font-size: 0.82rem; }
+.spec hr { border: 0; border-top: 1px solid var(--line); }
 
-/* ── FINALE ─────────────────────────────────────────────────── */
-.finale {
-  background: var(--ink); color: var(--paper); text-align: center;
-  display: flex; flex-direction: column; align-items: center; gap: 0.6rem; padding: 1.6rem 1rem;
+/* ── SECTIONS ───────────────────────────────────────────────── */
+.section-head { display: flex; align-items: baseline; gap: 1rem; margin: 2rem 0 0.2rem; padding: 0 0.4rem; }
+.section-head .idx { font-size: 0.72rem; letter-spacing: 0.16em; color: var(--cyan); }
+.section-head h2 { font-size: 1.7rem; font-weight: 600; letter-spacing: -0.02em; }
+.section-head .rule { flex: 1; height: 1px; background: linear-gradient(90deg, var(--line), transparent); }
+
+.rows { display: grid; gap: 1rem; }
+.row { padding: 1.4rem 1.7rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; transition: transform 0.25s; }
+.row:hover { transform: translateY(-3px); }
+.row .role { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.01em; }
+.row .org { color: var(--muted); font-size: 0.95rem; }
+.chip {
+  white-space: nowrap; font-size: 0.74rem; letter-spacing: 0.06em; padding: 0.35rem 0.8rem;
+  border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.06); color: var(--muted);
 }
-.finale .sfx { font-size: clamp(2.2rem, 7vw, 4rem); text-shadow: 4px 4px 0 #555; }
-.finale small { font-family: 'Bangers', cursive; letter-spacing: 0.12em; font-size: 1rem; color: #bbb; }
+.chip.live { color: #fff; border-color: rgba(34,211,238,0.5); background: rgba(34,211,238,0.14); box-shadow: 0 0 18px rgba(34,211,238,0.2); }
+
+.projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.project { padding: 1.8rem; display: flex; flex-direction: column; gap: 0.9rem; min-height: 290px; transition: transform 0.25s, border-color 0.25s; }
+.project:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.3); }
+.project .top { display: flex; justify-content: space-between; align-items: flex-start; }
+.project .num { font-size: 0.72rem; letter-spacing: 0.16em; color: var(--faint); }
+.project .arrow {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.07); transition: transform 0.25s, background 0.25s;
+}
+.project:hover .arrow { transform: rotate(45deg); background: rgba(34,211,238,0.25); }
+.project h3 { font-size: 1.45rem; letter-spacing: -0.02em; font-weight: 600; line-height: 1.15; }
+.project p { color: var(--muted); font-size: 0.93rem; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+.tag { font-size: 0.68rem; padding: 0.22rem 0.65rem; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,255,255,0.06); color: var(--muted); }
+
+.two { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.2rem; }
+.panel { padding: 1.8rem; }
+.panel h3 { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--faint); font-weight: 500; margin-bottom: 1.1rem; }
+.pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pill {
+  padding: 0.5rem 1.05rem; border-radius: 999px; font-size: 0.9rem;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+.pill:hover { transform: translateY(-2px); background: rgba(34,211,238,0.16); border-color: rgba(34,211,238,0.5); }
+
+.links { display: grid; gap: 0.7rem; }
+.social {
+  display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.1rem; border-radius: 16px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); transition: background 0.2s, transform 0.2s;
+}
+.social:hover { background: rgba(255,255,255,0.13); transform: translateX(4px); }
+.social span { display: inline-flex; align-items: center; gap: 0.7rem; }
+.social em { font-style: normal; color: var(--faint); transition: color 0.2s, transform 0.2s; }
+.social:hover em { color: var(--cyan); transform: translate(2px,-2px); }
+
+footer { padding: 1rem 0 3rem; text-align: center; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--faint); }
 
 /* ── MOTION ─────────────────────────────────────────────────── */
-@keyframes pop { 0% { opacity: 0; transform: scale(0.92); } 100% { opacity: 1; transform: scale(1); } }
-.panel { animation: pop 0.4s ease-out both; }
-.grid > .panel:nth-child(2) { animation-delay: 0.08s; } .grid > .panel:nth-child(3) { animation-delay: 0.14s; }
-@media (prefers-reduced-motion: reduce) { .panel { animation: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.hero-main, .spec { animation: rise 0.8s cubic-bezier(.2,.7,.2,1) both; }
+.spec { animation-delay: 0.12s; }
+@media (prefers-reduced-motion: reduce) {
+  .orb, .status i, .hero-main, .spec { animation: none; }
+  html { scroll-behavior: auto; }
+}
 
 /* ── RESPONSIVE ─────────────────────────────────────────────── */
-@media (max-width: 760px) {
-  .s4, .s6, .s8 { grid-column: span 12; }
-  .sheet { margin: 1rem 0.6rem 2rem; padding: 10px; box-shadow: 6px 6px 0 var(--ink); }
-  .grid { gap: 10px; }
-  .panel { padding: 1rem; }
-  .title-panel { padding: 1.4rem 1.1rem 1.2rem; min-height: 280px; }
-  .burst { width: 84px; height: 84px; font-size: 1.05rem; right: 8px; top: 8px; }
-  .title-panel .caption:not(.byline) { max-width: calc(100% - 96px); }
-  .char { width: 74px; height: 87px; }
-  .line { gap: 1.1rem; }
-  .bubble { font-size: 0.9rem; padding: 0.65rem 0.9rem; }
-  .masthead .logo { font-size: 1.25rem; }
-  .masthead nav { font-size: 1rem; gap: 0.8rem; }
-  .job .role { font-size: 2.8rem; }
+@media (max-width: 900px) {
+  .hero, .two { grid-template-columns: 1fr; }
+  .projects { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  main { padding-top: 6rem; }
+  .wrap { padding: 0 1rem; }
+  .nav ul { display: none; }
+  .hero-main { padding: 2rem 1.5rem; }
+  .projects { grid-template-columns: 1fr; }
+  .row { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Characters (ink drawings reused below) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <symbol id="timur" viewBox="0 0 120 140">
-      <path d="M8 140 C8 108 34 98 60 98 C86 98 112 108 112 140 Z" fill="#0b0b0b"/>
-      <rect x="50" y="82" width="20" height="20" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M43 99 L60 124 L77 99 Z" fill="#fff" stroke="#0b0b0b" stroke-width="3" stroke-linejoin="round"/>
-      <ellipse cx="32" cy="62" rx="5" ry="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <ellipse cx="88" cy="62" rx="5" ry="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <ellipse cx="60" cy="56" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M31 56 C24 26 46 12 66 12 C90 13 98 38 89 58 C87 46 80 40 72 39 C64 46 50 40 44 47 C38 49 33 52 31 56 Z" fill="#0b0b0b"/>
-      <path d="M70 14 C76 8 86 10 90 18" fill="none" stroke="#0b0b0b" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="48" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="72" cy="58" r="9" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <path d="M57 58 L63 58" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="49" cy="59" r="2.6" fill="#0b0b0b"/><circle cx="73" cy="59" r="2.6" fill="#0b0b0b"/>
-      <path d="M50 77 Q60 85 70 77" fill="none" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="visitor" viewBox="0 0 120 140">
-      <path d="M6 140 C6 106 34 98 60 98 C86 98 114 106 114 140 Z" fill="#0b0b0b"/>
-      <path d="M44 98 L54 128 M76 98 L66 128" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <rect x="50" y="84" width="20" height="18" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <ellipse cx="60" cy="62" rx="28" ry="32" fill="#fff" stroke="#0b0b0b" stroke-width="4"/>
-      <path d="M28 74 C16 14 104 14 92 74 L84 74 C84 52 78 42 60 40 C42 42 36 52 36 74 Z" fill="#0b0b0b"/>
-      <path d="M36 50 C48 44 70 44 84 50 C76 38 44 38 36 50 Z" fill="#0b0b0b"/>
-      <path d="M40 57 L55 60 M65 60 L80 57" stroke="#0b0b0b" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="48" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="72" cy="68" r="8" fill="#fff" stroke="#0b0b0b" stroke-width="3"/>
-      <circle cx="50" cy="69" r="3.2" fill="#0b0b0b"/><circle cx="74" cy="69" r="3.2" fill="#0b0b0b"/>
-      <ellipse cx="60" cy="86" rx="5" ry="6" fill="#0b0b0b"/>
-    </symbol>
-  </defs>
-</svg>
+<div class="backdrop" aria-hidden="true">
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div><div class="orb d"></div>
+  <div class="grid-lines"></div><div class="noise"></div>
+</div>
 
-<header class="masthead">
-  <div class="masthead-inner">
-    <div class="logo">Timur Cravtov</div>
-    <nav>
-      <a href="mailto:timurcravtov04@gmail.com">Email</a>
-      <a href="https://github.com/TimurCravtov" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-  </div>
-</header>
+<nav class="nav glass" aria-label="Primary">
+  <a class="logo" href="#top">TC<span>/</span>2026</a>
+  <ul>
+    <li><a class="link" href="#experience">Experience</a></li>
+    <li><a class="link" href="#projects">Projects</a></li>
+    <li><a class="link" href="#skills">Skills</a></li>
+    <li><a class="link" href="#contact">Contact</a></li>
+  </ul>
+  <a class="cta" href="mailto:timurcravtov04@gmail.com">Email</a>
+</nav>
 
-<main class="sheet">
-  <div class="grid">
+<div class="wrap" id="top">
+<main>
 
-    <!-- TITLE -->
-    <div class="panel title-panel s12">
-      <span class="burst" aria-hidden="true">Issue<br>#2026</span>
-      <span class="caption">Software Engineer · Chisinau, Moldova</span>
-      <h1 class="sfx">Building<br><span class="out">thoughtful</span><br>software.</h1>
-      <span class="caption byline">Written &amp; drawn by Timur Cravtov</span>
-    </div>
-
-    <!-- INTRO -->
-    <div class="panel s8 rays">
-      <span class="caption" style="margin-bottom:1rem">Chapter 1 — Who goes there?</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble"><b>Who are you?!</b> And what do you do?</div>
-      </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">I'm <b>Timur</b>. I craft web applications and solve real-world problems through elegant code. Currently studying Software Engineering at the Technical University of Moldova.</div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-main glass">
+      <div class="status mono"><i></i> Online · Chisinau, MD</div>
+      <h1>Building <span class="grad">thoughtful</span> software.</h1>
+      <p class="bio">Crafting web applications and solving real-world problems through elegant code. Oracle Developer at IBSOTECH, studying Software Engineering at the Technical University of Moldova.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="https://github.com/TimurCravtov" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
-
-    <div class="panel s4 tex dossier">
-      <span class="sfx">Case file</span>
+    <aside class="spec glass">
+      <div class="spec-title mono">// Profile</div>
       <dl>
-        <div><dt>Signal</dt><dd>timurcravtov04@gmail.com</dd></div>
-        <div><dt>Hotline</dt><dd>+373 78 472 735</dd></div>
-        <div><dt>Origin</dt><dd>Est. 2004 · Chisinau</dd></div>
+        <div><dt class="mono">Role</dt><dd>Oracle Developer<small>IBSOTECH · since Apr 2026</small></dd></div>
+        <div><dt class="mono">Education</dt><dd>B.Sc. Software Engineering<small>Technical University of Moldova</small></dd></div>
       </dl>
-    </div>
+      <hr>
+      <dl>
+        <div><dt class="mono">Signal</dt><dd>timurcravtov04@gmail.com</dd></div>
+        <div><dt class="mono">Line</dt><dd>+373 78 472 735</dd></div>
+      </dl>
+    </aside>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <div class="panel s12 rays job job-now">
-      <span class="caption">Apr 2026 — Present</span>
-      <div class="sfx role">Oracle Developer</div>
-      <div class="org">IBSOTECH</div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Now it's <b>Oracle</b> — and it pays the bills!</div>
-      </div>
+  <!-- EXPERIENCE -->
+  <div class="section-head" id="experience"><span class="idx mono">01</span><h2>Experience</h2><span class="rule"></span></div>
+  <section class="rows">
+    <div class="row glass">
+      <div><div class="role">Oracle Developer</div><div class="org">IBSOTECH</div></div>
+      <span class="chip live mono">Apr 2026 — Present</span>
     </div>
-
-    <div class="panel s6 tex job">
-      <span class="caption">Nov 2024 — Apr 2025</span>
-      <div class="sfx role">Intern</div>
-      <div class="org">Moldcell Academy</div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Hello, <b>real</b> code!</div>
-      </div>
+    <div class="row glass">
+      <div><div class="role">Intern</div><div class="org">Moldcell Academy</div></div>
+      <span class="chip mono">Nov 2024 — Apr 2025</span>
     </div>
-
-    <div class="panel s6 hatch job">
-      <span class="caption">Sep 2024</span>
-      <div class="sfx role">Intern</div>
-      <div class="org">Pentalog (Globant)</div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">My first day in the <b>big leagues</b>.</div>
-      </div>
+    <div class="row glass">
+      <div><div class="role">Intern</div><div class="org">Pentalog (Globant)</div></div>
+      <span class="chip mono">Sep 2024</span>
     </div>
-
-    <!-- EDUCATION -->
-    <div class="panel s12">
-      <span class="caption" style="margin-bottom:1rem">Chapter 2 — The training arc</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble">And where did you <b>learn</b> all this?</div>
-      </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble"><b>B.Sc. Software Engineering</b> — Technical University of Moldova. 2023 to present, still going!</div>
-      </div>
+    <div class="row glass">
+      <div><div class="role">B.Sc. Software Engineering</div><div class="org">Technical University of Moldova</div></div>
+      <span class="chip mono">2023 — Present</span>
     </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <a class="panel s6 tex project" href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener">
-      <span class="go">GitHub ↗</span>
-      <h3 class="sfx">MăiWai<small>Travel Buddy Finder</small></h3>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">A platform for finding travel companions — React + Tailwind frontend, Spring Boot backend.</div>
-      </div>
-      <div class="tags"><span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">Spring Boot</span></div>
+  <!-- PROJECTS -->
+  <div class="section-head" id="projects"><span class="idx mono">02</span><h2>Projects</h2><span class="rule"></span></div>
+  <section class="projects">
+    <a class="project glass" href="https://github.com/WalrusYours/WalrusCore" target="_blank" rel="noopener">
+      <div class="top"><span class="num mono">P/01</span><span class="arrow">↗</span></div>
+      <h3>WALRUS</h3>
+      <p>Weight And Liberty-based Recommendation Utility System. A recommendation engine you adapt with a YAML schema: users re-weight the ranking and every result explains why it was shown.</p>
+      <div class="tags mono"><span class="tag">Go</span><span class="tag">Neo4j</span><span class="tag">Docker</span><span class="tag">YAML</span></div>
     </a>
-
-    <a class="panel s6 hatch project" href="https://github.com/aionlang/aion" target="_blank" rel="noopener">
-      <span class="go">GitHub ↗</span>
-      <h3 class="sfx">Aion<small>A DSL for iCalendar</small></h3>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">A domain-specific language for managing .ics files, with an npm package and CLI tools.</div>
-      </div>
-      <div class="tags"><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">DSL</span></div>
+    <a class="project glass" href="https://github.com/NeValetik/globant-maiway" target="_blank" rel="noopener">
+      <div class="top"><span class="num mono">P/02</span><span class="arrow">↗</span></div>
+      <h3>MăiWai — Travel Buddy Finder</h3>
+      <p>A platform for finding travel companions with a React + Tailwind frontend and Spring Boot backend.</p>
+      <div class="tags mono"><span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">Spring Boot</span></div>
     </a>
-
-    <a class="panel s12 rays project project-wide" href="https://github.com/WalrusYours/WalrusCore" target="_blank" rel="noopener">
-      <span class="go">GitHub ↗</span>
-      <h3 class="sfx">WALRUS<small>Weight And Liberty-based Recommendation Utility System</small></h3>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">A recommendation engine you adapt to your platform with a <b>YAML schema</b>. Users get a few knobs to re-weight the ranking, and every result comes with the reasons it was shown.</div>
-      </div>
-      <div class="tags"><span class="tag">Go</span><span class="tag">Neo4j</span><span class="tag">Docker</span><span class="tag">YAML</span></div>
+    <a class="project glass" href="https://github.com/aionlang/aion" target="_blank" rel="noopener">
+      <div class="top"><span class="num mono">P/03</span><span class="arrow">↗</span></div>
+      <h3>Aion — DSL for iCalendar</h3>
+      <p>A domain-specific language for managing .ics files with npm package and CLI tools.</p>
+      <div class="tags mono"><span class="tag">TypeScript</span><span class="tag">Java</span><span class="tag">DSL</span></div>
     </a>
+  </section>
 
-    <!-- SKILLS -->
-    <div class="panel s12 rays">
-      <span class="caption" style="margin-bottom:1rem">Chapter 3 — The arsenal</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble">What's in your <b>toolbox</b>?</div>
-      </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Take a look!</div>
-      </div>
-      <div class="stickers">
-        <span class="sticker">Java</span>
-        <span class="sticker">JavaScript</span>
-        <span class="sticker">TypeScript</span>
-        <span class="sticker">Python</span>
-        <span class="sticker">PostgreSQL</span>
-        <span class="sticker">Oracle</span>
-        <span class="sticker">Git</span>
-        <span class="sticker">Docker</span>
-        <span class="sticker">React</span>
+  <!-- SKILLS + INTERESTS -->
+  <div class="section-head" id="skills"><span class="idx mono">03</span><h2>Stack &amp; interests</h2><span class="rule"></span></div>
+  <section class="two">
+    <div class="panel glass">
+      <h3 class="mono">Skills</h3>
+      <div class="pills">
+        <span class="pill">Java</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span>
+        <span class="pill">Python</span><span class="pill">PostgreSQL</span><span class="pill">Oracle</span>
+        <span class="pill">Git</span><span class="pill">Docker</span><span class="pill">React</span>
       </div>
     </div>
-
-    <!-- INTERESTS -->
-    <div class="panel s12 tex">
-      <span class="caption" style="margin-bottom:1rem">Meanwhile, off duty…</span>
-      <div class="line right" style="flex-direction:row; align-items:flex-end">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="dream">
-          <span class="dots" aria-hidden="true"><i></i><i></i></span>
-          <span class="cloud"><i class="fas fa-palette"></i> Art</span>
-          <span class="cloud"><i class="fas fa-book"></i> Books</span>
-          <span class="cloud"><i class="fas fa-film"></i> Movies</span>
-          <span class="cloud"><i class="fas fa-headphones"></i> Music</span>
-          <span class="cloud"><i class="fas fa-gamepad"></i> Games</span>
-        </div>
+    <div class="panel glass">
+      <h3 class="mono">Interests</h3>
+      <div class="pills">
+        <span class="pill">Art</span><span class="pill">Books</span><span class="pill">Movies</span>
+        <span class="pill">Music</span><span class="pill">Games</span>
       </div>
     </div>
+  </section>
 
-    <!-- CONNECT -->
-    <div class="panel s12">
-      <span class="caption" style="margin-bottom:1rem">Chapter 4 — Send a signal</span>
-      <div class="line left">
-        <svg class="char" aria-hidden="true"><use href="#visitor"/></svg>
-        <div class="bubble">How do I <b>reach</b> you?</div>
-      </div>
-      <div class="line right">
-        <svg class="char" aria-hidden="true"><use href="#timur"/></svg>
-        <div class="bubble">Pick a <b>channel</b> — I'll answer!</div>
-      </div>
-      <div class="signals">
-        <a class="signal" href="https://t.me/timur_cravtov" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i> Telegram</a>
-        <a class="signal" href="https://github.com/TimurCravtov" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i> GitHub</a>
-        <a class="signal" href="https://www.linkedin.com/in/timurcravtov/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a class="signal" href="https://www.facebook.com/timurcravtov/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i> Facebook</a>
-        <a class="signal" href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" rel="noopener" aria-label="Goodreads"><i class="fab fa-goodreads"></i> Goodreads</a>
-      </div>
+  <!-- CONTACT -->
+  <div class="section-head" id="contact"><span class="idx mono">04</span><h2>Contact</h2><span class="rule"></span></div>
+  <section class="panel glass">
+    <div class="links">
+      <a class="social" href="https://t.me/timur_cravtov" target="_blank" rel="noopener"><span><i class="fab fa-telegram"></i> Telegram</span><em>↗</em></a>
+      <a class="social" href="https://github.com/TimurCravtov" target="_blank" rel="noopener"><span><i class="fab fa-github"></i> GitHub</span><em>↗</em></a>
+      <a class="social" href="https://www.linkedin.com/in/timurcravtov/" target="_blank" rel="noopener"><span><i class="fab fa-linkedin"></i> LinkedIn</span><em>↗</em></a>
+      <a class="social" href="https://www.facebook.com/timurcravtov/" target="_blank" rel="noopener"><span><i class="fab fa-facebook"></i> Facebook</span><em>↗</em></a>
+      <a class="social" href="https://www.goodreads.com/user/show/179346385-tim" target="_blank" rel="noopener"><span><i class="fab fa-goodreads"></i> Goodreads</span><em>↗</em></a>
     </div>
+  </section>
 
-    <!-- FINALE -->
-    <div class="panel s12 finale">
-      <div class="sfx">To be continued…</div>
-      <small>© 2026 Timur Cravtov · Chisinau, Moldova</small>
-    </div>
-
-  </div>
 </main>
+<footer class="mono">© 2026 Timur Cravtov · Chisinau, Moldova</footer>
+</div>
 
+<script>
+  // cursor-following light on glass surfaces
+  document.querySelectorAll('.glass').forEach(function (el) {
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+</script>
 </body>
 </html>
